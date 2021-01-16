@@ -1,7 +1,15 @@
 package com.app.pojos;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Prescription {
+	@ManyToOne
+	@JoinColumn(name = "patient_id")
 	private Integer patientId;
+	
 	private byte[] prescriptionPdf;
 
 	public Prescription() {
