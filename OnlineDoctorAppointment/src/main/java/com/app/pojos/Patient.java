@@ -4,7 +4,13 @@ import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Patient extends Person {
+	@OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL)
 	private List<Prescription> list;
 
 	public Patient() {

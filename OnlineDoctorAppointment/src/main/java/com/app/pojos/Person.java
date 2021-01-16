@@ -2,14 +2,34 @@ package com.app.pojos;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.MappedSuperclass;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@MappedSuperclass
 public class Person {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
+	@Column(length = 20)
 	private char[] password;
+	@Column(length = 20)
 	private String name;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
+	@Column(length = 30)
 	private String email;
+	@Column(length = 10)
 	private String phoneNo;
+	@Column(length = 15)
 	private String Gender;
+	@Lob
+	@Column(columnDefinition = "mediumblob")
 	private byte[] photo;
 
 	public Person() {
