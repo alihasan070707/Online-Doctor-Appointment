@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 public class Patient extends Person {
 	@OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL)
 	private List<Prescription> list;
+	
+	@OneToMany(mappedBy="patientId")
+	private Appointment appointment;
 
 	public Patient() {
 		super();
