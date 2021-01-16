@@ -15,10 +15,10 @@ public class Appointment {
 	private Integer Id;
 	@JoinColumn(name="doctor_id")
 	@ManyToOne
-	private Integer drId;
+	private Doctor drId;
 	@JoinColumn(name="patient_id")
 	@ManyToOne
-	private Integer patientId;
+	private Patient patientId;
 	@JoinColumn(name="timeframe_id")
 	@OneToOne
 	private TimeFrame id;
@@ -27,23 +27,23 @@ public class Appointment {
 	public Appointment() {
 		super();
 	}
-	public Appointment(Integer drId, Integer patientId, TimeFrame id, Integer status) {
+	public Appointment(Doctor drId, Patient patientId, TimeFrame id, Integer status) {
 		super();
 		this.drId = drId;
 		this.patientId = patientId;
 		this.id = id;
 		this.status = status;
 	}
-	public Integer getDrId() {
+	public Doctor getDrId() {
 		return drId;
 	}
-	public void setDrId(Integer drId) {
+	public void setDrId(Doctor drId) {
 		this.drId = drId;
 	}
-	public Integer getPatientId() {
+	public Patient getPatientId() {
 		return patientId;
 	}
-	public void setPatientId(Integer patientId) {
+	public void setPatientId(Patient patientId) {
 		this.patientId = patientId;
 	}
 	public TimeFrame getId() {

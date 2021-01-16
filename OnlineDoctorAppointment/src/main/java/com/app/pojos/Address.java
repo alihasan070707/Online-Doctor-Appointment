@@ -2,14 +2,21 @@ package com.app.pojos;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer Id;
 	@OneToOne
 	@JoinColumn(name = "doctor_id")
-	private Integer doctorId;
+	private Doctor doctorId;
 	@Column(length = 15)
 	private String state;
 	@Column(length = 20)

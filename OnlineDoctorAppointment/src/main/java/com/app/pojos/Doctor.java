@@ -26,7 +26,7 @@ public class Doctor extends Person {
 	private String specialization;
 	@Column(length = 30)
 	private String Qualification;
-	@OneToOne(mappedBy = "doctor_id" , cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "doctorId" , cascade = CascadeType.ALL)
 	private Address address;
 	
 	@OneToMany(mappedBy="drId")
@@ -34,7 +34,7 @@ public class Doctor extends Person {
 	
 	private boolean isVerified;
 	
-	@OneToMany(mappedBy="DrId")
+	@OneToMany(mappedBy="drId")
 	private List<Appointment> appointment;
 
 	public Doctor() {
@@ -95,7 +95,7 @@ public class Doctor extends Person {
 	public void setTimeSlots( TimeFrame timeFrame) {
 		
 		timeSlots.add(timeFrame);
-		timeFrame.setDrId(this.getId());
+		timeFrame.setDrId(this);
 	
 	} 
 	@Override

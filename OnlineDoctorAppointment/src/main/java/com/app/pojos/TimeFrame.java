@@ -21,7 +21,7 @@ public class TimeFrame {
 	
 	@JoinColumn(name="doctor_id")
 	@ManyToOne
-	private Integer drId;
+	private Doctor drId;
 	
 	@DateTimeFormat(pattern="hh:mm:ss")
 	private Time startTime;
@@ -36,7 +36,7 @@ public class TimeFrame {
 		super();
 	}
 
-	public TimeFrame(Integer drId, Time startTime, Time endTime, boolean isBooked) {
+	public TimeFrame(Doctor drId, Time startTime, Time endTime, boolean isBooked) {
 		this.drId = drId;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -51,11 +51,11 @@ public class TimeFrame {
 		this.id = id;
 	}
 
-	public Integer getDrId() {
+	public Doctor getDrId() {
 		return drId;
 	}
 
-	public void setDrId(Integer drId) {
+	public void setDrId(Doctor drId) {
 		this.drId = drId;
 	}
 

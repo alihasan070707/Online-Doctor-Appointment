@@ -1,14 +1,20 @@
 package com.app.pojos;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Prescription {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer Id;
 	@ManyToOne
 	@JoinColumn(name = "patient_id")
-	private Integer patientId;
+	private Patient patientId;
 	
 	private byte[] prescriptionPdf;
 
@@ -16,17 +22,17 @@ public class Prescription {
 		super();
 	}
 
-	public Prescription(Integer patientId, byte[] prescriptionPdf) {
+	public Prescription(Patient patientId, byte[] prescriptionPdf) {
 		super();
 		this.patientId = patientId;
 		this.prescriptionPdf = prescriptionPdf;
 	}
 
-	public Integer getPatientId() {
+	public Patient getPatientId() {
 		return patientId;
 	}
 
-	public void setPatientId(Integer patientId) {
+	public void setPatientId(Patient patientId) {
 		this.patientId = patientId;
 	}
 
