@@ -2,10 +2,12 @@ package com.app.pojos;
 
 import java.sql.Date;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,6 +25,9 @@ public class Doctor extends Person {
 	private String Qualification;
 	@OneToOne(mappedBy = "doctor_id" , cascade = CascadeType.ALL)
 	private Address address;
+	
+	@OneToMany(mappedBy="drId")
+	private List<TimeFrame> timeSlots;
 
 	public Doctor() {
 		super();
