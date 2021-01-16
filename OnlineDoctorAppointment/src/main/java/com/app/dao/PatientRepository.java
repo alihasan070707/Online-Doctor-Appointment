@@ -14,22 +14,10 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
 	
 	Optional<Patient> findByEmailAndPassword(String email, char[] password);
 	
-	/*
-	 * @Query("Select app from Appointment app where app.patient_id = ?1")
-	 * List<Appointment> findAllAppointments(Integer patient_id);
-	 */
+	
 	
 	@Query("Select pres from Prescription pres where pres.patientId = :patient_id")
 	List<Prescription> findAllPrescriptions(Integer patient_id);
 	
-	/*
-	 * @Query(value =
-	 * "delete from Appointment a where a.appointment_id = :appointmentId") void
-	 * cancelAppointment(@Param("appointmentId") Integer appointmentId);
-	 */
 	
-	/*
-	 * @Query(value ="insert into Appointment values(:drId,:patientId,:id,:status")
-	 * void addAppointments(@Param("drId") Integer drId,@Param("patientId") Integer
-	 * patientId, @Param("id") TimeFrame id,@Param("status") Integer status);
-	 */}
+}
