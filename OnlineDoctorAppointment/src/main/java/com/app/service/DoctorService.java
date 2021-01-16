@@ -2,5 +2,7 @@ package com.app.service;
 
 public class DoctorService {
 	
-	public DoctorService() {}
+	public DoctorService() {
+		System.out.println("println");
+	}
 }
