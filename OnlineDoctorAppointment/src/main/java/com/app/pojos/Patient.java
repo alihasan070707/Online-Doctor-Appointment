@@ -1,6 +1,7 @@
 package com.app.pojos;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,10 +12,10 @@ import javax.persistence.OneToMany;
 @Entity
 public class Patient extends Person {
 	@OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL)
-	private List<Prescription> list;
+	private List<Prescription> list =  new ArrayList<Prescription>();
 	
 	@OneToMany(mappedBy="patientId")
-	private Appointment appointment;
+	private List<Appointment> appointment = new ArrayList<Appointment>();
 
 	public Patient() {
 		super();
@@ -31,6 +32,14 @@ public class Patient extends Person {
 
 	public void setList(List<Prescription> list) {
 		this.list = list;
+	}
+	
+	public void addPrescription(Prescription prescription) {
+		list.add(prescription);
+	}
+	
+	public void addAppointment(Appointment app) {
+		appointment.add(app);
 	}
 
 	@Override
