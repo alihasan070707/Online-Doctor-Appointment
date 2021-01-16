@@ -28,6 +28,8 @@ public class Doctor extends Person {
 	
 	@OneToMany(mappedBy="drId")
 	private List<TimeFrame> timeSlots;
+	
+	private boolean isVerified;
 
 	public Doctor() {
 		super();
