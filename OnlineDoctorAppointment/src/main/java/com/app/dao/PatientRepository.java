@@ -2,6 +2,8 @@ package com.app.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PatientRepository extends JpaRepository<T, ID> {
+import com.app.pojos.Patient;
 
+public interface PatientRepository extends JpaRepository<Patient, Integer> {
+	
 }
