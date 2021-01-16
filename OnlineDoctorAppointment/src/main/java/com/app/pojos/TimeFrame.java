@@ -37,7 +37,6 @@ public class TimeFrame {
 	}
 
 	public TimeFrame(Integer drId, Time startTime, Time endTime, boolean isBooked) {
-		super();
 		this.drId = drId;
 		this.startTime = startTime;
 		this.endTime = endTime;

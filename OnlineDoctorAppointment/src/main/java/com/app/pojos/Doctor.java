@@ -1,6 +1,7 @@
 package com.app.pojos;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,12 +23,14 @@ public class Doctor extends Person {
 	@Column(length = 30)
 	private String stateMedicalCouncil;
 	@Column(length = 30)
+	private String specialization;
+	@Column(length = 30)
 	private String Qualification;
 	@OneToOne(mappedBy = "doctor_id" , cascade = CascadeType.ALL)
 	private Address address;
 	
 	@OneToMany(mappedBy="drId")
-	private List<TimeFrame> timeSlots;
+	private List<TimeFrame> timeSlots = new ArrayList<TimeFrame>();
 	
 	private boolean isVerified;
 
@@ -86,6 +89,12 @@ public class Doctor extends Person {
 		this.address = address;
 	}
 
+	public void setTimeSlots( TimeFrame timeFrame) {
+		
+		timeSlots.add(timeFrame);
+		timeFrame.setDrId(this.getId());
+	
+	} 
 	@Override
 	public String toString() {
 		return "Doctor [registrationNo=" + registrationNo + ", registrationDate=" + registrationDate
