@@ -3,11 +3,25 @@ package com.app.pojos;
 import java.sql.Date;
 import java.util.Arrays;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+
+@Entity
 public class Doctor extends Person {
+	@Column(length = 20)
 	private String registrationNo;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date registrationDate;
+	@Column(length = 30)
 	private String stateMedicalCouncil;
+	@Column(length = 30)
 	private String Qualification;
+	@OneToOne(mappedBy = "doctor_id" , cascade = CascadeType.ALL)
 	private Address address;
 
 	public Doctor() {
