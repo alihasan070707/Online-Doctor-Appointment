@@ -33,6 +33,9 @@ public class Doctor extends Person {
 	private List<TimeFrame> timeSlots = new ArrayList<TimeFrame>();
 	
 	private boolean isVerified;
+	
+	@OneToMany(mappedBy="DrId")
+	private List<Appointment> appointment;
 
 	public Doctor() {
 		super();
