@@ -6,8 +6,8 @@ import com.app.pojos.Doctor;
 
 public interface IDoctorService {
 	public void registerDoc (Doctor newDoctor);
-	public void authenticateLogin (String email, String password);
+	public Doctor authenticateLogin (String email, char[] password);
 	public void uploadPrescription(MultipartFile Pdffile,Integer patient_id);
-	public void updateAppointmentStatus(String status);
+	public void updateAppointmentStatus(Integer appointmentId,int status);
 	//public void 
 }
