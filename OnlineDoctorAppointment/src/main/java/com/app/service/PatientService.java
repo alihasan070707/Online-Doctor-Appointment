@@ -3,8 +3,6 @@ package com.app.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,22 +11,21 @@ import com.app.pojos.Patient;
 import com.app.pojos.Prescription;
 
 @Service
-@Transactional
 public class PatientService implements IPatientService{
 	
 	@Autowired
 	PatientRepository dao;
 
 	@Override
-	public String addPatient(Patient patient) {
+	public boolean addPatient(Patient patient) {
 		try {
 		dao.save(patient);
 		}
 		catch(Exception e){
 		
-			return "Unable to save";
+			return false;
 		}
-		return "Saved";
+		return true;
 	}
 	
 	@Override

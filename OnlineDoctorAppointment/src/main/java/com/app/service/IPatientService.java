@@ -10,7 +10,7 @@ public interface IPatientService {
 	
 	Patient getPatientDetails(String email,char[] password);
 	
-	public String addPatient(Patient patient);
+	public boolean addPatient(Patient patient);
 	
 	/* List<Appointment> getAppointmentDetails(Integer patient_id); */
 	
