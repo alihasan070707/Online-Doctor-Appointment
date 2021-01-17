@@ -58,7 +58,7 @@ public class DoctorServiceImpl implements IDoctorService {
 			byte[] pres=pdfFile.getBytes();
 			file.write(pres);
 			file.close();
-			System.out.print(pres);
+			
 			
 			
 		} catch (IOException e) {
