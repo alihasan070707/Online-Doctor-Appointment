@@ -1,5 +1,15 @@
 package com.app.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.app.pojos.Doctor;
 
 public class DoctorServiceImpl implements IDoctorService {
@@ -21,5 +31,19 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 
 	}
-
+	public void uploadPrescription(MultipartFile pdfFile,Integer patient_id) {
+			
+		String uploadDirString = patient_id.toString();
+		Path copyPath = Paths.get(uploadDirString + File.separator + StringUtils.cleanPath(pdfFile.getOriginalFilename()));
+		try {
+			
+			Files.copy(pdfFile.getInputStream(), copyPath);	
+		
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
