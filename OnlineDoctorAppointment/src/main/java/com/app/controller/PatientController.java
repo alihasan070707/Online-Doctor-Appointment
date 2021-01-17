@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.pojos.Appointment;
 import com.app.pojos.Patient;
 import com.app.pojos.Prescription;
 import com.app.service.IAppointmentService;
 import com.app.service.IPatientService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/patient")
@@ -47,21 +51,34 @@ public class PatientController {
 	}
 	
 	@PostMapping("/register")
-	public String registerPatient(@RequestBody Patient patient) {
+	public String registerPatient(@RequestParam("data") String patientJson, @RequestParam("photo") MultipartFile photo) {
+		Patient patient=null;
+		try {
+			patient = new ObjectMapper().readValue(patientJson, Patient.class);
+			
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(service.addPatient(patient)) {
+			service.addProfileImage(photo, patient.getId());
 			return "/somePage"; //need to be created
 		}
 		return "/register";
 	}
 	
 	@GetMapping("/prescriptions")
-	public String getPrescriptions(@RequestParam Integer patientId, Model map) {
-		List<Prescription> list = service.getPrescription(patientId);
+	public List<String> getPrescriptions(@RequestParam Integer patientId, Model map) {
+		System.out.println("in pres");
+		List<String> list = service.getPrescription(patientId);
 		map.addAttribute("prescriptionList", list);
 		if(list == null) {
-			return "/";
+			return list;
 		}
-		return "/somePage"; //need to be created
+		return list; 
 	}
 	
 	@PostMapping("/appointment")
