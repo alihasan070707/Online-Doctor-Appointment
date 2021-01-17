@@ -16,8 +16,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
 	
 	
 	
-	@Query("Select pres from Prescription pres where pres.patientId = :patient_id")
-	List<Prescription> findAllPrescriptions(Integer patient_id);
+	
 	
 	
 }

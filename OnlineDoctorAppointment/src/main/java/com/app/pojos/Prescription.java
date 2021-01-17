@@ -18,19 +18,21 @@ public class Prescription {
 	@JoinColumn(name = "patient_id")
 	private Patient patientId;
 	
-	@Lob
+
 	@Column
-	private byte[] prescriptionPdf;
+	private String prescriptionPdf;
 
 	public Prescription() {
 		super();
 	}
 
-	public Prescription(Patient patientId, byte[] prescriptionPdf) {
+	public Prescription(Patient patientId, String prescriptionPdf) {
 		super();
 		this.patientId = patientId;
 		this.prescriptionPdf = prescriptionPdf;
 	}
+
+	
 
 	public Patient getPatientId() {
 		return patientId;
@@ -40,11 +42,11 @@ public class Prescription {
 		this.patientId = patientId;
 	}
 
-	public byte[] getPrescriptionPdf() {
+	public String getPrescriptionPdf() {
 		return prescriptionPdf;
 	}
 
-	public void setPrescriptionPdf(byte[] prescriptionPdf) {
+	public void setPrescriptionPdf(String prescriptionPdf) {
 		this.prescriptionPdf = prescriptionPdf;
 	}
 

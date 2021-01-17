@@ -11,8 +11,10 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Patient extends Person {
-	@OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL)
-	private List<Prescription> list =  new ArrayList<Prescription>();
+	/*
+	 * @OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL) private
+	 * List<Prescription> list = new ArrayList<Prescription>();
+	 */
 	
 	@OneToMany(mappedBy="patientId",cascade = CascadeType.PERSIST)
 	private List<Appointment> appointment = new ArrayList<Appointment>();
@@ -34,17 +36,16 @@ public class Patient extends Person {
 		super(id);
 	}
 
-	public List<Prescription> getList() {
-		return list;
-	}
-
-	public void setList(List<Prescription> list) {
-		this.list = list;
-	}
+	/*
+	 * public List<Prescription> getList() { return list; }
+	 * 
+	 * public void setList(List<Prescription> list) { this.list = list; }
+	 */
 	
-	public void addPrescription(Prescription prescription) {
-		list.add(prescription);
-	}
+	/*
+	 * public void addPrescription(Prescription prescription) {
+	 * list.add(prescription); }
+	 */
 	
 	public void addAppointment(Appointment app) {
 		appointment.add(app);
@@ -52,7 +53,7 @@ public class Patient extends Person {
 
 	@Override
 	public String toString() {
-		return "Patient [list=" + list + ", getId()=" + getId() + ", getPassword()=" + Arrays.toString(getPassword())
+		return "Patient [ getId()=" + getId() + ", getPassword()=" + Arrays.toString(getPassword())
 				+ ", getName()=" + getName() + ", getDob()=" + getDob() + ", getEmail()=" + getEmail()
 				+ ", getPhoneNo()=" + getPhoneNo() + ", getGender()=" + getGender() + ", getPhoto()="
 				+ Arrays.toString(getPhoto()) + "]";
