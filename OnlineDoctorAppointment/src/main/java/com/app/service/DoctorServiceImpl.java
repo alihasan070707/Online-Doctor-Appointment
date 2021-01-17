@@ -60,6 +60,7 @@ public class DoctorServiceImpl implements IDoctorService {
 			file.close();
 			System.out.print(pres);
 			
+			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
