@@ -42,6 +42,11 @@ public class TimeFrame {
 		this.endTime = endTime;
 		this.isBooked = isBooked;
 	}
+	
+	public TimeFrame(Integer id) {
+		super();
+		this.id = id;
+	}
 
 	public Integer getId() {
 		return id;

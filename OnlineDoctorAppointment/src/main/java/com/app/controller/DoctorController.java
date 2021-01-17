@@ -1,9 +1,11 @@
 package com.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;	
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,9 +40,10 @@ public class DoctorController {
 	}
 	
 	@PostMapping("/register")
-	public String processSignUp(@ModelAttribute Doctor doctor) {
+	public String processSignUp(@RequestBody Doctor doctor) {
+		System.out.println(doctor);
 		
-		service.registerDoc(doctor);
+		 service.registerDoc(doctor); 
 		return "Success";
 	}
 	
@@ -50,7 +53,7 @@ public class DoctorController {
 	}
 	
 	@PostMapping("/login")
-	public String processSignIn(@RequestParam String email,@RequestParam String password) {
+	public String processSignIn(@RequestBody String email,@RequestBody String password) {
 		
 		Doctor authUser=service.authenticateLogin(email, password.toCharArray());
 		if(authUser!=null) {
