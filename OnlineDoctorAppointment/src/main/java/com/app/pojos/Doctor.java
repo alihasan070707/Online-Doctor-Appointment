@@ -25,7 +25,7 @@ public class Doctor extends Person {
 	@Column(length = 30)
 	private String specialization;
 	@Column(length = 30)
-	private String Qualification;
+	private String qualification;
 	@OneToOne(mappedBy = "doctorId" , cascade = CascadeType.ALL)
 	private Address address;
 	
@@ -48,8 +48,24 @@ public class Doctor extends Person {
 		this.registrationNo = registrationNo;
 		this.registrationDate = registrationDate;
 		this.stateMedicalCouncil = stateMedicalCouncil;
-		Qualification = qualification;
+		this.qualification = qualification;
 		this.address = address;
+	}
+	
+	public Doctor(char[] password, String name, Date dob, String email, String phoneNo, String gender,
+			String registrationNo, Date registrationDate, String stateMedicalCouncil, String specialization,
+			String qualification, boolean isVerified) {
+		super(password, name, dob, email, phoneNo, gender);
+		this.registrationNo = registrationNo;
+		this.registrationDate = registrationDate;
+		this.stateMedicalCouncil = stateMedicalCouncil;
+		this.specialization = specialization;
+		this.qualification = qualification;
+		this.isVerified = isVerified;
+	}
+
+	public Doctor(Integer id) {
+		super(id);
 	}
 
 	public String getRegistrationNo() {
@@ -77,11 +93,11 @@ public class Doctor extends Person {
 	}
 
 	public String getQualification() {
-		return Qualification;
+		return qualification;
 	}
 
 	public void setQualification(String qualification) {
-		Qualification = qualification;
+		this.qualification = qualification;
 	}
 
 	public Address getAddress() {
@@ -91,17 +107,49 @@ public class Doctor extends Person {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	
+
+	public String getSpecialization() {
+		return specialization;
+	}
+
+	public void setSpecialization(String specialization) {
+		this.specialization = specialization;
+	}
+
+	/*
+	 * public List<TimeFrame> getTimeSlots() { return timeSlots; }
+	 * 
+	 * public void setTimeSlots(List<TimeFrame> timeSlots) { this.timeSlots =
+	 * timeSlots; }
+	 */
+
+	public boolean getIsVerified() {
+		return isVerified;
+	}
+
+	public void setIsVerified(boolean isVerified) {
+		this.isVerified = isVerified;
+	}
+
+	/*
+	 * public List<Appointment> getAppointment() { return appointment; }
+	 * 
+	 * public void setAppointment(List<Appointment> appointment) { this.appointment
+	 * = appointment; }
+	 */
 
 	public void setTimeSlots( TimeFrame timeFrame) {
 		
 		timeSlots.add(timeFrame);
 		timeFrame.setDrId(this);
 	
-	} 
+	}
+	
 	@Override
 	public String toString() {
 		return "Doctor [registrationNo=" + registrationNo + ", registrationDate=" + registrationDate
-				+ ", stateMedicalCouncil=" + stateMedicalCouncil + ", Qualification=" + Qualification + ", address="
+				+ ", stateMedicalCouncil=" + stateMedicalCouncil + ", Qualification=" + qualification + ", address="
 				+ address + ", getId()=" + getId() + ", getPassword()=" + Arrays.toString(getPassword())
 				+ ", getName()=" + getName() + ", getDob()=" + getDob() + ", getEmail()=" + getEmail()
 				+ ", getPhoneNo()=" + getPhoneNo() + ", getGender()=" + getGender() + ", getPhoto()="

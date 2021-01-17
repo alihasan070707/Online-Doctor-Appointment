@@ -13,14 +13,17 @@ public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer Id;
+	
+	@ManyToOne
 	@JoinColumn(name="doctor_id")
-	@ManyToOne
 	private Doctor drId;
-	@JoinColumn(name="patient_id")
+	
 	@ManyToOne
+	@JoinColumn(name="patient_id")
 	private Patient patientId;
-	@JoinColumn(name="timeframe_id")
+	
 	@OneToOne
+	@JoinColumn(name="timeframe_id")
 	private TimeFrame id;
 	private Integer status;
 	

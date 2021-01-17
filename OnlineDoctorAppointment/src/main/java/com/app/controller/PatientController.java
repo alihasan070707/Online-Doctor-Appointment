@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,7 +47,7 @@ public class PatientController {
 	}
 	
 	@PostMapping("/register")
-	public String registerPatient(@Validated Patient patient) {
+	public String registerPatient(@RequestBody Patient patient) {
 		if(service.addPatient(patient)) {
 			return "/somePage"; //need to be created
 		}
@@ -64,7 +65,7 @@ public class PatientController {
 	}
 	
 	@PostMapping("/appointment")
-	public String addAppointment (@Validated Appointment appointment ) {
+	public String addAppointment (@RequestBody Appointment appointment ) {
 		boolean getApp = appService.addAppointment(appointment.getDrId(), appointment.getPatientId(), appointment.getId(), 5);
 		return "/somePage";
 	}
