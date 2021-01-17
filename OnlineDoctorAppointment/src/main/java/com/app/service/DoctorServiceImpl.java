@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,10 +35,9 @@ public class DoctorServiceImpl implements IDoctorService {
 	public void uploadPrescription(MultipartFile pdfFile,Integer patient_id) {
 			
 		String uploadDirString = patient_id.toString();
-		Path copyPath = Paths.get(uploadDirString + File.separator + StringUtils.cleanPath(pdfFile.getOriginalFilename()));
 		try {
 			
-			Files.copy(pdfFile.getInputStream(), copyPath);	
+			pdfFile.transferTo(new File(uploadDirString + File.separator + StringUtils.cleanPath(pdfFile.getOriginalFilename())));	
 		
 		} 
 		catch (IOException e) {
