@@ -117,12 +117,12 @@ public class Doctor extends Person {
 		this.specialization = specialization;
 	}
 
-	/*
-	 * public List<TimeFrame> getTimeSlots() { return timeSlots; }
-	 * 
-	 * public void setTimeSlots(List<TimeFrame> timeSlots) { this.timeSlots =
-	 * timeSlots; }
-	 */
+	
+	 public List<TimeFrame> getTimeSlots() { return timeSlots; }
+	 
+	 public void setTimeSlots(List<TimeFrame> timeSlots) { this.timeSlots =
+	 timeSlots; }
+	 
 
 	public boolean getIsVerified() {
 		return isVerified;

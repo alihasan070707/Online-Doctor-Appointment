@@ -1,5 +1,8 @@
 package com.app.controller;
 
+import java.time.LocalTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.pojos.Doctor;
+import com.app.pojos.TimeFrame;
 import com.app.service.IDoctorService;
 
 @RestController
@@ -69,6 +73,13 @@ public class DoctorController {
 		return "Success";
 	}
 	
+	@PostMapping("/timeFrames")
+	public String setTimeFrames(@RequestParam Integer doctor_id,@RequestParam List<LocalTime> times ) {
+	
+			service.setTimeFrames(times, doctor_id);
+			return "/someting";
+	
+	}
 	
 
 }

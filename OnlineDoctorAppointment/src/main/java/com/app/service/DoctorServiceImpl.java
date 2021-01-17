@@ -3,7 +3,11 @@ package com.app.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,7 @@ import com.app.dao.AppointmentRepository;
 import com.app.dao.DoctorRepsitory;
 import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
+import com.app.pojos.TimeFrame;
 
 @Service
 public class DoctorServiceImpl implements IDoctorService {
@@ -69,4 +74,23 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 		
 	}
+	
+	public void setTimeFrames(List<LocalTime> times,Integer doctor_id) {
+		LocalDate date = LocalDate.now();
+		List<TimeFrame> timeframes = new ArrayList<>();
+		Optional<Doctor> doctorOpt = doctorDao.findById(doctor_id);
+		Doctor doctor = doctorOpt.get();
+		for(int i=0;i<6;i++) {
+			
+			for(LocalTime time : times) {
+				
+				timeframes.add(new TimeFrame(doctor, time, time.plusHours(1), false, date.plusDays(i)));
+			}
+			
+		}
+		doctor.setTimeSlots(timeframes);
+		doctorDao.save(doctor);
+	}
+
+	
 }
