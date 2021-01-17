@@ -7,11 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.app.pojos.Appointment;
 import com.app.pojos.Patient;
 import com.app.pojos.Prescription;
+import com.app.service.IAppointmentService;
 import com.app.service.IPatientService;
 
 @RestController
@@ -20,6 +24,8 @@ public class PatientController {
 	
 	@Autowired
 	private IPatientService service;
+	@Autowired
+	private IAppointmentService appService;
 	
 	@GetMapping("/login")
 	public String showPatientLoginPage() {
@@ -41,14 +47,14 @@ public class PatientController {
 	}
 	
 	@PostMapping("/register")
-	public String registerPatient(@Validated Patient patient) {
+	public String registerPatient(@RequestBody Patient patient) {
 		if(service.addPatient(patient)) {
 			return "/somePage"; //need to be created
 		}
 		return "/register";
 	}
 	
-	@GetMapping("prescriptions")
+	@GetMapping("/prescriptions")
 	public String getPrescriptions(@RequestParam Integer patientId, Model map) {
 		List<Prescription> list = service.getPrescription(patientId);
 		map.addAttribute("prescriptionList", list);
@@ -56,5 +62,11 @@ public class PatientController {
 			return "/";
 		}
 		return "/somePage"; //need to be created
+	}
+	
+	@PostMapping("/appointment")
+	public String addAppointment (@RequestBody Appointment appointment ) {
+		boolean getApp = appService.addAppointment(appointment.getDrId(), appointment.getPatientId(), appointment.getId(), 5);
+		return "/somePage";
 	}
 }

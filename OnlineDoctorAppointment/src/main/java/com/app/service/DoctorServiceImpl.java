@@ -21,6 +21,7 @@ public class DoctorServiceImpl implements IDoctorService {
 
 	@Autowired
 	AppointmentRepository appointmentDao;
+	@Autowired
 	DoctorRepsitory doctorDao;
 	
 	@Override

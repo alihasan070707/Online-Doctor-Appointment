@@ -27,7 +27,7 @@ public class Person {
 	@Column(length = 10)
 	private String phoneNo;
 	@Column(length = 15)
-	private String Gender;
+	private String gender;
 	@Lob
 	@Column(columnDefinition = "mediumblob")
 	private byte[] photo;
@@ -45,8 +45,23 @@ public class Person {
 		this.dob = dob;
 		this.email = email;
 		this.phoneNo = phoneNo;
-		Gender = gender;
+		this.gender = gender;
 		this.photo = photo;
+	}
+
+	public Person(char[] password, String name, Date dob, String email, String phoneNo, String gender) {
+		super();
+		this.password = password;
+		this.name = name;
+		this.dob = dob;
+		this.email = email;
+		this.phoneNo = phoneNo;
+		this.gender = gender;
+	}
+
+	public Person(Integer id) {
+		super();
+		Id = id;
 	}
 
 	public Integer getId() {
@@ -98,11 +113,11 @@ public class Person {
 	}
 
 	public String getGender() {
-		return Gender;
+		return gender;
 	}
 
 	public void setGender(String gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
 
 	public byte[] getPhoto() {
