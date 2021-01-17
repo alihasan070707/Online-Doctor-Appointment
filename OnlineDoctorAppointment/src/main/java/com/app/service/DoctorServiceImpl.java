@@ -3,16 +3,15 @@ package com.app.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
 
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.pojos.Doctor;
 
+@Service
 public class DoctorServiceImpl implements IDoctorService {
 
 	@Override
@@ -33,17 +32,26 @@ public class DoctorServiceImpl implements IDoctorService {
 
 	}
 	public void uploadPrescription(MultipartFile pdfFile,Integer patient_id) {
-			
-		String uploadDirString = patient_id.toString();
+		
+		File dir=new File("D:/prescription/"+patient_id);
+		if(!dir.exists())
+		{
+			dir.mkdir();
+		}
+		
 		try {
 			
-			pdfFile.transferTo(new File(uploadDirString + File.separator + StringUtils.cleanPath(pdfFile.getOriginalFilename())));	
-		
-		} 
-		catch (IOException e) {
-			// TODO Auto-generated catch block
+			FileOutputStream file = new FileOutputStream(new File("D:/prescription/"+patient_id+"/"+LocalDateTime.now().hashCode()+""+pdfFile.getOriginalFilename()));
+			byte[] pres=pdfFile.getBytes();
+			file.write(pres);
+			file.close();
+			System.out.print(pres);
+			
+		} catch (IOException e) {
+			
 			e.printStackTrace();
 		}
+		
 		
 	}
 }
