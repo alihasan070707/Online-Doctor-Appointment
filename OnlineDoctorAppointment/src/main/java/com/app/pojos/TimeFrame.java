@@ -3,7 +3,6 @@ package com.app.pojos;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,10 +26,10 @@ public class TimeFrame {
 	private Doctor drId;
 	
 	@DateTimeFormat(pattern="hh:mm:ss")
-	private LocalTime startTime;
+	private Time startTime;
 	
 	@DateTimeFormat(pattern="hh:mm:ss")
-	private LocalTime endTime;
+	private Time endTime;
 	
 	@Column(name="is_booked")
 	private boolean isBooked;
@@ -42,7 +41,7 @@ public class TimeFrame {
 		super();
 	}
 
-	public TimeFrame(Doctor drId, LocalTime startTime, LocalTime endTime, boolean isBooked,LocalDate date) {
+	public TimeFrame(Doctor drId, Time startTime, Time endTime, boolean isBooked,LocalDate date) {
 		this.drId = drId;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -71,19 +70,19 @@ public class TimeFrame {
 		this.drId = drId;
 	}
 
-	public LocalTime getStartTime() {
+	public Time getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(LocalTime startTime) {
+	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
 	}
 
-	public LocalTime getEndTime() {
+	public Time getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalTime endTime) {
+	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
 

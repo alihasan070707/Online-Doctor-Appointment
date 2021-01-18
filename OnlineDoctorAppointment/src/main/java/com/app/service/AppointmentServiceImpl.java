@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.app.dao.AppointmentRepository;
 import com.app.dao.DoctorRepsitory;
 import com.app.dao.PatientRepository;
+import com.app.dao.TimeFrameRepo;
 import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
 import com.app.pojos.Patient;
@@ -26,6 +27,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	public DoctorRepsitory doctordao;
 	@Autowired
 	public PatientRepository patientdao;
+	@Autowired
+	public TimeFrameRepo timedao;
 
 	@Override
 	public List<Appointment> findAllByPatientId(Integer patient_id) {
@@ -41,16 +44,20 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	}
 
 	@Override
-	public boolean addAppointment(Doctor drId, Patient patientId, TimeFrame id, Integer status) {
+	public boolean addAppointment(Integer drId, Integer patientId, Integer id, Integer status) {
+		Optional<Doctor> doctor=doctordao.findById(drId);
+		Optional<Patient> patient =patientdao.findById(patientId);
+		Optional<TimeFrame> time =timedao.findById(id);
 		
-		Appointment appointment= new Appointment(drId, patientId, id, status);
+		Appointment appointment= new Appointment(doctor.get(), patient.get(), time.get(), status);
+		System.out.println(appointment);
 		
-		Optional<Patient> patient=patientdao.findById(patientId.getId());
-		if(patient.isPresent()) {
-			 Patient patientobj=patient.get();
-			 patientobj.addAppointment(appointment);
-			 patientdao.save(patientobj);
-			 }
+		appointmentdao.save(appointment);
+		/*
+		 * Optional<Patient> patient=patientdao.findById(patientId.getId());
+		 * if(patient.isPresent()) { Patient patientobj=patient.get();
+		 * patientobj.addAppointment(appointment); patientdao.save(patientobj); }
+		 */
 			
 		return false;
 	}

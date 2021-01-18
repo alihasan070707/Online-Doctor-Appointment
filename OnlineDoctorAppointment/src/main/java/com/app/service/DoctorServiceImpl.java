@@ -84,7 +84,10 @@ public class DoctorServiceImpl implements IDoctorService {
 			
 			for(LocalTime time : times) {
 				
-				timeframes.add(new TimeFrame(doctor, time, time.plusHours(1), false, date.plusDays(i)));
+				/*
+				 * timeframes.add(new TimeFrame(doctor, time, time.plusHours(1), false,
+				 * date.plusDays(i))); 	
+				 */
 			}
 			
 		}

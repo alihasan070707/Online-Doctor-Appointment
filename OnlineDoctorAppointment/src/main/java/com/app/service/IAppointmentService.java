@@ -13,6 +13,6 @@ public interface IAppointmentService{
 	
 	void deleteById(Integer appointmentId);
 	
-	public boolean addAppointment(Doctor drId,Patient patient_id,TimeFrame id,Integer status);
+	boolean addAppointment(Integer drId, Integer patientId, Integer timeFrame, Integer status);
 
 }

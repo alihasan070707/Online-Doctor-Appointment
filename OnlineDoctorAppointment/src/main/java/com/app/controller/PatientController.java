@@ -82,8 +82,12 @@ public class PatientController {
 	}
 	
 	@PostMapping("/appointment")
-	public String addAppointment (@RequestBody Appointment appointment ) {
-		boolean getApp = appService.addAppointment(appointment.getDrId(), appointment.getPatientId(), appointment.getId(), 5);
+	public String addAppointment (@RequestParam Integer drId,@RequestParam Integer patientId,@RequestParam Integer timeFrame,@RequestParam Integer status ) {
+		/*
+		 * System.out.println(appointment.getDrId());
+		 * System.out.println(appointment.getPatientId());
+		 */
+		boolean getApp = appService.addAppointment( drId,patientId,timeFrame,status);
 		return "/somePage";
 	}
 }
