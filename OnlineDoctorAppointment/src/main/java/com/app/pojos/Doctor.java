@@ -29,7 +29,7 @@ public class Doctor extends Person {
 	@OneToOne(mappedBy = "doctorId" , cascade = CascadeType.ALL)
 	private Address address;
 	
-	@OneToMany(mappedBy="drId")
+	@OneToMany(mappedBy="drId", cascade = CascadeType.ALL)
 	private List<TimeFrame> timeSlots = new ArrayList<TimeFrame>();
 	
 	private boolean isVerified;
@@ -118,10 +118,14 @@ public class Doctor extends Person {
 	}
 
 	
-	 public List<TimeFrame> getTimeSlots() { return timeSlots; }
+	
+	
+	
+	  public List<TimeFrame> getTimeSlots() { return timeSlots; }
+	  
+	  public void setTimeSlots(List<TimeFrame> timeSlots) { this.timeSlots =
+	  timeSlots; }
 	 
-	 public void setTimeSlots(List<TimeFrame> timeSlots) { this.timeSlots =
-	 timeSlots; }
 	 
 
 	public boolean getIsVerified() {
@@ -132,6 +136,7 @@ public class Doctor extends Person {
 		this.isVerified = isVerified;
 	}
 
+	
 	/*
 	 * public List<Appointment> getAppointment() { return appointment; }
 	 * 
@@ -139,12 +144,15 @@ public class Doctor extends Person {
 	 * = appointment; }
 	 */
 
-	public void setTimeSlots( TimeFrame timeFrame) {
-		
-		timeSlots.add(timeFrame);
-		timeFrame.setDrId(this);
 	
-	}
+		
+		  public void setTimeSlot( TimeFrame timeFrame) {
+		  
+		  timeSlots.add(timeFrame); timeFrame.setDrId(this);
+		  
+		  }
+		 
+	 
 	
 	@Override
 	public String toString() {

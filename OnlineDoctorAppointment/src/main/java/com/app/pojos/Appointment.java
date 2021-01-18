@@ -1,5 +1,6 @@
 package com.app.pojos;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,15 +15,15 @@ public class Appointment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer Id;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="doctor_id")
 	private Doctor drId;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="patient_id")
 	private Patient patientId;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="timeframe_id")
 	private TimeFrame id;
 	private Integer status;
