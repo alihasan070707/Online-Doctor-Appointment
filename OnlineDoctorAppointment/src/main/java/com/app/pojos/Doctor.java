@@ -52,6 +52,17 @@ public class Doctor extends Person {
 		this.address = address;
 	}
 	
+	public Doctor(char[] password, String name, Date dob, String email, String phoneNo, String gender, byte[] photo,
+			String registrationNo, Date registrationDate, String stateMedicalCouncil, String specialization,
+			String qualification) {
+		super(password, name, dob, email, phoneNo, gender, photo);
+		this.registrationNo = registrationNo;
+		this.registrationDate = registrationDate;
+		this.stateMedicalCouncil = stateMedicalCouncil;
+		this.specialization = specialization;
+		this.qualification = qualification;
+	}
+
 	public Doctor(char[] password, String name, Date dob, String email, String phoneNo, String gender,
 			String registrationNo, Date registrationDate, String stateMedicalCouncil, String specialization,
 			String qualification, boolean isVerified) {

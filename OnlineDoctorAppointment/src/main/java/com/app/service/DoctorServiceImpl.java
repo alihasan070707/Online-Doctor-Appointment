@@ -31,7 +31,7 @@ public class DoctorServiceImpl implements IDoctorService {
 	
 	@Override
 	public void registerDoc(Doctor newDoctor) {
-		
+			
 			doctorDao.save(newDoctor);
 	}
 
