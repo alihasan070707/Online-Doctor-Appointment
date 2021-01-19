@@ -1,0 +1,142 @@
+@font-face {
+    font-family: Raleway-SemiBold;
+    src: url("/assets/fonts/raleway/Raleway-SemiBold.ttf"); 
+  }
+  
+  @font-face {
+    font-family: Raleway-Bold;
+    src: url("/assets/fonts/raleway/Raleway-Bold.ttf"); 
+  }
+  
+  @font-face {
+    font-family: Raleway-Black;
+    src: url("/assets/fonts/raleway/Raleway-Black.ttf"); 
+  }
+  
+.login-left-div{
+	position: relative;
+	background: url("/assets/images/login-bg.jpg");
+	height: 100vh;
+	overflow: hidden;
+	background-size: cover;	
+	background-position: center;
+}
+.cover-div{
+	width: 110%;
+	height: 100vh;
+	background: green;
+	opacity: 0; 
+}
+.login-container{
+	position: relative;
+	width: 100vw;
+
+	overflow: hidden;
+	margin: auto;
+}
+.login-right-div{
+
+	
+	padding-top: 30vh;
+	height: 100vh;
+	width: 50vw;
+	text-align: center;
+}
+.input-style{
+	width: 90%;
+    height: 45px;
+    border-radius: 1px;
+    border: none;
+    margin-right: 0px;
+    padding-left: 5px;
+	margin-bottom: 30px;
+}
+.input-cover{
+    width: 55%;
+    
+    height: 47px;
+    margin: auto;
+    border: 1px solid rgb(158, 156, 156);
+    border-radius: 5px;
+}
+.submit-btn-style{
+	width: 30%;
+	height: 40px;
+	font-size: 20px;
+	background: #0099ff;
+	border: none;
+	color: white;
+	border-radius: 20px;
+
+}
+
+.login-text{
+    
+    font-size: 44px;
+    color: grey;
+    font-family: Raleway-SemiBold;
+    margin-bottom: 30px;
+}
+.create_account_h3text{
+  margin-top: 50px;
+  font-size: 38px;
+  color: grey;
+  font-family: Raleway-Bold;
+}
+
+
+
+.signup-text{
+
+  display: inline;
+  font-family: Raleway-semiBold;
+  color: grey;
+  margin-bottom: 10px;
+}
+.icon-style{
+ 
+  font-size: 15px;
+  background-color: #64B5F6;
+  margin: 3px;
+  color:white;
+  border-radius: 20px;
+  padding: 6px 10px;
+  
+}
+.icon-style1{
+ 
+  font-size: 15px;
+  background-color: lightsalmon;
+  color:white;
+  border-radius: 20px;
+  padding: 6px 10px;
+  
+}
+header{
+  margin: 0;
+  padding: 0;
+}
+*:focus{
+  outline: none;
+  
+}
+.input_style:focus{
+  
+    outline: none;
+    
+    border: 2px solid #64B5F6 !important;
+  
+}
+.create_account_text{
+   font-size: 15px;
+   color: grey;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+.email-icon{
+    font-size: 18px;
+    color: rgb(105, 105, 105);
+    display: inline;
+    margin-right: 3px;
+    
+}
