@@ -8,13 +8,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PatientLoginComponent } from './patient-login/patient-login.component';
 import { DoctorRegisterationComponent } from './doctor-registeration/doctor-registeration.component';
-
 import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { PatientRegisterComponent } from './patient-register/patient-register.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 import { SearchDoctorsComponent } from './search-doctors/search-doctors.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { BookAppointmentComponent } from './book-appointment/book-appointment.co
     SearchDoctorsComponent,
     BookAppointmentComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
   providers: [],
   bootstrap: [AppComponent],
 })

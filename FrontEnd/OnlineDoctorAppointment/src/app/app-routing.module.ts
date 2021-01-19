@@ -8,6 +8,7 @@ import { PatientLoginComponent } from './patient-login/patient-login.component';
 import { pathToFileURL } from 'url';
 import { DoctorRegisterationComponent } from './doctor-registeration/doctor-registeration.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
+import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'patientRegister', component: PatientRegisterComponent },
   { path: 'doctorRegister', component: DoctorRegisterationComponent },
   { path: 'doctorLogin', component: DoctorLoginComponent },
+  { path: 'doctorLogin', component: DoctorRegisterationComponent },
+  { path: 'bookAppointment', component: BookAppointmentComponent }
 ];
 
 @NgModule({
