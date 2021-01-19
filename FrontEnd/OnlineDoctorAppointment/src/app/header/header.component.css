@@ -1,0 +1,35 @@
+a span {
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: inline-block;
+  color: white;
+  margin-top: 1px;
+}
+
+img {
+  margin-top: -10px;
+}
+
+.navbar.bg-light {
+  background-color: #21292f !important;
+}
+
+.nav-link.btn-primary {
+  background-color: #21292f !important;
+  color: white;
+  border: 2px solid white;
+  border-radius: 8px;
+}
+.nav-link.btn-primary:hover {
+  color: lightseagreen;
+}
+
+.navbar-nav > li > a,
+.navbar-brand {
+  padding-top: 5px !important;
+  padding-bottom: 0 !important;
+  height: 40px;
+}
+.navbar {
+  min-height: 30px !important;
+}
