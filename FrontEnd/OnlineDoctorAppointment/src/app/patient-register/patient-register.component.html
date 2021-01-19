@@ -1,56 +1,94 @@
 <div class="container">
-    <form action="" #patientForm="ngForm" (ngSubmit)=onSubmit(patientForm)>
-        <!-- {{ patientForm.value | json }} -->
-        <div class="form-group">
-            <label for="name">Name</label>
-        <input type="text" name="name" placeholder="Enter name" class="form-control" ngModel>
-        </div>
-        
-        <div class="form-group">
-            <label for="number">Phone Number</label>
-        <input type="text" name="number" placeholder="Phone number" class="form-control" ngModel>
-        </div>
-        
-        <div class="form-group">
-            <label for="dob">Date of birth</label>
-            <input type="date" name="dob" class="form-control" ngModel>
-        </div>
-        
-        <div class="form-group">
-            <label for="gender">Gender</label>
-            <select name="gender" id="gender" class="form-control" ngModel>
-                <option value="" selected>Select a gender</option>
-                <option *ngFor="let gender of genders">{{ gender }}</option>
-                <!-- <option value="Male">Male</option>
+  <form action="" #patientForm="ngForm" (ngSubmit)="onSubmit(patientForm)">
+    <!-- {{ patientForm.value | json }} -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter name"
+        class="form-control"
+        ngModel
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="number">Phone Number</label>
+      <input
+        type="text"
+        name="phoneNo"
+        placeholder="Phone number"
+        class="form-control"
+        ngModel
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="dob">Date of birth</label>
+      <input type="date" name="dob" class="form-control" ngModel />
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select name="gender" id="gender" class="form-control" ngModel>
+        <option value="" selected>Select a gender</option>
+        <option *ngFor="let gender of genders">{{ gender }}</option>
+        <!-- <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option> -->
+      </select>
+    </div>
 
-            </select>
-        
-        </div>
+    <div class="form-group">
+      <label for="email">Email Id</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email id"
+        class="form-control"
+        ngModel
+      />
+    </div>
 
-        <div class="form-group">
-            <label for="email">Email Id</label>
-            <input type="email" name="email" placeholder="Enter your email id" class="form-control" ngModel>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="create password"
+        class="form-control"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <label for="photo">Photo</label>
+      <input
+        type="file"
+        class="form-control-file"
+        name="photo"
+        id="photo"
+        (change)="onFileSelect($event)"
+      />
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Register" class="btn btn-primary" />
+      <div class="row">
+        <div class="col-md-3">
+          <a
+            class="btn btn-outline-secondary"
+            href="/users/googleauth"
+            role="button"
+            style="text-transform: none"
+          >
+            <img
+              width="20px"
+              style="margin-bottom: 3px; margin-right: 5px"
+              alt="Google sign-in"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+            />
+          </a>
         </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" placeholder="create password" class="form-control" ngModel>
-        </div>
-
-        <div class="form-group ">
-            <input type="submit" value="Register" class="btn btn-primary">
-            <div class="row">
-                <div class="col-md-3">
-                  <a class="btn btn-outline-secondary" href="/users/googleauth" role="button" style="text-transform:none">
-                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-                  </a>
-                </div>
-              </div>
-        </div>
-        
-        
-    </form>
+      </div>
+    </div>
+  </form>
 </div>
-
