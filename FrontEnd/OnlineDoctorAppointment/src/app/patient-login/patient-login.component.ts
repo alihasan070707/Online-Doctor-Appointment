@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'patient-login',
@@ -8,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class PatientLoginComponent implements OnInit {
   email : string;
   password: string;
+
   constructor() { }
 
   ngOnInit(): void {

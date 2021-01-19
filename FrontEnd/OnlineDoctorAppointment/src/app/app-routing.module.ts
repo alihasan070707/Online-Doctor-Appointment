@@ -4,13 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { PatientRegisterComponent } from './patient-register/patient-register.component';
 
-const routes: Routes = [
-  {
-    path: 'main',
-    component: MainComponent,
-    children: [{ path: 'register', component: PatientRegisterComponent }],
-  },
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
