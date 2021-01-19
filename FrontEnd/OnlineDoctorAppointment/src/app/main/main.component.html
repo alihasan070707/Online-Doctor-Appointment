@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section class="bg is-primary">
   <div class="body">
     <div class="container">
@@ -10,13 +11,16 @@
           <a
             class="btn btn-link btn-primary"
             type="button"
-            routerLink="register"
+            (click)="redirectToLogin()"
             >Patient</a
           >
         </li>
         <div class="divider"></div>
         <li>
-          <a class="btn btn-link btn-primary" type="button" routerLink="#"
+          <a
+            class="btn btn-link btn-primary"
+            type="button"
+            (click)="redirectToDoctor()"
             >Doctor</a
           >
         </li>

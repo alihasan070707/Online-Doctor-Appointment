@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'patient-login',
-  templateUrl: './patient-login.component.html',
-  styleUrls: ['./patient-login.component.css'],
+  selector: 'app-doctor-login',
+  templateUrl: './doctor-login.component.html',
+  styleUrls: ['./doctor-login.component.css'],
 })
-export class PatientLoginComponent implements OnInit {
+export class DoctorLoginComponent implements OnInit {
   email: string;
   password: string;
   constructor(private router: Router) {}
@@ -18,7 +17,7 @@ export class PatientLoginComponent implements OnInit {
     console.log(this.password);
   }
 
-  redirectToRegister() {
-    this.router.navigate(['patientRegister']);
+  redirectToRegisterDoc() {
+    this.router.navigate(['doctorRegister']);
   }
 }
