@@ -5,7 +5,7 @@ import { BookAppointmentComponent } from './book-appointment.component';
 describe('BookAppointmentComponent', () => {
   let component: BookAppointmentComponent;
   let fixture: ComponentFixture<BookAppointmentComponent>;
-
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ BookAppointmentComponent ]

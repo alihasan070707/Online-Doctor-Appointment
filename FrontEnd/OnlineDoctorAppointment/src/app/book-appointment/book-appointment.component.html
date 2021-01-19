@@ -1,1 +1,17 @@
-<p>book-appointment works!</p>
+
+<input class="date-style" type="date" (change)="datePicked($event)" name = "date" />
+
+<div class="Time-frame-div ">
+<div class="time-frames" *ngFor="let timeframe of timeFrames">
+
+
+            <button *ngIf = "timeframe.isBooked;" class="time-frame-btn" value="{{ timeframe.startTime }}" (click)="OnTimeSelect($event)" name="time">
+                {{ timeframe.startTime }} - {{ timeframe.endTime }}
+            </button> 
+            <button *ngIf = "!timeframe.isBooked;" class="time-frame-btn-dis" disabled>
+                {{ timeframe.startTime }} - {{ timeframe.endTime }}
+            </button> 
+</div>
+</div>
+
+<button *ngIf="canBook;" class="btn btn-primary date-style book-btn-style">Book Appointment</button>

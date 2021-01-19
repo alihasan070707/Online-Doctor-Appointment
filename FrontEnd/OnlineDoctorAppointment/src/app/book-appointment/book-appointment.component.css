@@ -1,0 +1,40 @@
+
+.Time-frame-div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: auto;
+}
+.date-style{
+    margin-top: 10vh;
+    margin-left: 40vw;
+    margin-bottom: 60px;
+}
+.time-frames{
+    
+    display: inline;
+    width: 25%;
+}
+.time-frame-btn{
+    padding: 10px;
+    background-color: white;
+    border : 1px solid black;
+    border-radius: 3px;
+}
+.time-frame-btn-dis{
+    color:white;
+    padding: 10px;
+    background-color:grey;
+    border : 1px solid black;
+    border-radius: 3px;
+}
+
+.time-frame-btn:focus{
+    background-color:#ff9933;
+    color: white;
+}
+.book-btn-style{
+    background-color: peachpuff !important;
+    color: black;
+    border: 1px solid white;
+}
