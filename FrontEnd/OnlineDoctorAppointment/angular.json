@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "OnlineDoctorAppointment"
+    }
+  },
+  "defaultProject": "OnlineDoctorAppointment",
+  "cli": {
+    "analytics": false
+  }
 }

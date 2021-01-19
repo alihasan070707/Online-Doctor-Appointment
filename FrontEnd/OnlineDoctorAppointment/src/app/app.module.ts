@@ -8,6 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DoctorRegisterationComponent } from './doctor-registeration/doctor-registeration.component';
 
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MainComponent } from './main/main.component';
+
+import { PatientRegisterComponent } from './patient-register/patient-register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,9 +23,17 @@ import { DoctorRegisterationComponent } from './doctor-registeration/doctor-regi
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
+
+
+    PatientRegisterComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
