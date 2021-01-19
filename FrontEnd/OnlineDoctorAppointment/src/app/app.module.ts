@@ -15,6 +15,8 @@ import { PatientRegisterComponent } from './patient-register/patient-register.co
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 import { SearchDoctorsComponent } from './search-doctors/search-doctors.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { BookAppointmentComponent } from './book-appointment/book-appointment.co
     SearchDoctorsComponent,
     BookAppointmentComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
   providers: [],
   bootstrap: [AppComponent],
 })
