@@ -59,6 +59,17 @@ public class Person {
 		this.gender = gender;
 	}
 
+	public Person(char[] password, String name, Date dob, String email, String phoneNo, String gender, byte[] photo) {
+		super();
+		this.password = password;
+		this.name = name;
+		this.dob = dob;
+		this.email = email;
+		this.phoneNo = phoneNo;
+		this.gender = gender;
+		this.photo = photo;
+	}
+
 	public Person(Integer id) {
 		super();
 		Id = id;

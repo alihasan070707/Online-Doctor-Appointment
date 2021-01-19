@@ -52,10 +52,11 @@ public class PatientController {
 	
 	@PostMapping("/register")
 	public String registerPatient(@RequestParam("data") String patientJson, @RequestParam("photo") MultipartFile photo) {
+		System.out.println(patientJson);
 		Patient patient=null;
 		try {
 			patient = new ObjectMapper().readValue(patientJson, Patient.class);
-			
+			System.out.println(patient);
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,7 +68,7 @@ public class PatientController {
 			service.addProfileImage(photo, patient.getId());
 			return "/somePage"; //need to be created
 		}
-		return "/register";
+		return patientJson;
 	}
 	
 	@GetMapping("/prescriptions")

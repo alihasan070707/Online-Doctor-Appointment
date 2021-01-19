@@ -1,12 +1,8 @@
 package com.app.controller;
 
-import java.time.LocalTime;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.DoctorTimeSlots;
 import com.app.pojos.Doctor;
-import com.app.pojos.TimeFrame;
 import com.app.service.IDoctorService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {
@@ -44,11 +43,21 @@ public class DoctorController {
 	}
 
 	@PostMapping("/register")
-	public String processSignUp(@RequestBody Doctor doctor) {
-		System.out.println(doctor);
+	public String processSignUp(@RequestParam("data") String doctorJson, @RequestParam("file") MultipartFile photo) {
+		Doctor doctor = null;
 
-		service.registerDoc(doctor);
-		return "Success";
+		try {
+			doctor = new ObjectMapper().readValue(doctorJson, Doctor.class);
+
+		} catch (JsonMappingException e) { // TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(doctor);
+		// service.registerDoc(doctor.getDoctor());
+		return "\"Success\"";
 	}
 
 	@GetMapping("/login")
@@ -77,9 +86,9 @@ public class DoctorController {
 	public String setTimeFrames(@RequestBody DoctorTimeSlots doctor) {
 		System.out.println(doctor.getDoctor_id());
 		System.out.println(doctor.getTimes());
-		
-		  service.setTimeFrames(doctor.getTimes(), doctor.getDoctor_id());
-		 
+
+		service.setTimeFrames(doctor.getTimes(), doctor.getDoctor_id());
+
 		return "/someting";
 
 	}

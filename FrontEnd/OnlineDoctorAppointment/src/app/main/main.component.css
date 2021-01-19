@@ -1,0 +1,81 @@
+.bg {
+  background-image: url("/assets/images/abc.jpg") !important;
+  background-size: cover;
+  background-position: center center;
+  height: 92.3vh;
+}
+
+.title {
+  display: inline-block;
+  margin-top: 160px;
+  font-family: Verdana, Geneva, sans-serif;
+
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  font-size: 58px;
+}
+.title2 {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 52px;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: 50;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+}
+.subtitle {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 20px;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #21292f !important;
+  font-size: 30px;
+  line-height: 30px;
+  width: 180px;
+  padding: 13px;
+  border-radius: 17px;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  border: 2px solid white;
+  display: inline-block;
+}
+.myButton:hover {
+  background: #21292f;
+}
+.myButton:active {
+  background: #21292f;
+}
+
+ul a {
+  list-style-type: none;
+  margin-top: 20px;
+  margin-left: -40px;
+}
+li {
+  display: inline;
+}
+
+.btn-primary:hover {
+  color: lightseagreen;
+  text-decoration: none;
+}
+
+.divider {
+  width: 70px;
+  height: auto;
+  display: inline-block;
+}

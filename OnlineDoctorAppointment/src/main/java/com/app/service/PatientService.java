@@ -73,7 +73,7 @@ public class PatientService implements IPatientService {
 
 	@Override
 	public boolean addProfileImage(MultipartFile profile, Integer patient_id) {
-		File dir = new File("D:/profilepic/" + patient_id);
+		File dir = new File("F:/profilepic/" + patient_id);
 		if (!dir.exists()) {
 			dir.mkdir();
 		}
@@ -81,7 +81,7 @@ public class PatientService implements IPatientService {
 		try {
 
 			FileOutputStream file = new FileOutputStream(
-					new File("D:/profilepic/" + patient_id + "/" + profile.getOriginalFilename()));
+					new File("F:/profilepic/" + patient_id + "/" + profile.getOriginalFilename()));
 			byte[] profilepic = profile.getBytes();
 			file.write(profilepic);
 			file.close();
