@@ -114,7 +114,10 @@ public class PatientController {
 	}
 	
 	
-	
+	@GetMapping("/getDetails")
+	public Patient getPatient(@RequestParam Integer id) {
+		return service.getPatient(id);
+	}
 	
 	
 	

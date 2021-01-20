@@ -1,0 +1,11 @@
+.name {
+
+}
+
+.avatar {
+    margin-top: 16px;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 2px solid tomato;
+}
