@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'patientLogin', component: PatientLoginComponent },
   { path: 'patientRegister', component: PatientRegisterComponent },
   { path: 'doctorRegister', component: DoctorRegisterationComponent },
+  { path: 'doctorLogin', component: DoctorLoginComponent },
   { path: 'doctorLogin', component: DoctorRegisterationComponent },
   { path: 'bookAppointment', component: BookAppointmentComponent }
 ];
