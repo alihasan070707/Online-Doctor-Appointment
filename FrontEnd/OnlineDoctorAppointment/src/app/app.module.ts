@@ -17,6 +17,9 @@ import { BookAppointmentComponent } from './book-appointment/book-appointment.co
 import { NgSelectModule } from '@ng-select/ng-select';
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
 
 
 @NgModule({
@@ -33,6 +36,9 @@ import { DoctorProfileComponent } from './doctor-profile/doctor-profile.componen
     BookAppointmentComponent,
     PatientProfileComponent,
     DoctorProfileComponent,
+    AppointmentsComponent,
+    MyProfileComponent,
+    PrescriptionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
   providers: [],

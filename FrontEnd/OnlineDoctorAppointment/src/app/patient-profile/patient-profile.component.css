@@ -1,0 +1,19 @@
+.side-bar{
+    height: 92.3vh;
+    background-color: #21292f;
+    border: white solid 1px;
+}
+
+ul li{
+    list-style-type: none;
+    padding-top: 30px;  
+    color:white; 
+    text-align: left;
+}
+ul {
+    margin-top: 45px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
