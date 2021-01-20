@@ -15,35 +15,49 @@
 <body>
     <h1 class="text-center">Search Doctor</h1>
     <div class="container">
-        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" method="POST">
-            <div class="form-group">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" method="POST">
+    <div class="form-row">
+        <div class="col-md-4 form-group">
+        
+            
                 <label for="state">State</label>
-                <ng-select name="state" [items]="states" appendTo="body" [clearable]=true [searchable]=true
-                    [(ngModel)]="state" (focusout)="selectedState()"></ng-select>
-            </div>
-            <div class="form-group">
+                <ng-select name="state" class="something" [items]="states"  [clearable]=true [searchable]=true
+                    [(ngModel)]="state" (focusout)="selectedState()">
+                </ng-select>
+            
+        </div>
+    <div class="col-md-4 form-group">
+            
                 <label for="city">City</label>
-                <ng-select name="city" class="something" [items]="cities" appendTo="body" [clearable]=true
+                <ng-select name="city" class="something" [items]="cities" [clearable]=true
                     [searchable]=true [(ngModel)]="city" (focusout)="selectedCity()"></ng-select>
-            </div>
-            <div class="form-group">
+            
+    </div>
+
+            <div class="form-group col-md-4">
                 <label for="specialization">Specialization</label>
-                <ng-select name="specialization" [items]="specs" appendTo="body" [clearable]=true [searchable]=true
+                <ng-select name="specialization" [items]="specs"  [clearable]=true [searchable]=true
                     [(ngModel)]="spec">
                 </ng-select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
 
-    <div *ngFor="let doctor of doctors">
-        <div class="flexbox">
-            <span>{{doctor.name}}</span>
-            <span>{{doctor.fee}}</span>
-            <span>{{doctor.specialization}}</span>
+            
+        
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+<div class="container doctors-view">
+
+    
+        <div *ngFor="let doctor of doctors" class="doc-card">
+            <img src="/assets/images/pic.jpeg" class="doc-img">
+            <h6 class="doc-name doc-text">{{doctor.name}}</h6>
+            <p class="doc-spec doc-text">{{doctor.specialization}}</p>
+            <p class="doc-fees doc-text">{{doctor.fee}}</p>
         </div>
-    </div>
-
+    
+</div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
