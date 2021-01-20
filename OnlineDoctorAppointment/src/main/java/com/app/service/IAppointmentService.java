@@ -11,6 +11,8 @@ public interface IAppointmentService{
 	
 	List<Appointment> findAllByPatientId(Integer patient_id);
 	
+	List<Appointment> findAllByDoctorId(Integer doctor_id);
+	
 	void deleteById(Integer appointmentId);
 	
 	boolean addAppointment(Integer drId, Integer patientId, Integer timeFrame, Integer status);

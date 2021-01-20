@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dao.DoctorRepsitory;
 import com.app.dao.TimeFrameRepo;
+import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
 import com.app.pojos.Patient;
 import com.app.pojos.TimeFrame;
@@ -82,10 +83,9 @@ public class PatientController {
 	}
 	
 	@GetMapping("/prescriptions")
-	public List<String> getPrescriptions(@RequestParam Integer patientId, Model map) {
+	public List<String> getPrescriptions(@RequestParam Integer patientId) {
 		System.out.println("in pres");
 		List<String> list = service.getPrescription(patientId);
-		map.addAttribute("prescriptionList", list);
 		if(list == null) {
 			return list;
 		}
@@ -119,8 +119,10 @@ public class PatientController {
 		return service.getPatient(id);
 	}
 	
-	
-	
+	@GetMapping("/appointments")
+	public List<Appointment> getAllAppointment(@RequestParam Integer patientId) {
+		return appService.findAllByPatientId(patientId);
+	}
 	
 	
 }
