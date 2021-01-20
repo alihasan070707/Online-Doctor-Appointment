@@ -48,7 +48,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		Optional<Doctor> doctor=doctordao.findById(drId);
 		Optional<Patient> patient =patientdao.findById(patientId);
 		Optional<TimeFrame> time =timedao.findById(id);
-		
+		time.get().setBooked(true);
 		Appointment appointment= new Appointment(doctor.get(), patient.get(), time.get(), status);
 		System.out.println(appointment);
 		

@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -92,5 +94,23 @@ public class DoctorController {
 		return "/someting";
 
 	}
-
+	@GetMapping("/searchCity")
+	public List<String> findCityByState(@RequestParam String state){
+		System.out.println(state);
+		System.out.println(service.findCityByState(state));
+		return service.findCityByState(state);
+	}
+	
+	@GetMapping("/searchState")
+	public List<String> findAllState(){
+		return service.findAllState();
+	}
+	
+	@GetMapping("/searchSpec")
+	public List<String> findBySpecialization(@RequestParam String state,@RequestParam String city){
+		System.out.println(state);
+		System.out.println(city);
+		System.out.println(service.findBySpecialization(state, city));
+		return service.findBySpecialization(state, city);
+	}
 }

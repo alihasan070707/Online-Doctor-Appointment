@@ -1,23 +1,25 @@
 package com.app.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.dao.DoctorRepsitory;
 import com.app.dao.TimeFrameRepo;
-import com.app.pojos.Appointment;
+import com.app.pojos.Doctor;
 import com.app.pojos.Patient;
-import com.app.pojos.Prescription;
 import com.app.pojos.TimeFrame;
 import com.app.service.IAppointmentService;
 import com.app.service.IPatientService;
@@ -27,6 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/patient")
+@CrossOrigin
 public class PatientController {
 	
 	@Autowired
@@ -35,6 +38,8 @@ public class PatientController {
 	private IAppointmentService appService;
 	@Autowired
 	private TimeFrameRepo timeFrameDao;
+	@Autowired
+	private DoctorRepsitory docRepo;
 	
 	@GetMapping("/login")
 	public String showPatientLoginPage() {
@@ -97,10 +102,18 @@ public class PatientController {
 		return "/somePage";
 	}
 	
-	@GetMapping("/appointment")
-	public List<TimeFrame> getTimeFrames (@RequestParam Integer drId,@RequestParam LocalDate date) {
-		return timeFrameDao.findAllByDrIdAndDate(drId, date);
+	@PostMapping("/time")
+	public List<TimeFrame> getTimeFrames (@RequestParam("drId") Integer drId, @RequestParam("date") @DateTimeFormat(pattern ="yyyy-MM-dd") LocalDate date)
+	{	
+		
+		Doctor doctor=docRepo.findById(drId).get();
+		
+		return timeFrameDao.findAllByDrIdAndDate(doctor,date);
+		 
+		
 	}
+	
+	
 	
 	
 	
