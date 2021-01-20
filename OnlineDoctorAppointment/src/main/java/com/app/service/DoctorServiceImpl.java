@@ -95,5 +95,23 @@ public class DoctorServiceImpl implements IDoctorService {
 		doctorDao.save(doctor);
 	}
 
+	@Override
+	public List<String> findCityByState(String state) {
+		
+		return doctorDao.findCityByState(state);
+	}
+
+	@Override
+	public List<String> findAllState() {
+		
+		return doctorDao.findAllState();
+	}
+
+	@Override
+	public List<String> findBySpecialization(String state, String city) {
+		
+		return doctorDao.findBySpecialization(state, city);
+	}
+
 	
 }

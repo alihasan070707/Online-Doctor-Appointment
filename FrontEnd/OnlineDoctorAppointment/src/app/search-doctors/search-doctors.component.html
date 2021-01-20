@@ -18,15 +18,19 @@
         <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" method="POST">
             <div class="form-group">
                 <label for="state">State</label>
-                <ng-select name="state" [items]="items" appendTo="body" [clearable]=true [searchable]=true [(ngModel)]="state" (focusout)="selectedState()"></ng-select>
+                <ng-select name="state" [items]="states" appendTo="body" [clearable]=true [searchable]=true
+                    [(ngModel)]="state" (focusout)="selectedState()"></ng-select>
             </div>
             <div class="form-group">
                 <label for="city">City</label>
-                <ng-select name="city" class="something" [items]="items" appendTo="body" [clearable]=true [searchable]=true [(ngModel)]="selected" (focusout)="selectedCity()"></ng-select>
+                <ng-select name="city" class="something" [items]="cities" appendTo="body" [clearable]=true
+                    [searchable]=true [(ngModel)]="city" (focusout)="selectedCity()"></ng-select>
             </div>
             <div class="form-group">
                 <label for="specialization">Specialization</label>
-                <ng-select name="specialization" [items]="items" appendTo="body" [clearable]=true [searchable]=true></ng-select>
+                <ng-select name="specialization" [items]="specs" appendTo="body" [clearable]=true [searchable]=true
+                    [(ngModel)]="spec">
+                </ng-select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

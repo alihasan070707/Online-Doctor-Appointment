@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class TimeFrame {
 	
@@ -23,6 +25,7 @@ public class TimeFrame {
 	
 	@JoinColumn(name="doctor_id")
 	@ManyToOne
+	@JsonIgnore
 	private Doctor drId;
 	
 	@DateTimeFormat(pattern="hh:mm:ss")
@@ -35,6 +38,7 @@ public class TimeFrame {
 	private boolean isBooked;
 	
 	@Column(name="date")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate date;
 	
 	public TimeFrame() {
