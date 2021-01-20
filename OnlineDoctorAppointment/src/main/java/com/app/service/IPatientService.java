@@ -22,4 +22,6 @@ public interface IPatientService {
 	 * public String addAppointment(Integer patient_id,Appointment appointment);
 	 */
 	public boolean addProfileImage(MultipartFile profile,Integer patient_id);
+	
+	public Patient getPatient(Integer id);
 }

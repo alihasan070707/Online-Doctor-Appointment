@@ -96,6 +96,12 @@ public class PatientService implements IPatientService {
 
 	}
 
+	@Override
+	public Patient getPatient(Integer id) {
+		
+		return dao.findById(id).get();
+	}
+
 	/*
 	 * @Override public void removeAppointment(Integer appointment_id) {
 	 * 
