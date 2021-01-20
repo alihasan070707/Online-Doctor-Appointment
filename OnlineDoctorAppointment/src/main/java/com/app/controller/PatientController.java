@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.dao.TimeFrameRepo;
 import com.app.pojos.Appointment;
 import com.app.pojos.Patient;
 import com.app.pojos.Prescription;
+import com.app.pojos.TimeFrame;
 import com.app.service.IAppointmentService;
 import com.app.service.IPatientService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -30,6 +33,8 @@ public class PatientController {
 	private IPatientService service;
 	@Autowired
 	private IAppointmentService appService;
+	@Autowired
+	private TimeFrameRepo timeFrameDao;
 	
 	@GetMapping("/login")
 	public String showPatientLoginPage() {
@@ -91,4 +96,15 @@ public class PatientController {
 		boolean getApp = appService.addAppointment( drId,patientId,timeFrame,status);
 		return "/somePage";
 	}
+	
+	@GetMapping("/appointment")
+	public List<TimeFrame> getTimeFrames (@RequestParam Integer drId,@RequestParam LocalDate date) {
+		return timeFrameDao.findAllByDrIdAndDate(drId, date);
+	}
+	
+	
+	
+	
+	
+	
 }
