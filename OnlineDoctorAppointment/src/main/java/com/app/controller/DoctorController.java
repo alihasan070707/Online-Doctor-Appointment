@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.DoctorTimeSlots;
+import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
+import com.app.service.IAppointmentService;
 import com.app.service.IDoctorService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -26,6 +28,8 @@ public class DoctorController {
 
 	@Autowired
 	private IDoctorService service;
+	@Autowired
+	private IAppointmentService appService;
 
 	public DoctorController() {
 		System.out.println("in doc ctor");
@@ -112,5 +116,10 @@ public class DoctorController {
 		System.out.println(city);
 		System.out.println(service.findBySpecialization(state, city));
 		return service.findBySpecialization(state, city);
+	}
+	
+	@GetMapping("/appointments")
+	public List<Appointment> getAllAppointment(@RequestParam Integer doctorId) {
+		return appService.findAllByPatientId(doctorId);
 	}
 }
