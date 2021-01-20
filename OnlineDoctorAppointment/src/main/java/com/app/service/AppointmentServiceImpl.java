@@ -62,4 +62,10 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		return false;
 	}
 
+	@Override
+	public List<Appointment> findAllByDoctorId(Integer doctor_id) {
+		
+		return appointmentdao.findAllByDrId(doctor_id);
+	}
+
 }
