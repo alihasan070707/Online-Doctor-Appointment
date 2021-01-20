@@ -15,6 +15,11 @@ import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 import { SearchDoctorsComponent } from './search-doctors/search-doctors.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { PatientProfileComponent } from './patient-profile/patient-profile.component';
+import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
     DoctorLoginComponent,
     SearchDoctorsComponent,
     BookAppointmentComponent,
+    PatientProfileComponent,
+    DoctorProfileComponent,
+    AppointmentsComponent,
+    MyProfileComponent,
+    PrescriptionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
   providers: [],

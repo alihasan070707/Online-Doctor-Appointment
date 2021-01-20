@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="side-bar-whole">
+    <div class="row">
+        <div class="col-3 side-bar">
+            <!-- <h3>Smaller div</h3> -->
+            <ul>
+                <li><a routerLink="my-profile">My profile</a></li>
+                <li><a routerLink="previous-priscription">My priscription</a></li>
+                <li><a routerLink="appointments">My appointments</a></li>
+                <li><a routerLink="logout">Logout</a></li>
+            
+            </ul>
+        </div>
+        <div class="col-9">
+            <!-- <h3>Bigger div</h3> -->
+            <router-outlet>
+
+            </router-outlet>
+        </div>
+    </div>
+</div>
