@@ -16,7 +16,6 @@ import { SearchDoctorsComponent } from './search-doctors/search-doctors.componen
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
-
 @NgModule({
   declarations: [
     AppComponent,

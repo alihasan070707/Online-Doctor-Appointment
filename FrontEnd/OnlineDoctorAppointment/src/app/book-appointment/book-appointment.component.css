@@ -30,7 +30,7 @@
 }
 
 .time-frame-btn:focus{
-    background-color:#ff9933;
+    background-color:lightgreen;
     color: white;
 }
 .book-btn-style{
