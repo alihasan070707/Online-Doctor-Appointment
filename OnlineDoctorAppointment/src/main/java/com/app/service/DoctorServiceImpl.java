@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dao.AppointmentRepository;
 import com.app.dao.DoctorRepsitory;
+import com.app.dto.DoctorCard;
 import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
 import com.app.pojos.TimeFrame;
@@ -111,6 +112,25 @@ public class DoctorServiceImpl implements IDoctorService {
 	public List<String> findBySpecialization(String state, String city) {
 		
 		return doctorDao.findBySpecialization(state, city);
+	}
+
+	@Override
+	public List<DoctorCard> searchDoctorByStateAndCity(String state, String city) {
+		
+		List<Doctor> doc= doctorDao.searchDoctorByStateAndCity(state, city);
+		List<DoctorCard> docCard=new ArrayList<DoctorCard>();
+		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees()));});
+		return docCard;
+	}
+
+	@Override
+	public List<DoctorCard> searchDoctorByAll(String state, String city, String spec) {
+		
+		List<Doctor> doc= doctorDao.searchDoctorByAll(state, city ,spec);
+		List<DoctorCard> docCard=new ArrayList<DoctorCard>();
+		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees()));});
+		return docCard;
+		
 	}
 
 	

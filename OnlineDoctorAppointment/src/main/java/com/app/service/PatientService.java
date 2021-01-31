@@ -14,8 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dao.PatientRepository;
 import com.app.pojos.Patient;
-import com.app.pojos.Prescription;
-
+	
 @Service
 public class PatientService implements IPatientService {
 

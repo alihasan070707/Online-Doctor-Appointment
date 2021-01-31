@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-appointment',
@@ -10,19 +11,26 @@ export class BookAppointmentComponent implements OnInit {
   timeFrames: any = [];
   selectedTime: string;
   canBook: boolean = false;
-  doctor = '1';
+  doctor;
   patient = '1';
   timeFrame: number;
   status = '5';
-  constructor(private http: HttpClient) {}
+  // var elem = JSON.parse(this.routeParams.get("elem"));
 
-  ngOnInit(): void {}
+  constructor(private http: HttpClient, private routeParams: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.doctor = JSON.parse(
+      this.routeParams.snapshot.paramMap.get('doctorId')
+    );
+    console.log(this.doctor);
+  }
   datePicked(event) {
     console.log(event.target.value);
     this.timeFrames = [];
     console.log(this.timeFrames);
     const formData = new FormData();
-    formData.append('drId', '1');
+    formData.append('drId', this.doctor);
     formData.append('date', event.target.value);
     this.http
       .post('http://localhost:8080/patient/time', formData)

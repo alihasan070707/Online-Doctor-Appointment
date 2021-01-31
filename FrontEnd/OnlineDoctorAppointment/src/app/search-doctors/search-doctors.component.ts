@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
+import { Router, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-search-doctors',
@@ -15,18 +17,7 @@ export class SearchDoctorsComponent implements OnInit {
   states: any = [];
   spec;
   specs: any = [];
-  doctors = [
-    {
-      name: 'ali',
-      fee: '2rs',
-      specialization: 'gyno',
-    },
-    {
-      name: 'yash',
-      fee: '-100',
-      specialization: 'power yoga',
-    },
-  ];
+  doctors: any = [];
   items = [
     'ActionScript',
     'Maharashtra',
@@ -53,7 +44,7 @@ export class SearchDoctorsComponent implements OnInit {
     'Scala',
     'Scheme',
   ];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   ngOnInit(): void {
     this.http
@@ -88,8 +79,20 @@ export class SearchDoctorsComponent implements OnInit {
 
     const formData = new FormData();
     formData.append('data', JSON.stringify(myForm.value));
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
     this.http
-      .post('http://localhost:8080/doctor/search', formData)
-      .subscribe((data) => console.log(data));
+      .post('http://localhost:8080/doctor/searchDoctor', formData, {
+        headers: headers,
+      })
+      .subscribe((data) => {
+        this.doctors = data;
+        console.log(data);
+      });
+  }
+
+  book(doctor_id) {
+    console.log(doctor_id.id);
+    this.route.navigate(['bookAppointment', { doctorId: doctor_id.id }]);
   }
 }

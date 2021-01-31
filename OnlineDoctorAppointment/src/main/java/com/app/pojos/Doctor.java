@@ -28,6 +28,7 @@ public class Doctor extends Person {
 	private String qualification;
 	@OneToOne(mappedBy = "doctorId" , cascade = CascadeType.ALL)
 	private Address address;
+	private Integer fees;
 	
 	@OneToMany(mappedBy="drId", cascade = CascadeType.ALL)
 	private List<TimeFrame> timeSlots = new ArrayList<TimeFrame>();
@@ -73,6 +74,13 @@ public class Doctor extends Person {
 		this.specialization = specialization;
 		this.qualification = qualification;
 		this.isVerified = isVerified;
+	}
+	
+
+	public Doctor(Integer id, String name, String specialization, Integer fees) {
+		super(id, name);
+		this.specialization = specialization;
+		this.fees = fees;
 	}
 
 	public Doctor(Integer id) {
@@ -129,10 +137,15 @@ public class Doctor extends Person {
 	}
 
 	
-	
-	
-	
-	  public List<TimeFrame> getTimeSlots() { return timeSlots; }
+	 public Integer getFees() {
+		return fees;
+	}
+
+	public void setFees(Integer fees) {
+		this.fees = fees;
+	}
+
+	public List<TimeFrame> getTimeSlots() { return timeSlots; }
 	  
 	  public void setTimeSlots(List<TimeFrame> timeSlots) { this.timeSlots =
 	  timeSlots; }

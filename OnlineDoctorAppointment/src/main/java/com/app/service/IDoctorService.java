@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.dto.DoctorCard;
 import com.app.pojos.Doctor;
 
 public interface IDoctorService {
@@ -17,5 +18,9 @@ public interface IDoctorService {
 	public List<String> findCityByState(String state);
 	List<String> findAllState();
 	List<String> findBySpecialization(String state,String city);
+	List<DoctorCard> searchDoctorByStateAndCity(@Param("state") String state, @Param("city") String city);
+	List<DoctorCard> searchDoctorByAll(@Param("state") String state, @Param("city") String city, @Param("spec") String spec);	
+	
+	
 	//public void 
 }

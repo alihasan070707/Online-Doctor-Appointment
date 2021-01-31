@@ -74,6 +74,12 @@ public class Person {
 		super();
 		Id = id;
 	}
+	
+	public Person(Integer id, String name) {
+		super();
+		Id = id;
+		this.name = name;
+	}
 
 	public Integer getId() {
 		return Id;

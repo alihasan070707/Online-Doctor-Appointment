@@ -12,7 +12,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {}
 
   redirectToLogin() {
-    this.router.navigate(['patientLogin']);
+    this.router.navigate(['searchdoctor']);
   }
   redirectToDoctor() {
     this.router.navigate(['doctorLogin']);
