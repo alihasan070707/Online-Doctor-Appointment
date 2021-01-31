@@ -1,8 +1,10 @@
 package com.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.dto.DoctorCard;
+import com.app.dto.DoctorSearchParam;
 import com.app.dto.DoctorTimeSlots;
 import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
@@ -122,4 +126,26 @@ public class DoctorController {
 	public List<Appointment> getAllAppointment(@RequestParam Integer doctorId) {
 		return appService.findAllByPatientId(doctorId);
 	}
+	
+	@PostMapping("/searchDoctor")
+	public List<DoctorCard> searchDoctorByAll(@RequestParam("data") String search){
+		System.out.println(search);
+		DoctorSearchParam doctorcards = null;
+		try {
+			doctorcards = new ObjectMapper().readValue(search, DoctorSearchParam.class);
+
+		} catch (JsonMappingException e) { // TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		List<DoctorCard> doctorcard=new ArrayList<DoctorCard>();
+		if(doctorcards.getSpecialization()==null) {
+			doctorcard=service.searchDoctorByStateAndCity(doctorcards.getState(), doctorcards.getCity());
+			return doctorcard;
+		}
+		doctorcard=service.searchDoctorByAll(doctorcards.getState(), doctorcards.getCity(), doctorcards.getSpecialization());
+		return doctorcard;
+	}
+	
 }
