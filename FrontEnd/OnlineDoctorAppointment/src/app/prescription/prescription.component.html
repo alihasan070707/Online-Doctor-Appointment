@@ -1,1 +1,7 @@
-<p>prescription works!</p>
+<div *ngFor="let prescription of prescriptions">
+
+    <div (click)="downloadPrescription(prescription)" >
+        {{ prescription }}
+    </div>
+    
+</div>
