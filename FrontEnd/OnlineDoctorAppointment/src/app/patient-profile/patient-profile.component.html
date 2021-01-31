@@ -1,14 +1,30 @@
+
+<link href="/assets/fonts/fontawesome-5.0/css/fontawesome.css" rel="stylesheet">
+  <link href="/assets/fonts/fontawesome-5.0/css/brands.css" rel="stylesheet">
+  <link href="/assets/fonts/fontawesome-5.0/css/solid.css" rel="stylesheet">
 <app-header></app-header>
 <div class="side-bar-whole">
     <div class="row">
         <div class="col-3 side-bar">
             <!-- <h3>Smaller div</h3> -->
             <ul>
-                <li><a routerLink="my-profile">My profile</a></li>
-                <li><a routerLink="previous-priscription">My priscription</a></li>
-                <li><a routerLink="appointments">My appointments</a></li>
-                <li><a routerLink="logout">Logout</a></li>
-            
+            <div class="list-item">
+               <i class="fas fa-user-circle icon-style"></i> <li ><a routerLink="my-profile">My profile</a></li>
+            </div>
+            <div class="line"></div>
+            <div class="list-item">
+               <i class="fas fa-file-medical icon-style"></i><li><a routerLink="previous-priscription">My prescription</a></li>
+            </div>
+               <div class="line"></div>
+               <div class="list-item">
+               <i class="fas fa-calendar-check icon-style"></i> <li><a routerLink="appointments">My appointments</a></li>
+               </div>
+               <div class="line"></div>
+               <div class="list-item">
+                <i class="fas fa-sign-out-alt icon-style"></i><li><a routerLink="logout">Logout</a></li>
+               </div>
+                <div class="line"></div>
+        
             </ul>
         </div>
         <div class="col-9">

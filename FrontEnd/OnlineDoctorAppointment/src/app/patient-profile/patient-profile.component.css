@@ -1,19 +1,43 @@
 .side-bar{
     height: 92.3vh;
     background-color: #21292f;
-    border: white solid 1px;
+    border-top:rgba(255,255,255,.5) solid 1px;
 }
 
 ul li{
-    list-style-type: none;
-    padding-top: 30px;  
+    display: inline;
+    list-style-type: none;  
     color:white; 
     text-align: left;
 }
 ul {
+    
     margin-top: 45px;
 }
 a{
     text-decoration: none;
     color: white;
+}
+.line{
+    
+    width: 100%;
+    height: .5px;
+    background-color:white;
+    opacity: .4;
+}
+.icon-style{
+    padding: 2px;
+    padding-right: 8px !important;
+    display: inline;
+    font-size: 23px;
+    color: white;
+}
+.list-item{
+    
+    padding: 15px 5px;
+}
+.list-item:hover{
+    
+    background-color:#3e5b70;
+    
 }
