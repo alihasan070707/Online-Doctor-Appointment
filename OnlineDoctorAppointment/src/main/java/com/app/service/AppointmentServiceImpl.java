@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,9 +64,15 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	}
 
 	@Override
-	public List<Appointment> findAllByDoctorId(Integer doctor_id) {
-		
-		return appointmentdao.findAllByDrId(doctor_id);
+	public List<Appointment> findAllByDoctorId(Doctor doctor_id) {
+		List<Appointment> appointments=appointmentdao.findAllByDrId(doctor_id);
+		/*
+		 * System.out.println(appointments); for(Appointment app : appointments) {
+		 * System.out.println(app.getId().getDate() + " " + app.getId()); }
+		 */
+		appointments.removeIf((Appointment obj)->obj.getId().getDate().isBefore(LocalDate.now()));
+		appointments.sort((Appointment obj,Appointment obj2)->obj.getId().getDate().compareTo(obj2.getId().getDate()));
+		return appointments;
 	}
 
 }

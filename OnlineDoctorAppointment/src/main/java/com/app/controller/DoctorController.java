@@ -123,7 +123,7 @@ public class DoctorController {
 	}
 	
 	@GetMapping("/appointments")
-	public List<Appointment> getAllAppointment(@RequestParam Integer doctorId) {
+	public List<Appointment> getAllAppointment(@RequestParam Doctor doctorId) {
 		return appService.findAllByDoctorId(doctorId);
 	}
 	
