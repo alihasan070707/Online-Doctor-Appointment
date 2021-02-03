@@ -21,6 +21,7 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { PrescriptionComponent } from './prescription/prescription.component';
 import { DocAppointmentComponent } from './doc-appointment/doc-appointment.component';
+import { SetScheduleComponent } from './set-schedule/set-schedule.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DocAppointmentComponent } from './doc-appointment/doc-appointment.compo
     MyProfileComponent,
     PrescriptionComponent,
     DocAppointmentComponent,
+    SetScheduleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
   providers: [],
