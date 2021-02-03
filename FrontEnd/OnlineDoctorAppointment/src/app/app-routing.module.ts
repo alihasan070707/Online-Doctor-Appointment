@@ -24,13 +24,14 @@ const routes: Routes = [
   { path: 'doctorLogin', component: DoctorRegisterationComponent },
   { path: 'bookAppointment', component: BookAppointmentComponent },
   { path: 'searchdoctor', component: SearchDoctorsComponent },
+  
   {
     path: 'patient-profile',
     component: PatientProfileComponent,
     children: [
       { path: 'appointments', component: AppointmentsComponent },
       { path: 'my-profile', component: MyProfileComponent },
-      { path: 'previous-priscription', component: PrescriptionComponent },
+      { path: 'previous-prescription', component: PrescriptionComponent },
       { path: '**', component: MyProfileComponent },
     ],
   },

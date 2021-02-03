@@ -124,7 +124,7 @@ public class DoctorController {
 	
 	@GetMapping("/appointments")
 	public List<Appointment> getAllAppointment(@RequestParam Integer doctorId) {
-		return appService.findAllByPatientId(doctorId);
+		return appService.findAllByDoctorId(doctorId);
 	}
 	
 	@PostMapping("/searchDoctor")
