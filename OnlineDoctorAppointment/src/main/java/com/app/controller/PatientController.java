@@ -2,6 +2,7 @@ package com.app.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -181,5 +183,26 @@ public class PatientController {
 	 */
 		return null;
 	}
+	@GetMapping("/download")
+	public ResponseEntity<Object> downloadFile(@RequestParam String files) throws IOException
+	{
+		String filename = "D:/prescription/1/" + files;
+		File file = new File(filename);
+		InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition",
+				String.format("attachment; filename=\"%s\"", file.getName()));
+		headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+		headers.add("Pragma", "no-cache");
+		headers.add("Expires", "0");
+
+		ResponseEntity<Object> responseEntity = ResponseEntity.ok().headers(headers)
+				.contentLength(file.length())
+				.contentType(MediaType.parseMediaType("application/txt")).body(resource);
+
+		return responseEntity;
+	}
+	
 
 }

@@ -1,1 +1,16 @@
-<p>doc-appointment works!</p>
+<div *ngFor="let appointment of appointments">
+
+    <div>
+
+        {{ appointment.patientId.name }}
+        {{ appointment.id.startTime }}
+        {{ appointment.id.endTime }}
+        {{ appointment.id.date }}
+
+    </div>
+    <div *ngIf="appointment">
+        <button type="button" class="btn btn-primary">View</button>
+        <button type="button" class="btn btn-secondary">Cancel</button>
+    </div>
+
+</div>

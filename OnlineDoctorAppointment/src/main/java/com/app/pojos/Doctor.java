@@ -29,6 +29,7 @@ public class Doctor extends Person {
 	@OneToOne(mappedBy = "doctorId" , cascade = CascadeType.ALL)
 	private Address address;
 	private Integer fees;
+	private boolean isNew=true;
 	
 	@OneToMany(mappedBy="drId", cascade = CascadeType.ALL)
 	private List<TimeFrame> timeSlots = new ArrayList<TimeFrame>();
@@ -143,6 +144,19 @@ public class Doctor extends Person {
 
 	public void setFees(Integer fees) {
 		this.fees = fees;
+	}
+	
+	
+	public boolean isNew() {
+		return isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+
+	public void setVerified(boolean isVerified) {
+		this.isVerified = isVerified;
 	}
 
 	public List<TimeFrame> getTimeSlots() { return timeSlots; }

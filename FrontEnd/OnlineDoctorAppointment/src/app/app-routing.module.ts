@@ -14,6 +14,8 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { PrescriptionComponent } from './prescription/prescription.component';
 import { SearchDoctorsComponent } from './search-doctors/search-doctors.component';
+import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
+import { DocAppointmentComponent } from './doc-appointment/doc-appointment.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -24,12 +26,22 @@ const routes: Routes = [
   { path: 'doctorLogin', component: DoctorRegisterationComponent },
   { path: 'bookAppointment', component: BookAppointmentComponent },
   { path: 'searchdoctor', component: SearchDoctorsComponent },
-  
+
   {
     path: 'patient-profile',
     component: PatientProfileComponent,
     children: [
       { path: 'appointments', component: AppointmentsComponent },
+      { path: 'my-profile', component: MyProfileComponent },
+      { path: 'previous-prescription', component: PrescriptionComponent },
+      { path: '**', component: MyProfileComponent },
+    ],
+  },
+  {
+    path: 'doctor-profile',
+    component: DoctorProfileComponent,
+    children: [
+      { path: 'doc-appointments', component: DocAppointmentComponent },
       { path: 'my-profile', component: MyProfileComponent },
       { path: 'previous-prescription', component: PrescriptionComponent },
       { path: '**', component: MyProfileComponent },
