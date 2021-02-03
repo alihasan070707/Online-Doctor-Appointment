@@ -1,17 +1,18 @@
 package com.app.dto;
 
+import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorTimeSlots {
 	Integer doctor_id;
-	List<LocalTime> times = new ArrayList<>();
+	List<Time> times = new ArrayList<>();
 	public DoctorTimeSlots() {}
 	public DoctorTimeSlots(Integer doctorId) {
 		this.doctor_id = doctorId;
 	}
-	public DoctorTimeSlots(Integer doctorId, List<LocalTime> times) {
+	public DoctorTimeSlots(Integer doctorId, List<Time> times) {
 		super();
 		this.doctor_id = doctorId;
 		this.times = times;
@@ -22,7 +23,7 @@ public class DoctorTimeSlots {
 	 * setDoctor_id(Integer doctorId) { this.doctor_id = doctorId; }
 	 */
 	
-	public List<LocalTime> getTimes() {
+	public List<Time> getTimes() {
 		return times;
 	}
 	public Integer getDoctor_id() {
@@ -31,7 +32,7 @@ public class DoctorTimeSlots {
 	public void setDoctor_id(Integer doctor_id) {
 		this.doctor_id = doctor_id;
 	}
-	public void setTimes(List<LocalTime> times) {
+	public void setTimes(List<Time> times) {
 		this.times = times;
 	}
 	

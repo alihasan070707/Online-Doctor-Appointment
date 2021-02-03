@@ -3,10 +3,12 @@ package com.app.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,19 +78,30 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 	}
 	
-	public void setTimeFrames(List<LocalTime> times,Integer doctor_id) {
+	public void setTimeFrames(List<Time> times,Integer doctor_id) {
 		LocalDate date = LocalDate.now();
+		
 		List<TimeFrame> timeframes = new ArrayList<>();
 		Optional<Doctor> doctorOpt = doctorDao.findById(doctor_id);
 		Doctor doctor = doctorOpt.get();
 		for(int i=0;i<6;i++) {
 			
-			for(LocalTime time : times) {
+			for(Time time : times) {
+				int hour=time.getHours();
+				int min=time.getMinutes();
+				int sec=time.getSeconds();
+				Time time2=Time.valueOf(hour + 1+":" +min+":"+sec);
 				
-				/*
-				 * timeframes.add(new TimeFrame(doctor, time, time.plusHours(1), false,
-				 * date.plusDays(i))); 	
-				 */
+		
+		         
+		  			
+					
+					  timeframes.add(new TimeFrame(doctor, time,
+					  time2, false, date.plusDays(i)));
+					 
+					 
+				 	
+				 
 			}
 			
 		}
