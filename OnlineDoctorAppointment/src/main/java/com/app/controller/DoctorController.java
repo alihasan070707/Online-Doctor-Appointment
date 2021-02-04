@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,11 +94,12 @@ public class DoctorController {
 	}
 
 	@PostMapping("/timeFrames")
-	public String setTimeFrames(@RequestBody DoctorTimeSlots doctor) {
-		System.out.println(doctor.getDoctor_id());
-		System.out.println(doctor.getTimes());
-
-		service.setTimeFrames(doctor.getTimes(), doctor.getDoctor_id());
+	public String setTimeFrames(@RequestParam Integer doctor_id,@RequestParam List<String> times) {
+		System.out.println(doctor_id);
+		System.out.println(times);
+		
+		
+		 service.setTimeFrames(times, doctor_id); 
 
 		return "/someting";
 

@@ -10,7 +10,7 @@ export class SetScheduleComponent implements OnInit {
 
   timeFrames: any =[];
   selectedTime: any = [];
-  doctorId:string ='1';
+  doctorId:string ='2';
   isChecked:boolean = false;
 
   constructor (private http: HttpClient) { }
@@ -32,6 +32,7 @@ export class SetScheduleComponent implements OnInit {
       this.timeFrames.isSelected = false;
   }
   OnSetSchedule(){
+    this.selectedTime=[];
     console.log(this.timeFrames);
     for (let i=0; i<8; ++i){
       if ( this.timeFrames[i].isSelected){
@@ -43,7 +44,8 @@ export class SetScheduleComponent implements OnInit {
     formData.append('doctor_id', this.doctorId);
     formData.append('times', this.selectedTime)
     this.http
-      .post('http://localhost:8080/doctor/timeFrames', formData);
+      .post('http://localhost:8080/doctor/timeFrames', formData)
+      .subscribe((data) => console.log(data));
 
   }
 
