@@ -24,7 +24,7 @@ public class Patient extends Person {
 	}
 
 	public Patient(Integer id, char[] password, String name, Date dob, String email, String phoneNo, String gender,
-			byte[] photo) {
+			String photo) {
 		super(id, password, name, dob, email, phoneNo, gender, photo);
 	}
 
@@ -55,8 +55,7 @@ public class Patient extends Person {
 	public String toString() {
 		return "Patient [ getId()=" + getId() + ", getPassword()=" + Arrays.toString(getPassword())
 				+ ", getName()=" + getName() + ", getDob()=" + getDob() + ", getEmail()=" + getEmail()
-				+ ", getPhoneNo()=" + getPhoneNo() + ", getGender()=" + getGender() + ", getPhoto()="
-				+ Arrays.toString(getPhoto()) + "]";
+				+ ", getPhoneNo()=" + getPhoneNo() + ", getGender()=" + getGender() + "]";
 	}
 
 

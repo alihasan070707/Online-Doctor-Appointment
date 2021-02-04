@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class DocAppointmentComponent implements OnInit {
   appointments: any = [];
   id = 1;
+  
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
@@ -32,6 +33,6 @@ export class DocAppointmentComponent implements OnInit {
   }
 
   patientPrescriptions(patientId) {
-    this.router.navigate(['previous-prescription',{patientId: patientId}]);
+    this.router.navigate(['doctor-profile/previous-prescription',{patientId :patientId}]);
   }
 }

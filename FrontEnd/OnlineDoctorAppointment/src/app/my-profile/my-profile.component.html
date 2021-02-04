@@ -2,18 +2,19 @@
     <div class="row">
         <div class="col-3">
             <div>
-                <img class="avatar" src="/assets/images/avatar.png" alt="Profile Picture">
+                <img class="avatar" src="/assets/images/PatientProfilePic/{{patientId}}/{{patient.picture}}"
+                    alt="Profile Picture">
             </div>
         </div>
-        <div class="col-6 bg-light">
+        <div class="col-6 details">
             <div class="name">
-                <!-- {{patient.name}} -->
-            </div>
-            <div class="name"> 
-                <!-- {{patient.email}} -->
+                <label>Name : </label> <span>{{patient.name}}</span>
             </div>
             <div class="name">
-                <!-- {{patient.dob}} -->
+                <label>Email : </label> <span>{{patient.email}}</span>
+            </div>
+            <div class="name">
+                <label>Date Of Birth : </label> <span>{{patient.dob}}</span>
             </div>
         </div>
     </div>
@@ -22,18 +23,19 @@
     <div class="row">
         <div class="col-3">
             <div>
-                <img class="avatar" src="/assets/images/avatar.png" alt="Profile Picture">
+                <img class="avatar" src="/assets/images/DoctorProfilePic/{{doctorId}}/{{doctor.picture}}"
+                    alt="Profile Picture">
             </div>
         </div>
-        <div class="col-6 bg-light">
+        <div class="col-6 details">
             <div class="name">
-                {{doctor.name}}
-            </div>
-            <div class="name"> 
-                {{doctor.email}}
+                <label>Name : </label> <span>{{doctor.name}}</span>
             </div>
             <div class="name">
-                {{doctor.dob}}
+                <label>Email : </label> <span>{{doctor.email}}</span>
+            </div>
+            <div class="name">
+                <label>Date Of Birth : </label> <span>{{doctor.dob}}</span>
             </div>
         </div>
     </div>
