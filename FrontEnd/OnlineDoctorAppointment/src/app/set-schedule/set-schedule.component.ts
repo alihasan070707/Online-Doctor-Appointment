@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { start } from 'repl';
 
 @Component({
   selector: 'app-set-schedule',
@@ -8,20 +10,35 @@ import { Component, OnInit } from '@angular/core';
 export class SetScheduleComponent implements OnInit {
 
   timeFrames: any =[];
-  selectedTime: string[];
-  doctorId =1;
+  selectedTime: any = [];
+  doctorId:string ='2';
   isChecked:boolean = false;
 
-  constructor() { }
+  constructor (private http: HttpClient) { }
 
   ngOnInit(): void {
     let startTime = 9;
     for (let i=1; i<=8; ++i){
+      let start_time;
+      let end_time;
+      if(startTime < 10){
+        start_time = "0" + startTime + ":00:00";
+        if(++startTime < 10)
+          end_time = "0" + startTime + ":00:00"; 
+        else
+          end_time = ++startTime + ":00:00"; 
+      }
+      else{
+        start_time = startTime + ":00:00";
+        end_time = ++startTime + ":00:00";
+      }
+      
       this.timeFrames.push({
-        startTime: startTime + ":00:00",
-        endTime: ++startTime + ":00:00",
+        startTime: start_time,
+        endTime: end_time,
         isSelected: false
       })
+      
     }
   }
   toggleSelected(event: Event) {
@@ -31,7 +48,22 @@ export class SetScheduleComponent implements OnInit {
       this.timeFrames.isSelected = false;
   }
   OnSetSchedule(){
-    console.log(this.timeFrames.startTime +" "+ this.timeFrames.isSelected);
+    this.selectedTime=[];
+    console.log(this.timeFrames);
+    for (let i=0; i<8; ++i){
+      if ( this.timeFrames[i].isSelected){
+        this.selectedTime.push(this.timeFrames[i].startTime);
+      }
+    }
+    console.log(this.selectedTime + " " +this.selectedTime.length);
+    const formData = new FormData();
+    formData.append('doctor_id', this.doctorId);
+    formData.append('times', this.selectedTime)
+    this.http
+      .post('http://localhost:8080/doctor/timeFrames', formData)
+      .subscribe((data) => console.log(data));
+
   }
+
 
 }

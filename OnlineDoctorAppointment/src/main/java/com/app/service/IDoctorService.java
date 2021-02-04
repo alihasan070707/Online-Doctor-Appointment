@@ -15,7 +15,7 @@ public interface IDoctorService {
 	public Doctor authenticateLogin (String email, char[] password);
 	public void uploadPrescription(MultipartFile Pdffile,Integer patient_id);
 	public void updateAppointmentStatus(Integer appointmentId,int status);
-	public void setTimeFrames(List<Time> times,Integer doctor_id);
+	public void setTimeFrames(List<String> times,Integer doctor_id);
 	public List<String> findCityByState(String state);
 	List<String> findAllState();
 	List<String> findBySpecialization(String state,String city);

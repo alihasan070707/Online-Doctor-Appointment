@@ -29,10 +29,10 @@ public class TimeFrame {
 	private Doctor drId;
 	
 	@DateTimeFormat(pattern="hh:mm:ss")
-	private Time startTime;
+	private LocalTime startTime;
 	
 	@DateTimeFormat(pattern="hh:mm:ss")
-	private Time endTime;
+	private LocalTime endTime;
 	
 	@Column(name="is_booked")
 	private boolean isBooked;
@@ -45,7 +45,7 @@ public class TimeFrame {
 		super();
 	}
 
-	public TimeFrame(Doctor drId, Time startTime, Time endTime, boolean isBooked,LocalDate date) {
+	public TimeFrame(Doctor drId, LocalTime startTime, LocalTime endTime, boolean isBooked,LocalDate date) {
 		this.drId = drId;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -74,19 +74,19 @@ public class TimeFrame {
 		this.drId = drId;
 	}
 
-	public Time getStartTime() {
+	public LocalTime getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Time startTime) {
+	public void setStartTime(LocalTime startTime) {
 		this.startTime = startTime;
 	}
 
-	public Time getEndTime() {
+	public LocalTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Time endTime) {
+	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
 	}
 
