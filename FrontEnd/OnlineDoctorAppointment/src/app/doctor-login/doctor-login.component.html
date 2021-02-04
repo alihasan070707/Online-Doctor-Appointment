@@ -1,9 +1,5 @@
 <head>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.css"
-  />
+  <link rel="stylesheet" type="text/css" href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.css" />
 </head>
 
 <div class="login-container">
@@ -13,47 +9,28 @@
     </div>
     <div class="col-sm login-right-div">
       <h3 class="login-text">Login</h3>
+
       <form class="" #ngForm="ngForm">
         <div class="form-group">
           <div class="input-cover">
-            <i class="fa fa-envelope email-icon"></i
-            ><input
-              type="text"
-              [(ngModel)]="email"
-              name="email"
-              class="input-style"
-              placeholder="enter your email"
-              value=""
-            />
+            <i class="fa fa-envelope email-icon"></i><input type="text" [(ngModel)]="email" name="email"
+              class="input-style" placeholder="enter your email" value="" />
           </div>
         </div>
         <div class="form-group">
           <div class="input-cover">
-            <i class="fa fa-key email-icon"></i
-            ><input
-              type="password"
-              [(ngModel)]="password"
-              name="password"
-              class="input-style"
-              placeholder="enter your password"
-              value=""
-            />
+            <i class="fa fa-key email-icon"></i><input type="password" [(ngModel)]="password" name="password"
+              class="input-style" placeholder="enter your password" value="" />
           </div>
         </div>
         <div class="form-group">
-          <a class="ForgetPwd" (click)="redirectToRegisterDoc()"
-            >New here? Create a new account</a
-          >
+          <a class="ForgetPwd" (click)="redirectToRegisterDoc()">New here? Create a new account</a>
         </div>
         <div class="form-group">
-          <input
-            type="submit"
-            class="btnSubmit submit-btn-style"
-            value="Login"
-            (click)="submitHandler(ngForm)"
-          />
+          <input type="submit" class="btnSubmit submit-btn-style" value="Login" (click)="submitHandler(ngForm)" />
         </div>
       </form>
+      <p *ngIf="message" class="text-center error text-danger">{{message}}</p>
     </div>
   </div>
 </div>

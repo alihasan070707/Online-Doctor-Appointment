@@ -22,6 +22,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { PrescriptionComponent } from './prescription/prescription.component';
 import { DocAppointmentComponent } from './doc-appointment/doc-appointment.component';
 import { SetScheduleComponent } from './set-schedule/set-schedule.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { SetScheduleComponent } from './set-schedule/set-schedule.component';
     SetScheduleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
