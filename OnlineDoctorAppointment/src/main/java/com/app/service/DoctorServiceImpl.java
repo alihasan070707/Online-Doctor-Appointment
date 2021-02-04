@@ -78,32 +78,19 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 	}
 	
-	public void setTimeFrames(List<Time> times,Integer doctor_id) {
+	public void setTimeFrames(List<String> times,Integer doctor_id) {
 		LocalDate date = LocalDate.now();
-		
 		List<TimeFrame> timeframes = new ArrayList<>();
 		Optional<Doctor> doctorOpt = doctorDao.findById(doctor_id);
 		Doctor doctor = doctorOpt.get();
 		for(int i=0;i<6;i++) {
 			
-			for(Time time : times) {
-				int hour=time.getHours();
-				int min=time.getMinutes();
-				int sec=time.getSeconds();
-				Time time2=Time.valueOf(hour + 1+":" +min+":"+sec);
-				
-		
-		         
-		  			
-					
-					  timeframes.add(new TimeFrame(doctor, time,
-					  time2, false, date.plusDays(i)));
-					 
-					 
-				 	
-				 
-			}
+			for(String time : times) {
 			
+				LocalTime startTime = LocalTime.parse(time);
+				timeframes.add(new TimeFrame(doctor, startTime,
+				startTime.plusHours(1), false, date.plusDays(i)));
+			}
 		}
 		doctor.setTimeSlots(timeframes);
 		doctorDao.save(doctor);
