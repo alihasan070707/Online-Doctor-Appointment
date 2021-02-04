@@ -2,11 +2,11 @@
     <form>
         <div class="Time-frame-div">
             <div class="time-frames" *ngFor="let timeframe of timeFrames">
-                <div data-toggle="buttons" class="btn-group-toggle">
+                <div data-toggle="buttons" class="btn-group-toggle form-group">
                     <label class="btn btn-default">
                         <div class="itemcontent">
-                            <input type="checkbox" class="time-frame-btn" value="{{ timeframe.startTime }}"
-                                name="{{timeframe.startTime}}" (change)="timeframe.isSelected = !timeframe.isSelected"
+                            <input type="checkbox" class="time-frame-btn" value="{{ timeframe.startTime }}" id="{{ timeframe.startTime }}"
+                                name="{{timeframe}}"
                                 [(ngModel)]="timeframe.isSelected">
                             <h5> {{ timeframe.startTime }} - {{ timeframe.endTime }}</h5>
                         </div>
