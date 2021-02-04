@@ -13,7 +13,7 @@ export class PatientProfileComponent implements OnInit {
   ngOnInit(): void {
   }
   logout(){
-    localStorage.removeItem('doctorToken');
+    localStorage.removeItem('patientToken');
     this.router.navigate(['/']);
   }
 }

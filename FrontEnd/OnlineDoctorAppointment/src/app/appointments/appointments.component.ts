@@ -9,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class AppointmentsComponent implements OnInit {
 
   appointments:any = [];
-  id = 1;
+  patientId;
 
   constructor(private http : HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get("http://localhost:8080/patient/appointments/?id"+this.id).subscribe(data => this.appointments = data);
+    this.patientId = localStorage.getItem('patientToken');
+    this.http.get("http://localhost:8080/patient/appointments/?id"+this.patientId).subscribe(data => this.appointments = data);
   }
 
 }
