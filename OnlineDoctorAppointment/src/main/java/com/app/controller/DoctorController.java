@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -77,13 +79,13 @@ public class DoctorController {
 	}
 
 	@PostMapping("/login")
-	public String processSignIn(@RequestBody String email, @RequestBody String password) {
-
+	public ResponseEntity<?> processSignIn(@RequestParam String email, @RequestParam String password) {
+		
 		Doctor authUser = service.authenticateLogin(email, password.toCharArray());
 		if (authUser != null) {
-			return "success";
+			return new ResponseEntity<>(authUser.getId(),HttpStatus.OK);
 		}
-		return "Invalid";
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	public String updateAppointment(@RequestParam Integer appointmentId, @RequestParam int status) {

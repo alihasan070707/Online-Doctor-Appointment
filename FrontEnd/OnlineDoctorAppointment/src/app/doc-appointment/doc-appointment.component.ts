@@ -14,8 +14,10 @@ export class DocAppointmentComponent implements OnInit {
   ngOnInit(): void {
     this.http
       .get('http://localhost:8080/doctor/appointments/?doctorId=' + this.id)
-      .subscribe((data) => {console.log(data);
-      (this.appointments = data)});
-      
+      .subscribe((data) => {
+        console.log(data);
+        this.appointments = data;
+      });
+    console.log(localStorage.getItem('doctorToken'));
   }
 }
