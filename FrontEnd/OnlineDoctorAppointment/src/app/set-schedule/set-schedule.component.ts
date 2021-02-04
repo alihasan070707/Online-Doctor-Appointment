@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { start } from 'repl';
 
 @Component({
   selector: 'app-set-schedule',
@@ -18,11 +19,26 @@ export class SetScheduleComponent implements OnInit {
   ngOnInit(): void {
     let startTime = 9;
     for (let i=1; i<=8; ++i){
+      let start_time;
+      let end_time;
+      if(startTime < 10){
+        start_time = "0" + startTime + ":00:00";
+        if(++startTime < 10)
+          end_time = "0" + startTime + ":00:00"; 
+        else
+          end_time = ++startTime + ":00:00"; 
+      }
+      else{
+        start_time = startTime + ":00:00";
+        end_time = ++startTime + ":00:00";
+      }
+      
       this.timeFrames.push({
-        startTime: startTime + ":00:00",
-        endTime: ++startTime + ":00:00",
+        startTime: start_time,
+        endTime: end_time,
         isSelected: false
       })
+      
     }
   }
   toggleSelected(event: Event) {
