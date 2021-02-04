@@ -14,7 +14,10 @@ export class PatientLoginComponent implements OnInit {
   message:string;
   constructor(private router: Router,private http:HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(localStorage.getItem('patientToken')!=null)
+    this.router.navigate(['patient-profile']);
+  }
   submitHandler(data) {
     const formData = new FormData();
     formData.append('email', this.email);
