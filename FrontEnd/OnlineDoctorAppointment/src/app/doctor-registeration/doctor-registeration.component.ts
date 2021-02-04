@@ -22,11 +22,18 @@ export class DoctorRegisterationComponent implements OnInit {
     this.photo = <File>event.target.files[0];
   }
   onSubmit(myForm:NgForm) {
-    this.doctor = myForm.value;
-    console.log(myForm.value);
+    const doctor = myForm.value;
+    //console.log(myForm.value);
+    const {location, city, state, pincode} = myForm.value;
+    doctor.address = {location, city, state, pincode}
+    delete doctor.city;
+    delete doctor.state;
+    delete doctor.location;
+    delete doctor.pincode;
+    console.log(doctor);
     
     const formData = new FormData();
-    formData.append('data', JSON.stringify(myForm.value));
+    formData.append('data', JSON.stringify(doctor));
     formData.append('file', this.photo, this.photo.name);
     this.http.post("http://localhost:8080/doctor/register", formData).subscribe(data => console.log(data));
   }
