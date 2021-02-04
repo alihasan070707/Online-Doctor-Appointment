@@ -16,6 +16,7 @@ import { PrescriptionComponent } from './prescription/prescription.component';
 import { SearchDoctorsComponent } from './search-doctors/search-doctors.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
 import { DocAppointmentComponent } from './doc-appointment/doc-appointment.component';
+import { SetScheduleComponent } from './set-schedule/set-schedule.component'
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'doctorLogin', component: DoctorRegisterationComponent },
   { path: 'bookAppointment', component: BookAppointmentComponent },
   { path: 'searchdoctor', component: SearchDoctorsComponent },
+  { path: 'setSchedule', component: SetScheduleComponent},
 
   {
     path: 'patient-profile',

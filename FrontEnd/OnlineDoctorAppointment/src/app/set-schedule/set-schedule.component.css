@@ -1,0 +1,58 @@
+
+.Time-frame-div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: auto;
+}
+.date-style{
+    margin-top: 10vh;
+    margin-left: 40vw;
+    margin-bottom: 60px;
+}
+.time-frames{
+    
+    display: inline;
+    width: 25%;
+}
+.time-frame-btn{
+    padding: 10px;
+    background-color: white;
+    border : 1px solid black;
+    border-radius: 3px;
+}
+.time-frame-btn-dis{
+    color:white;
+    padding: 10px;
+    background-color:grey;
+    border : 1px solid black;
+    border-radius: 3px;
+}
+
+.time-frame-btn:focus{
+    background-color:lightgreen;
+    color: white;
+}
+.book-btn-style{
+    background-color: #f4976c !important;
+    color: black;
+    border: 1px solid white;
+}
+
+.Time-frame-div label.btn-default.active{
+    background-color: #303c6c;
+    color:#FFF;
+}
+
+.Time-frame-div label.btn-default{
+    background-color: #d2fdff;
+    color: #303c6c;
+}
+
+.Time-frame-div label .itemcontent{
+    width:100%;
+}
+
+.Time-frame-div .btn-group{
+    width:90;
+}

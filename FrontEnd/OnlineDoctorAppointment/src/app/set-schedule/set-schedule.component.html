@@ -1,17 +1,26 @@
-<input class="date-style" type="date" (change)="datePicked($event)" name="date" />
+<div class="container">
+    <form>
+        <div class="Time-frame-div">
+            <div class="time-frames" *ngFor="let timeframe of timeFrames">
+                <div data-toggle="buttons" class="btn-group-toggle">
+                    <label class="btn btn-default">
+                        <div class="itemcontent">
+                            <input type="checkbox" class="time-frame-btn" value="{{ timeframe.startTime }}"
+                                name="{{timeframe.startTime}}" (change)="timeframe.isSelected = !timeframe.isSelected"
+                                [(ngModel)]="timeframe.isSelected">
+                            <h5> {{ timeframe.startTime }} - {{ timeframe.endTime }}</h5>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
 
-<div class="Time-frame-div">
-    <div class="time-frames" *ngFor="let timeframe of timeFrames">
-        <button *ngIf="!timeframe.booked" class="time-frame-btn" value="{{ timeframe.startTime }}"
-            (click)="OnTimeSelect($event)" name="{{timeframe.id}}">
-            {{ timeframe.startTime }} - {{ timeframe.endTime }}
+        <button type="submit" class="btn btn-primary date-style book-btn-style" (click)="OnSetSchedule()">
+            Set Schedule
         </button>
-        <button *ngIf="timeframe.booked" class="time-frame-btn-dis" disabled>
-            {{ timeframe.startTime }} - {{ timeframe.endTime }}
+
+        <button class="btn btn-secondary">
+            Reset
         </button>
-    </div>
+    </form>
 </div>
-
-<button *ngIf="canBook" class="btn btn-primary date-style book-btn-style" (click)="OnBookAppointment()">
-    Book Appointment
-</button>
