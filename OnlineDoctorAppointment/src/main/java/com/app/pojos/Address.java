@@ -21,22 +21,31 @@ public class Address {
 	private String state;
 	@Column(length = 20)
 	private String city;
+	public Integer getId() {
+		return Id;
+	}
+	public void setId(Integer id) {
+		Id = id;
+	}
+	public Doctor getDoctorId() {
+		return doctorId;
+	}
+	public void setDoctorId(Doctor doctorId) {
+		this.doctorId = doctorId;
+	}
 	@Column(length = 6)
 	private String pincode;
-	@Column(length = 30)
-	private String landmark;
 	@Column(length = 65535, columnDefinition = "TEXT")
-	private String address;
+	private String location;
 	public Address() {
 		super();
 	}
-	public Address(String state, String city, String pincode, String landmark, String address) {
+	public Address(String state, String city, String pincode, String location) {
 		super();
 		this.state = state;
 		this.city = city;
 		this.pincode = pincode;
-		this.landmark = landmark;
-		this.address = address;
+		this.location = location;
 	}
 	public String getState() {
 		return state;
@@ -56,22 +65,15 @@ public class Address {
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
-	public String getLandmark() {
-		return landmark;
+	public String getLocation() {
+		return location;
 	}
-	public void setLandmark(String landmark) {
-		this.landmark = landmark;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setLocation(String address) {
+		this.location = address;
 	}
 	@Override
 	public String toString() {
-		return "Address [state=" + state + ", city=" + city + ", pincode=" + pincode + ", landmark=" + landmark
-				+ ", address=" + address + "]";
+		return "Address [state=" + state + ", city=" + city + ", pincode=" + pincode + ", address=" + location + "]";
 	}
 	
 }

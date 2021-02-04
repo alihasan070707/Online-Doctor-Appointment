@@ -66,8 +66,8 @@ public class DoctorController {
 			e.printStackTrace();
 		}
 
-		System.out.println(doctor);
-		// service.registerDoc(doctor.getDoctor());
+		System.out.println(doctor.getAddress());
+		service.registerDoc(doctor);
 		return "\"Success\"";
 	}
 

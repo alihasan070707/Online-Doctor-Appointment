@@ -54,6 +54,21 @@ public class Doctor extends Person {
 		this.address = address;
 	}
 	
+	
+	
+	public Doctor(char[] password, String name, Date dob, String email, String phoneNo, String gender,
+			String registrationNo, Date registrationDate, String stateMedicalCouncil, String specialization,
+			String qualification, Address address, Integer fees) {
+		super(password, name, dob, email, phoneNo, gender);
+		this.registrationNo = registrationNo;
+		this.registrationDate = registrationDate;
+		this.stateMedicalCouncil = stateMedicalCouncil;
+		this.specialization = specialization;
+		this.qualification = qualification;
+		this.address = address;
+		this.fees = fees;
+	}
+
 	public Doctor(char[] password, String name, Date dob, String email, String phoneNo, String gender, byte[] photo,
 			String registrationNo, Date registrationDate, String stateMedicalCouncil, String specialization,
 			String qualification) {
@@ -125,6 +140,7 @@ public class Doctor extends Person {
 	}
 
 	public void setAddress(Address address) {
+		address.setDoctorId(this);
 		this.address = address;
 	}
 	
