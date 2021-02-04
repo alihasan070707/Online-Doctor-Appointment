@@ -23,13 +23,13 @@ public interface DoctorRepsitory extends JpaRepository<Doctor, Integer>{
 		
 		Optional<Doctor> findByEmailAndPassword(String email, char[] password);
 		
-		@Query(value="select a.city from Address AS a where a.state=:state")
+		@Query(value="select distinct a.city from Address AS a where a.state=:state")
 		List<String> findCityByState(@Param("state") String state);
 		
 		@Query(value="select distinct state from Address")
 		List<String> findAllState();
 		
-		@Query(value="select specialization from Doctor where Id in (select doctorId from Address where state=:state AND city=:city)")
+		@Query(value="select distinct specialization from Doctor where Id in (select doctorId from Address where state=:state AND city=:city)")
 		List<String> findBySpecialization(@Param("state") String state, @Param("city") String city);
 		
 		@Query(value="select d from Doctor d where Id in (select doctorId from Address where state=:state AND city=:city)")

@@ -28,16 +28,15 @@ public class Person {
 	private String phoneNo;
 	@Column(length = 15)
 	private String gender;
-	@Lob
-	@Column(columnDefinition = "mediumblob")
-	private byte[] photo;
+	
+	private String picture;
 
 	public Person() {
 		super();
 	}
 
 	public Person(Integer id, char[] password, String name, Date dob, String email, String phoneNo, String gender,
-			byte[] photo) {
+			String photo) {
 		super();
 		Id = id;
 		this.password = password;
@@ -46,7 +45,7 @@ public class Person {
 		this.email = email;
 		this.phoneNo = phoneNo;
 		this.gender = gender;
-		this.photo = photo;
+		this.picture = photo;
 	}
 
 	public Person(char[] password, String name, Date dob, String email, String phoneNo, String gender) {
@@ -59,7 +58,7 @@ public class Person {
 		this.gender = gender;
 	}
 
-	public Person(char[] password, String name, Date dob, String email, String phoneNo, String gender, byte[] photo) {
+	public Person(char[] password, String name, Date dob, String email, String phoneNo, String gender, String photo) {
 		super();
 		this.password = password;
 		this.name = name;
@@ -67,7 +66,7 @@ public class Person {
 		this.email = email;
 		this.phoneNo = phoneNo;
 		this.gender = gender;
-		this.photo = photo;
+		this.picture = photo;
 	}
 
 	public Person(Integer id) {
@@ -137,12 +136,12 @@ public class Person {
 		this.gender = gender;
 	}
 
-	public byte[] getPhoto() {
-		return photo;
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
+	public void setPicture(String photo) {
+		this.picture = photo;
 	}
 
 }

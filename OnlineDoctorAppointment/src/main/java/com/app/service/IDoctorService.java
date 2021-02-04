@@ -11,7 +11,7 @@ import com.app.dto.DoctorCard;
 import com.app.pojos.Doctor;
 
 public interface IDoctorService {
-	public void registerDoc (Doctor newDoctor);
+	public boolean registerDoc (Doctor newDoctor);
 	public Doctor authenticateLogin (String email, char[] password);
 	public void uploadPrescription(MultipartFile Pdffile,Integer patient_id);
 
@@ -23,6 +23,7 @@ public interface IDoctorService {
 	List<DoctorCard> searchDoctorByStateAndCity(@Param("state") String state, @Param("city") String city);
 	List<DoctorCard> searchDoctorByAll(@Param("state") String state, @Param("city") String city, @Param("spec") String spec);	
 	Doctor getDoctor(Integer id);
+	boolean addProfileImage(MultipartFile profile, Integer patient_id);
 	
 	//public void 
 }

@@ -68,9 +68,14 @@ public class DoctorController {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-
+		doctor.setPicture(photo.getOriginalFilename());
+		if (service.registerDoc(doctor)) {
+			service.addProfileImage(photo, doctor.getId());
+			return "/somePage"; // need to be created
+		}
+		
 		System.out.println(doctor.getAddress());
-		service.registerDoc(doctor);
+		
 		return "\"Success\"";
 	}
 
@@ -116,6 +121,7 @@ public class DoctorController {
 	
 	@GetMapping("/searchState")
 	public List<String> findAllState(){
+		
 		return service.findAllState();
 	}
 	
@@ -165,4 +171,6 @@ public class DoctorController {
 		appService.updateAppointmentStatus(appId, 4);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	
 }

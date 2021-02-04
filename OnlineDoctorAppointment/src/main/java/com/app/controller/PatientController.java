@@ -60,12 +60,13 @@ public class PatientController {
 	}
 
 	@PostMapping("/login")
-	public String loginPatient(@RequestParam String email, @RequestParam String password) {
+	public ResponseEntity<?> loginPatient(@RequestParam String email, @RequestParam String password) {
 		Patient patient = service.getPatientDetails(email, password.toCharArray());
-		if (patient == null) {
-			return "/login";
+		if (patient != null) {
+			return new ResponseEntity<>(patient.getId(),HttpStatus.OK);
 		}
-		return "/somePage"; // need to be created
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
 	}
 
 	@GetMapping("/register")
@@ -88,11 +89,12 @@ public class PatientController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		patient.setPicture(photo.getOriginalFilename());
 		if (service.addPatient(patient)) {
 			service.addProfileImage(photo, patient.getId());
 			return "/somePage"; // need to be created
 		}
-		return patientJson;
+		return "\"Success\"";
 	}
 
 	@GetMapping("/prescriptions")

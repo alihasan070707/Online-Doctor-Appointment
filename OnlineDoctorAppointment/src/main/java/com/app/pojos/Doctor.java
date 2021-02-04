@@ -47,7 +47,7 @@ public class Doctor extends Person {
 	}
 
 	public Doctor(Integer id, char[] password, String name, Date dob, String email, String phoneNo, String gender,
-			byte[] photo, String registrationNo, Date registrationDate, String stateMedicalCouncil,
+			String photo, String registrationNo, Date registrationDate, String stateMedicalCouncil,
 			String qualification, Address address) {
 		super(id, password, name, dob, email, phoneNo, gender, photo);
 		this.registrationNo = registrationNo;
@@ -60,7 +60,7 @@ public class Doctor extends Person {
 	
 	
 	public Doctor(Integer id, char[] password, String name, Date dob, String email, String phoneNo, String gender,
-			byte[] photo, String registrationNo, Date registrationDate, String stateMedicalCouncil,
+			String photo, String registrationNo, Date registrationDate, String stateMedicalCouncil,
 			String specialization, String qualification, Address address, Integer fees, boolean isNew,
 			List<TimeFrame> timeSlots, boolean isVerified, List<Appointment> appointment) {
 		super(id, password, name, dob, email, phoneNo, gender, photo);
@@ -90,7 +90,7 @@ public class Doctor extends Person {
 		this.fees = fees;
 	}
 
-	public Doctor(char[] password, String name, Date dob, String email, String phoneNo, String gender, byte[] photo,
+	public Doctor(char[] password, String name, Date dob, String email, String phoneNo, String gender, String photo,
 			String registrationNo, Date registrationDate, String stateMedicalCouncil, String specialization,
 			String qualification) {
 		super(password, name, dob, email, phoneNo, gender, photo);
@@ -235,8 +235,7 @@ public class Doctor extends Person {
 				+ ", stateMedicalCouncil=" + stateMedicalCouncil + ", Qualification=" + qualification + ", address="
 				+ address + ", getId()=" + getId() + ", getPassword()=" + Arrays.toString(getPassword())
 				+ ", getName()=" + getName() + ", getDob()=" + getDob() + ", getEmail()=" + getEmail()
-				+ ", getPhoneNo()=" + getPhoneNo() + ", getGender()=" + getGender() + ", getPhoto()="
-				+ Arrays.toString(getPhoto()) + "]";
+				+ ", getPhoneNo()=" + getPhoneNo() + ", getGender()=" + getGender() +  "]";
 	}
 
 	

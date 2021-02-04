@@ -33,9 +33,15 @@ public class DoctorServiceImpl implements IDoctorService {
 	DoctorRepsitory doctorDao;
 	
 	@Override
-	public void registerDoc(Doctor newDoctor) {
-			
+	public boolean registerDoc(Doctor newDoctor) {
+		try {
 			doctorDao.save(newDoctor);
+		} catch (Exception e) {
+
+			return false;
+		}
+		return true;
+			
 	}
 
 	@Override
@@ -141,6 +147,31 @@ public class DoctorServiceImpl implements IDoctorService {
 		Doctor doctor = doctorOpt.get();
 		return doctor;
 	}
+	
+	
+	@Override
+	public boolean addProfileImage(MultipartFile profile, Integer doctorId) {
+		File dir = new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId);
+		if (!dir.exists()) {
+			dir.mkdir();
+		}
 
+		try {
+
+			FileOutputStream file = new FileOutputStream(
+					new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId + "/" + profile.getOriginalFilename()));
+			byte[] profilepic = profile.getBytes();
+			file.write(profilepic);
+			file.close();
+
+			return true;
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+
+	}
 	
 }

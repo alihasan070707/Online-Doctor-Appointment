@@ -1,3 +1,18 @@
+@font-face {
+    font-family: Raleway-SemiBold;
+    src: url("/assets/fonts/raleway/Raleway-SemiBold.ttf");
+  }
+  
+  @font-face {
+    font-family: Raleway-Bold;
+    src: url("/assets/fonts/raleway/Raleway-Bold.ttf");
+  }
+  
+  @font-face {
+    font-family: Raleway-Black;
+    src: url("/assets/fonts/raleway/Raleway-Black.ttf");
+  }
+  
 body{
     text-align: center;
 }
@@ -32,4 +47,12 @@ body{
     justify-content: space-between;
   }
   
- 
+  label{
+    font-family: Raleway-SemiBold;
+    color: gray;
+}
+
+span{
+    font-family: sans-serif;
+    padding-left: 10px;
+}

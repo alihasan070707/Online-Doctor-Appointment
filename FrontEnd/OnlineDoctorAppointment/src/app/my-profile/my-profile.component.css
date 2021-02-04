@@ -1,11 +1,38 @@
-.name {
-
-}
+@font-face {
+    font-family: Raleway-SemiBold;
+    src: url("/assets/fonts/raleway/Raleway-SemiBold.ttf");
+  }
+  
+  @font-face {
+    font-family: Raleway-Bold;
+    src: url("/assets/fonts/raleway/Raleway-Bold.ttf");
+  }
+  
+  @font-face {
+    font-family: Raleway-Black;
+    src: url("/assets/fonts/raleway/Raleway-Black.ttf");
+  }
 
 .avatar {
     margin-top: 16px;
-    height: 300px;
-    width: 300px;
+    height: 50%;
+    width: 100%;
     border-radius: 50%;
     border: 2px solid tomato;
+}
+
+.details{
+    margin-top: 30px;
+    font-size: 25px;
+    
+}
+
+label{
+    font-family: Raleway-SemiBold;
+    color: gray;
+}
+
+span{
+    font-family: sans-serif;
+    padding-left: 10px;
 }
