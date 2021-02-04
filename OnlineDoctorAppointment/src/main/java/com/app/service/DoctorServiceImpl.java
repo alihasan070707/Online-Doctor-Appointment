@@ -47,12 +47,13 @@ public class DoctorServiceImpl implements IDoctorService {
 	
 	}
 
-	@Override public void updateAppointmentStatus(Integer appointmentId , int status) {
-		
-		Optional<Appointment> appointment = appointmentDao.findById(appointmentId);
-		if(appointment.isPresent())
-			appointment.get().setStatus(status);
-	}
+	/*
+	 * @Override public void updateAppointmentStatus(Integer appointmentId , int
+	 * status) {
+	 * 
+	 * Optional<Appointment> appointment = appointmentDao.findById(appointmentId);
+	 * if(appointment.isPresent()) appointment.get().setStatus(status); }
+	 */
 	public void uploadPrescription(MultipartFile pdfFile,Integer patient_id) {
 		
 		File dir=new File("D:/prescription/"+patient_id);
@@ -83,6 +84,7 @@ public class DoctorServiceImpl implements IDoctorService {
 		List<TimeFrame> timeframes = new ArrayList<>();
 		Optional<Doctor> doctorOpt = doctorDao.findById(doctor_id);
 		Doctor doctor = doctorOpt.get();
+		System.out.println(doctor);
 		for(int i=0;i<6;i++) {
 			
 			for(String time : times) {
@@ -131,6 +133,13 @@ public class DoctorServiceImpl implements IDoctorService {
 		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees()));});
 		return docCard;
 		
+	}
+
+	@Override
+	public Doctor getDoctor(Integer id) {
+		Optional<Doctor> doctorOpt = doctorDao.findById(id);
+		Doctor doctor = doctorOpt.get();
+		return doctor;
 	}
 
 	

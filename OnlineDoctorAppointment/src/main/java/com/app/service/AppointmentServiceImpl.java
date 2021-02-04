@@ -23,37 +23,37 @@ import com.app.pojos.TimeFrame;
 public class AppointmentServiceImpl implements IAppointmentService {
 	
 	@Autowired
-	public AppointmentRepository appointmentdao;
+	public AppointmentRepository appointmentDao;
 	@Autowired
-	public DoctorRepsitory doctordao;
+	public DoctorRepsitory doctorDao;
 	@Autowired
-	public PatientRepository patientdao;
+	public PatientRepository patientDao;
 	@Autowired
-	public TimeFrameRepo timedao;
+	public TimeFrameRepo timeDao;
 
 	@Override
 	public List<Appointment> findAllByPatientId(Integer patient_id) {
 		
-		return appointmentdao.findAllByPatientId(patient_id);
+		return appointmentDao.findAllByPatientId(patient_id);
 	}
 
 	@Override
 	public void deleteById(Integer appointmentId) {
 		
-		appointmentdao.deleteById(appointmentId);
+		appointmentDao.deleteById(appointmentId);
 
 	}
 
 	@Override
 	public boolean addAppointment(Integer drId, Integer patientId, Integer id, Integer status) {
-		Optional<Doctor> doctor=doctordao.findById(drId);
-		Optional<Patient> patient =patientdao.findById(patientId);
-		Optional<TimeFrame> time =timedao.findById(id);
+		Optional<Doctor> doctor=doctorDao.findById(drId);
+		Optional<Patient> patient =patientDao.findById(patientId);
+		Optional<TimeFrame> time =timeDao.findById(id);
 		time.get().setBooked(true);
 		Appointment appointment= new Appointment(doctor.get(), patient.get(), time.get(), status);
 		System.out.println(appointment);
 		
-		appointmentdao.save(appointment);
+		appointmentDao.save(appointment);
 		/*
 		 * Optional<Patient> patient=patientdao.findById(patientId.getId());
 		 * if(patient.isPresent()) { Patient patientobj=patient.get();
@@ -65,7 +65,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
 	@Override
 	public List<Appointment> findAllByDoctorId(Doctor doctor_id) {
-		List<Appointment> appointments=appointmentdao.findAllByDrId(doctor_id);
+		List<Appointment> appointments=appointmentDao.findAllByDrId(doctor_id);
 		/*
 		 * System.out.println(appointments); for(Appointment app : appointments) {
 		 * System.out.println(app.getId().getDate() + " " + app.getId()); }
@@ -75,4 +75,10 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		return appointments;
 	}
 
+	@Override public void updateAppointmentStatus(Integer appointmentId , int status) {
+		
+		Optional<Appointment> appointment = appointmentDao.findById(appointmentId);
+		if(appointment.isPresent())
+			appointment.get().setStatus(status);
+	}
 }

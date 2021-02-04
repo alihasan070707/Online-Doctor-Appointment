@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class SetScheduleComponent implements OnInit {
   timeFrames: any = [];
   selectedTime: any = [];
-  doctorId: string = '2';
+  doctorId: string = '12';
   isChecked: boolean = false;
 
   constructor(private http: HttpClient) {}

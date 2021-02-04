@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 public class Doctor extends Person {
@@ -27,6 +29,7 @@ public class Doctor extends Person {
 	@Column(length = 30)
 	private String qualification;
 	@OneToOne(mappedBy = "doctorId" , cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Address address;
 	private Integer fees;
 	private boolean isNew=true;
@@ -56,6 +59,24 @@ public class Doctor extends Person {
 	
 	
 	
+	public Doctor(Integer id, char[] password, String name, Date dob, String email, String phoneNo, String gender,
+			byte[] photo, String registrationNo, Date registrationDate, String stateMedicalCouncil,
+			String specialization, String qualification, Address address, Integer fees, boolean isNew,
+			List<TimeFrame> timeSlots, boolean isVerified, List<Appointment> appointment) {
+		super(id, password, name, dob, email, phoneNo, gender, photo);
+		this.registrationNo = registrationNo;
+		this.registrationDate = registrationDate;
+		this.stateMedicalCouncil = stateMedicalCouncil;
+		this.specialization = specialization;
+		this.qualification = qualification;
+		this.address = address;
+		this.fees = fees;
+		this.isNew = isNew;
+		this.timeSlots = timeSlots;
+		this.isVerified = isVerified;
+		this.appointment = appointment;
+	}
+
 	public Doctor(char[] password, String name, Date dob, String email, String phoneNo, String gender,
 			String registrationNo, Date registrationDate, String stateMedicalCouncil, String specialization,
 			String qualification, Address address, Integer fees) {
