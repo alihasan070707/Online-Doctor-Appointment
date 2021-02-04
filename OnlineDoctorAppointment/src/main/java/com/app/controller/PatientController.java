@@ -204,5 +204,9 @@ public class PatientController {
 		return responseEntity;
 	}
 	
-
+	@GetMapping("/cancelAppointment")
+	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId) {
+		appService.updateAppointmentStatus(appId, 3);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }

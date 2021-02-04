@@ -9,8 +9,8 @@
 
     </div>
     <div *ngIf="appointment">
-        <button type="button" class="btn btn-primary">View</button>
-        <button type="button" class="btn btn-secondary">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="patientPrescriptions(appointment.patientId.name.id)">Prescriptoins</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelAppointment(appointment.id)">Cancel</button>
     </div>
 
 </div>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 
 import * as fileSaver from 'file-saver';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-prescription',
@@ -12,12 +13,19 @@ import * as fileSaver from 'file-saver';
 })
 export class PrescriptionComponent implements OnInit {
   prescriptions: any = [];
-  patientId = 1;
+  patientId;
   file: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private routeParams: ActivatedRoute) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('patientToken') != null)
+      this.patientId = localStorage.getItem('patientToken');
+    else {
+      this.patientId = JSON.parse(
+        this.routeParams.snapshot.paramMap.get('patientId')
+      );
+    }
     this.http
       .get(
         'http://localhost:8080/patient/prescriptions/?patientId=' +

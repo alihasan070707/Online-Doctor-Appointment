@@ -15,4 +15,6 @@ public interface IAppointmentService{
 	
 	boolean addAppointment(Integer drId, Integer patientId, Integer timeFrame, Integer status);
 
+	void updateAppointmentStatus(Integer appointmentId, int status);
+
 }

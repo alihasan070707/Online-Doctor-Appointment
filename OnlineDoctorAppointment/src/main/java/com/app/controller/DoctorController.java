@@ -22,6 +22,7 @@ import com.app.dto.DoctorSearchParam;
 import com.app.dto.DoctorTimeSlots;
 import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
+import com.app.pojos.Patient;
 import com.app.service.IAppointmentService;
 import com.app.service.IDoctorService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -90,7 +91,7 @@ public class DoctorController {
 
 	public String updateAppointment(@RequestParam Integer appointmentId, @RequestParam int status) {
 
-		service.updateAppointmentStatus(appointmentId, status);
+		appService.updateAppointmentStatus(appointmentId, status);
 
 		return "Success";
 	}
@@ -152,4 +153,16 @@ public class DoctorController {
 		return doctorcard;
 	}
 	
+	@GetMapping("/getDetails")
+	public ResponseEntity<?> getPatient(@RequestParam Integer id) {
+		System.out.println(id);
+		Doctor doctor = service.getDoctor(id);
+		return new ResponseEntity<>(doctor,HttpStatus.OK);
+	}
+	
+	@GetMapping("/cancelAppointment")
+	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId) {
+		appService.updateAppointmentStatus(appId, 4);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }

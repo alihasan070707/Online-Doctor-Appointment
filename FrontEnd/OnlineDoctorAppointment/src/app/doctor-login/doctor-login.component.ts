@@ -13,6 +13,8 @@ export class DoctorLoginComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
+    console.log(localStorage.getItem('doctorToken'));
+    
     if(localStorage.getItem('doctorToken')!=null)
     this.router.navigate(['doctor-profile']);
   }
