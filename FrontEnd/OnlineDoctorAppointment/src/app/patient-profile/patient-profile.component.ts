@@ -4,16 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-patient-profile',
   templateUrl: './patient-profile.component.html',
-  styleUrls: ['./patient-profile.component.css']
+  styleUrls: ['./patient-profile.component.css'],
 })
 export class PatientProfileComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router:Router) { }
-
-  ngOnInit(): void {
-  }
-  logout(){
+  ngOnInit(): void {}
+  logout() {
     localStorage.removeItem('patientToken');
     this.router.navigate(['/']);
+  }
+
+  search() {
+    this.router.navigate(['searchdoctor']);
   }
 }

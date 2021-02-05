@@ -134,8 +134,9 @@ public class PatientController {
 	}
 
 	@GetMapping("/appointments")
-	public List<Appointment> getAllAppointment(@RequestParam Integer patientId) {
-		return appService.findAllByPatientId(patientId);
+	public ResponseEntity<?> getAllAppointment(@RequestParam Patient patientId) {
+		
+		return new ResponseEntity<>(appService.findAllByPatientId(patientId), HttpStatus.OK);
 	}
 
 	@GetMapping("/downloadPrescription")

@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Appointment {
 	@Id
@@ -17,10 +20,12 @@ public class Appointment {
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="doctor_id")
+	@JsonBackReference
 	private Doctor drId;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="patient_id")
+	@JsonBackReference
 	private Patient patientId;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)

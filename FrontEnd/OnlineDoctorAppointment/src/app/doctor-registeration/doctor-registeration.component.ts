@@ -12,6 +12,7 @@ import { Doctor } from '../doctorModel';
 export class DoctorRegisterationComponent implements OnInit {
   result:string;
   doctor:Doctor;
+  genders = ['Male', 'Female', 'Other'];
   photo:File=null;
   constructor(private http: HttpClient) { }
 
