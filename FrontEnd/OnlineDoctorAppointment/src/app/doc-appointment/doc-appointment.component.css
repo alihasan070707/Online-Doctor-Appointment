@@ -1,27 +1,41 @@
-.inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+.appointment-container {
+  width: 100%;
 }
-.inputfile + label {
-    font-size: 1.25em;
-    font-weight: 700;
-    color: white;
-    background-color: black;
-    display: inline-block;
+.appointment-card {
+  margin-left: 6vw;
+}
+.appointment-card:hover {
+  box-shadow: 5px 5px 5px 4px rgba(0, 0, 0, 0.3);
+}
+label {
+  padding: 20px 15px;
+}
+.appointment-block{
+    margin-top:10px;
+    
+}
+.upload {
+  display: inline-block;
+  background-color: rgb(154, 81, 206);
+  color: white;
+  padding: 8px;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-.inputfile:focus + label,
-.inputfile + label:hover {
-    background-color: red;
+.upload:hover{
+    background-color: rgb(96, 22, 148);
 }
-.inputfile + label {
-	cursor: pointer; /* "hand" cursor */
+
+.uploadbutton {
+  margin-left: 10px;
+  margin-top: 20px;
 }
-.inputfile:focus + label {
-	outline: 1px dotted #000;
-	outline: -webkit-focus-ring-color auto 5px;
+
+.btn {
+  margin-left: 5px;
+  margin-top: -3.5px;
+  line-height: 1.67 !important;
 }

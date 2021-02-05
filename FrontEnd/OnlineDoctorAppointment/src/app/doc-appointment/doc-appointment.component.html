@@ -1,22 +1,28 @@
 <div *ngFor="let appointment of appointments">
 
-    <div>
+    <div class="appointment-container">
+        <div class="appointment-card row">
+            <div class="col-6 appointment-block">
 
-        {{appointment.patientName}}
-        {{ appointment.startTime }}
-        {{ appointment.endTime }}
-        {{ appointment.date }}
+              <label> {{appointment.patientName}}</label> 
+              <label> {{ appointment.startTime }}</label> 
+                <label>  {{ appointment.endTime }}</label> 
+                    <label> {{ appointment.date }}</label> 
 
+            </div>
+            <div class="col-6">
+                <div *ngIf="appointment">
+                    <input type="file" class="uploadbutton" id="upload" (input)="uploadPrescription(appointment.patientId,$event)" hidden/>
+                    <label for="upload" class="upload">Choose file</label>
+                    <button type="button" class="btn btn-primary"
+                        (click)="patientPrescriptions(appointment.patientId.id)">Prescriptions</button>
+                    <button type="button" class="btn btn-secondary"
+                        (click)="cancelAppointment(appointment.id)">Cancel</button>
+                    <!-- <input type="file" id="file" (input)="uploadPrescription(appointment.patientId,$event)" /> -->
+                    
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div *ngIf="appointment">
-        <button type="button" class="btn btn-primary" (click)="patientPrescriptions(appointment.patientId.id)">Prescriptoins</button>
-        <button type="button" class="btn btn-secondary" (click)="cancelAppointment(appointment.id)">Cancel</button>
-        <input type="file" id="file" (input)="uploadPrescription(appointment.patientId,$event)" />
-        <label for="file" class="btn-3">
-          <span>select</span>
-        </label>
-        <input type="file" name="file" id="file" class="inputfile" />
-<label for="file">Choose a file</label>
-    </div>
-
 </div>
