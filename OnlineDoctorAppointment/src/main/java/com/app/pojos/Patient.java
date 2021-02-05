@@ -17,7 +17,7 @@ public class Patient extends Person {
 	 * @OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL) private
 	 * List<Prescription> list = new ArrayList<Prescription>();
 	 */
-	@JsonManagedReference
+	@JsonManagedReference(value="patient")
 	@OneToMany(mappedBy="patientId",cascade = CascadeType.PERSIST)
 	private List<Appointment> appointment = new ArrayList<Appointment>();
 

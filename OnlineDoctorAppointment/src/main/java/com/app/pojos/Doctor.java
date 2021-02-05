@@ -29,7 +29,7 @@ public class Doctor extends Person {
 	@Column(length = 30)
 	private String qualification;
 	@OneToOne(mappedBy = "doctorId" , cascade = CascadeType.ALL)
-	@JsonManagedReference
+	@JsonManagedReference(value="doctor")
 	private Address address;
 	private Integer fees;
 	private boolean isNew=true;

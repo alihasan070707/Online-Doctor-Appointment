@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
 })
 export class DocAppointmentComponent implements OnInit {
   appointments: any = [];
-  id = 1;
-  
+  id;
+
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    this.id = localStorage.getItem('doctorToken');
     this.pageLoad();
     console.log(localStorage.getItem('doctorToken'));
   }
@@ -33,12 +34,19 @@ export class DocAppointmentComponent implements OnInit {
   }
 
   patientPrescriptions(patientId) {
-    this.router.navigate(['doctor-profile/previous-prescription',{patientId :patientId}]);
+    this.router.navigate([
+      'doctor-profile/previous-prescription',
+      { patientId: patientId },
+    ]);
   }
-  uploadPrescription(patientId){
-      const formdata = new FormData();
-      formdata.append("patientId",patientId);
-      formdata.append("","");
-      this.http.post("http://localhost:8080/doctor/upload",formdata).subscribe(data=> console.log(data));
-    }
+  uploadPrescription(patientId, event) {
+    let pdf = event.target.files[0];
+    console.log(patientId);
+    const formdata = new FormData();
+    formdata.append('patientId', patientId);
+    formdata.append('pdfFile', pdf);
+    this.http
+      .post('http://localhost:8080/doctor/upload', formdata)
+      .subscribe((data) => console.log(data));
+  }
 }

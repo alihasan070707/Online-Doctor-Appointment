@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-set-schedule',
@@ -10,12 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class SetScheduleComponent implements OnInit {
   timeFrames: any = [];
   selectedTime: any = [];
-  doctorId: string = '12';
+  doctorId;
   isChecked: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    this.doctorId = localStorage.getItem('doctorToken');
+
     let startTime = 9;
     for (let i = 1; i <= 8; ++i) {
       let start_time;
@@ -55,5 +57,7 @@ export class SetScheduleComponent implements OnInit {
     this.http
       .post('http://localhost:8080/doctor/timeFrames', formData)
       .subscribe((data) => console.log(data));
+
+      this.router.navigate(['doctor-profile']);
   }
 }

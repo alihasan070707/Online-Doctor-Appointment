@@ -2,16 +2,21 @@
 
     <div>
 
-        {{ appointment.patientId.name }}
-        {{ appointment.id.startTime }}
-        {{ appointment.id.endTime }}
-        {{ appointment.id.date }}
+        {{appointment.patientName}}
+        {{ appointment.startTime }}
+        {{ appointment.endTime }}
+        {{ appointment.date }}
 
     </div>
     <div *ngIf="appointment">
         <button type="button" class="btn btn-primary" (click)="patientPrescriptions(appointment.patientId.id)">Prescriptoins</button>
         <button type="button" class="btn btn-secondary" (click)="cancelAppointment(appointment.id)">Cancel</button>
-        <button type="file" class="btn btn-warning" (click)="uploadPrescription(appointment.patientId.id)">upload Prescriptions</button>
+        <input type="file" id="file" (input)="uploadPrescription(appointment.patientId,$event)" />
+        <label for="file" class="btn-3">
+          <span>select</span>
+        </label>
+        <input type="file" name="file" id="file" class="inputfile" />
+<label for="file">Choose a file</label>
     </div>
 
 </div>

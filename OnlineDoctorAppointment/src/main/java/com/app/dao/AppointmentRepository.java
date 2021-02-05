@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.app.dto.AppointmentDto;
 import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
 import com.app.pojos.Patient;

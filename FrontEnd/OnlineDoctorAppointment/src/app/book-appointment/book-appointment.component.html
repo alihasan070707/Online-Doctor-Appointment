@@ -1,5 +1,18 @@
-<input class="date-style" type="date" (change)="datePicked($event)" name="date" />
-
+<app-header></app-header>
+<div class="d-flex justify-content-center">
+<div class="alert alert-warning text-center " role="alert">
+    Select A Date
+</div>
+</div>
+<div class= "date">
+    <input class="form-control" type="date" id="example-date-input" (change)="datePicked($event)" name="date"/>
+</div>
+ <!-- <input class="date-style" type="date" (change)="datePicked($event)" name="date" /> -->
+ <div class="d-flex justify-content-center">
+ <div class="alert alert-warning text-center " role="alert">
+    Select A Time Slot
+</div>
+ </div>
 <div class="Time-frame-div">
     <div class="time-frames" *ngFor="let timeframe of timeFrames">
         <button *ngIf="!timeframe.booked" class="time-frame-btn" value="{{ timeframe.startTime }}"

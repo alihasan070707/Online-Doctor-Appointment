@@ -6,6 +6,7 @@ public class DoctorCard {
 	private String name;
 	private String specialization;
 	private Integer fees;
+	private String picture;
 	public DoctorCard() {
 		super();
 	}
@@ -15,6 +16,16 @@ public class DoctorCard {
 		this.name = name;
 		this.specialization = specialization;
 		this.fees = fees;
+	}
+	
+	
+	public DoctorCard(Integer id, String name, String specialization, Integer fees, String picture) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.specialization = specialization;
+		this.fees = fees;
+		this.picture = picture;
 	}
 	public Integer getId() {
 		return id;
@@ -40,6 +51,7 @@ public class DoctorCard {
 	public void setFees(Integer fees) {
 		this.fees = fees;
 	}
+	
 	@Override
 	public String toString() {
 		return "DoctorCard [id=" + id + ", name=" + name + ", specialization=" + specialization + ", fees=" + fees

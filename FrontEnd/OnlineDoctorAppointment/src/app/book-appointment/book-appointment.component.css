@@ -1,40 +1,46 @@
-
-.Time-frame-div{
-    display: flex;
-    flex-wrap: wrap;
-    width: 80vw;
-    margin: auto;
-}
-.date-style{
-    margin-top: 10vh;
-    margin-left: 40vw;
-    margin-bottom: 60px;
-}
-.time-frames{
-    
-    display: inline;
-    width: 25%;
-}
-.time-frame-btn{
-    padding: 10px;
-    background-color: white;
-    border : 1px solid black;
-    border-radius: 3px;
-}
-.time-frame-btn-dis{
-    color:white;
-    padding: 10px;
-    background-color:grey;
-    border : 1px solid black;
-    border-radius: 3px;
+.Time-frame-div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80vw;
+  margin:auto;
+  margin-top: 30px;
 }
 
-.time-frame-btn:focus{
-    background-color:lightgreen;
-    color: white;
+.time-frames {
+  display: inline;
+  width: 25%;
 }
-.book-btn-style{
-    background-color: peachpuff !important;
-    color: black;
-    border: 1px solid white;
+.time-frame-btn {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+.time-frame-btn-dis {
+  color: white;
+  padding: 10px;
+  background-color: grey;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.time-frame-btn:focus {
+  background-color: lightgreen;
+  color: white;
+}
+.book-btn-style {
+  background-color: peachpuff !important;
+  color: black;
+  border: 1px solid white;
+}
+
+div.alert {
+  margin-top: 20px !important;
+  width: 600px;
+  align-items: center;
+}
+
+.date{
+    width:300px;
+    margin:auto auto;
 }

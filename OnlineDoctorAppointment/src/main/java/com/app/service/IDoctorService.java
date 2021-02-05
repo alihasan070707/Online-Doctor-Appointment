@@ -24,6 +24,7 @@ public interface IDoctorService {
 	List<DoctorCard> searchDoctorByAll(@Param("state") String state, @Param("city") String city, @Param("spec") String spec);	
 	Doctor getDoctor(Integer id);
 	boolean addProfileImage(MultipartFile profile, Integer patient_id);
+	boolean isNewDoctor(Integer id);
 	
 	//public void 
 }

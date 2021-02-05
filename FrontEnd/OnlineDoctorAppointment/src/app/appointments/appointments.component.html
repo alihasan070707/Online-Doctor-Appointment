@@ -1,28 +1,18 @@
 
+<div *ngFor="let appointment of appointments">
     <div class="appointment-container">
         <div class="appointment-card row">
-            <div class="col-5 appointment-block">
-            <label> name Length </label>
-            <label>8:00:00</label>
-            <label>9:00:00</label>
-            <label>45/45/45</label>
+            <div class="col-7 appointment-block">
+                <label> {{appointment.doctorName}} </label>
+                <label>{{ appointment.startTime }}</label>
+                <label>{{ appointment.endTime }}</label>
+                <label>{{ appointment.date }}</label>
             </div>
             <div class="col-3">
-            <button class="btn btn-warning">view</button>
-            <button class="btn btn-danger">cancel</button>
+                <button class="btn btn-warning">view</button>
+                <button class="btn btn-danger">cancel</button>
+            </div>
         </div>
-        </div>
-        <div class="appointment-card row">
-            <div class="col-5">
-            <label>name </label>
-            <label>8:00:00</label>
-            <label>9:00:00</label>
-            <label>45/45/45</label>
-        </div>
-        <div class="col-3">
-            <button class="btn btn-warning  ">view</button>
-            <button class="btn btn-danger">cancel</button>
-        </div>
-        </div>
-        
     </div>
+
+</div>
