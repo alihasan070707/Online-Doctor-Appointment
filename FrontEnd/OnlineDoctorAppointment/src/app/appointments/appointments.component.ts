@@ -15,7 +15,8 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.patientId = localStorage.getItem('patientToken');
-    this.http.get("http://localhost:8080/patient/appointments/?id"+this.patientId).subscribe(data => this.appointments = data);
+    this.http.get("http://localhost:8080/patient/appointments/?patientId="+this.patientId).subscribe(data => {this.appointments = data;
+    console.log(data);});
   }
 
 }

@@ -32,7 +32,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	public TimeFrameRepo timeDao;
 
 	@Override
-	public List<Appointment> findAllByPatientId(Integer patient_id) {
+	public List<Appointment> findAllByPatientId(Patient patient_id) {
 		
 		return appointmentDao.findAllByPatientId(patient_id);
 	}

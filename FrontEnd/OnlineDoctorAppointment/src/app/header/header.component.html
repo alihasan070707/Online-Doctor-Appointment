@@ -20,12 +20,12 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="#">Contact</a>
       </li>
-      <div *ngIf="!patientId || !doctorId">
+      <div *ngIf="!patientId && !doctorId">
       <li class="nav-item">
         <a class="nav-link btn btn-primary" type="button" (click)="signInButton()">Patient Login</a>
       </li>
     </div>
-    <div *ngIf="patientId || doctorId">
+    <div *ngIf="patientId!=null || doctorId!=null">
       <li class="nav-item">
         <a class="nav-link btn btn-primary" type="button" (click)="logoutButton()">Logout</a>
       </li>

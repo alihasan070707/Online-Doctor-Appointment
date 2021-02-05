@@ -12,7 +12,7 @@ export class BookAppointmentComponent implements OnInit {
   selectedTime: string;
   canBook: boolean = false;
   doctor;
-  patient = '1';
+  patient;
   timeFrame: number;
   status = '5';
   // var elem = JSON.parse(this.routeParams.get("elem"));
@@ -24,6 +24,7 @@ export class BookAppointmentComponent implements OnInit {
       this.routeParams.snapshot.paramMap.get('doctorId')
     );
     console.log(this.doctor);
+    this.patient = localStorage.getItem('patientToken');
   }
   datePicked(event) {
     console.log(event.target.value);

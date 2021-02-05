@@ -9,13 +9,15 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Patient extends Person {
 	/*
 	 * @OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL) private
 	 * List<Prescription> list = new ArrayList<Prescription>();
 	 */
-	
+	@JsonManagedReference
 	@OneToMany(mappedBy="patientId",cascade = CascadeType.PERSIST)
 	private List<Appointment> appointment = new ArrayList<Appointment>();
 
@@ -49,6 +51,15 @@ public class Patient extends Person {
 	
 	public void addAppointment(Appointment app) {
 		appointment.add(app);
+		app.setPatientId(this); 	
+	}
+	
+	public List<Appointment> getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(List<Appointment> appointment) {
+		this.appointment = appointment;
 	}
 
 	@Override

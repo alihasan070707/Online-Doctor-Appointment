@@ -1,90 +1,54 @@
 <head>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.css"
-  />
+  <link rel="stylesheet" type="text/css" href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.css" />
 </head>
 <div class="header">
-<div class="signup-form">
-  
-  <form action="" #patientForm="ngForm" (ngSubmit)="onSubmit(patientForm)">
-    <h2>Register</h2>
-    <!-- {{ patientForm.value | json }} -->
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        name="name"
-        placeholder="Enter name"
-        class="form-control"
-        ngModel
-      />
-    </div>
+  <div class="signup-form">
 
-    <div class="form-group">
-      <label for="number">Phone Number</label>
-      <input
-        type="text"
-        name="phoneNo"
-        placeholder="Phone number"
-        class="form-control"
-        ngModel
-      />
-    </div>
+    <form action="" #patientForm="ngForm" (ngSubmit)="onSubmit(patientForm)">
+      <h2>Register</h2>
 
-    <div class="form-group">
-      <label for="dob">Date of birth</label>
-      <input type="date" name="dob" class="form-control" ngModel />
-    </div>
-
-    <div class="form-group">
-      <label for="gender">Gender</label>
-      <select name="gender" id="gender" class="form-control" ngModel>
-        <option value="" selected>Select a gender</option>
-        <option *ngFor="let gender of genders">{{ gender }}</option>
-        <!-- <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option> -->
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email Id</label>
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter your email id"
-        class="form-control"
-        ngModel
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        placeholder="create password"
-        class="form-control"
-        ngModel
-      />
-    </div>
-    <div class="form-group">
-      <label for="photo">Photo</label>
-      <input
-        type="file"
-        class="form-control-file"
-        name="photo"
-        id="photo"
-        (change)="onFileSelect($event)"
-      />
-    </div>
-    <div class="form-group">
-      <input type="submit" value="Register" class="btn btn-success btn-lg btn-block" />
-      
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="Enter name" class="form-control" ngModel required />
       </div>
-    
-  </form>
-</div>
+
+      <div class="form-group">
+        <label for="number">Phone Number</label>
+        <input type="text" name="phoneNo" placeholder="Phone number" class="form-control" ngModel />
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of birth</label>
+        <input type="date" name="dob" class="form-control" ngModel />
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select name="gender" id="gender" class="form-control" ngModel>
+          <option value="" selected>Select a gender</option>
+          <option *ngFor="let gender of genders">{{ gender }}</option>
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Id</label>
+        <input type="email" name="email" placeholder="Enter your email id" class="form-control" ngModel />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="create password" class="form-control" ngModel />
+      </div>
+      <div class="form-group">
+        <label for="photo">Photo</label>
+        <input type="file" class="form-control-file" name="photo" id="photo" (change)="onFileSelect($event)" />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Register" class="btn btn-success btn-lg btn-block" />
+
+      </div>
+
+    </form>
+  </div>
 </div>
