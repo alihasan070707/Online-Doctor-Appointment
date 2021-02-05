@@ -30,6 +30,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dao.DoctorRepsitory;
 import com.app.dao.TimeFrameRepo;
+import com.app.dto.AppointmentDto;
+import com.app.emailService.EmailService;
 import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
 import com.app.pojos.Patient;
@@ -53,6 +55,9 @@ public class PatientController {
 	private TimeFrameRepo timeFrameDao;
 	@Autowired
 	private DoctorRepsitory docRepo;
+	
+	@Autowired
+	private EmailService notificationService;
 
 	@GetMapping("/login")
 	public String showPatientLoginPage() {
@@ -63,7 +68,9 @@ public class PatientController {
 	public ResponseEntity<?> loginPatient(@RequestParam String email, @RequestParam String password) {
 		Patient patient = service.getPatientDetails(email, password.toCharArray());
 		if (patient != null) {
+			notificationService.sendEmail();
 			return new ResponseEntity<>(patient.getId(),HttpStatus.OK);
+			
 		}
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
@@ -135,8 +142,8 @@ public class PatientController {
 
 	@GetMapping("/appointments")
 	public ResponseEntity<?> getAllAppointment(@RequestParam Patient patientId) {
-		
-		return new ResponseEntity<>(appService.findAllByPatientId(patientId), HttpStatus.OK);
+		List<AppointmentDto> appointment=appService.findAllByPatientId(patientId);
+		return new ResponseEntity<>(appointment, HttpStatus.OK);
 	}
 
 	@GetMapping("/downloadPrescription")

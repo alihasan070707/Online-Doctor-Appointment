@@ -1,7 +1,10 @@
+<div class=container>
+<div class="heading">Prescriptions</div>
 <div *ngFor="let prescription of prescriptions">
 
     <div (click)="downloadFile(prescription)" >
-        {{ prescription }}
+       <p class="btn btn-primary prescription">{{ prescription }}</p>
     </div>
     
+</div>
 </div>

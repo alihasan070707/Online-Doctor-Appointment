@@ -25,7 +25,7 @@ public class Appointment {
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="patient_id")
-	@JsonBackReference
+	@JsonBackReference(value="patient")
 	private Patient patientId;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)

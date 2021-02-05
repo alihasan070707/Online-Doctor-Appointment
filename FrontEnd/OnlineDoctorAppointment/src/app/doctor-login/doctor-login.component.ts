@@ -36,7 +36,17 @@ export class DoctorLoginComponent implements OnInit {
   createSession(data) {
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('doctorToken', data);
-    this.router.navigate(['doctor-profile']);
+    this.http.get('http://localhost:8080/doctor/displaySchedule?id='+data).subscribe((data)=>{
+      if(data)
+      {
+          this.router.navigate(['setSchedule']);
+      }
+      else
+      {
+        this.router.navigate(['doctor-profile']);
+      }
+    })
+    
   }
 
   redirectToRegisterDoc() {

@@ -101,6 +101,7 @@ public class DoctorServiceImpl implements IDoctorService {
 			}
 		}
 		doctor.setTimeSlots(timeframes);
+		doctor.setNew(false);
 		doctorDao.save(doctor);
 	}
 
@@ -172,6 +173,12 @@ public class DoctorServiceImpl implements IDoctorService {
 			return false;
 		}
 
+	}
+
+	@Override
+	public boolean isNewDoctor(Integer id) {
+		
+		return doctorDao.findById(id).get().isNew();
 	}
 	
 }

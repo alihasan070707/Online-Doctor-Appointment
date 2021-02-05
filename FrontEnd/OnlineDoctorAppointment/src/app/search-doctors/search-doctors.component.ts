@@ -18,32 +18,7 @@ export class SearchDoctorsComponent implements OnInit {
   spec;
   specs: any = [];
   doctors: any = [];
-  items = [
-    'ActionScript',
-    'Maharashtra',
-    'AppleScript',
-    'Asp',
-    'BASIC',
-    'C',
-    'C++',
-    'Clojure',
-    'COBOL',
-    'ColdFusion',
-    'Cycle',
-    'Erlang',
-    'Fortran',
-    'Groovy',
-    'Haskell',
-    'Java',
-    'JavaScript',
-    'Lisp',
-    'Perl',
-    'PHP',
-    'Python',
-    'Ruby',
-    'Scala',
-    'Scheme',
-  ];
+  
   constructor(private http: HttpClient, private route: Router) {}
 
   ngOnInit(): void {

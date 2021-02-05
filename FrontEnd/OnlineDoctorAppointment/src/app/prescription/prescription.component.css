@@ -1,0 +1,53 @@
+@font-face {
+  font-family: Raleway-SemiBold;
+  src: url("/assets/fonts/raleway/Raleway-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: Raleway-Bold;
+  src: url("/assets/fonts/raleway/Raleway-Bold.ttf");
+}
+
+@font-face {
+  font-family: Raleway-Black;
+  src: url("/assets/fonts/raleway/Raleway-Black.ttf");
+}
+
+.prescription {
+  margin-top: 10px;
+  
+}
+
+p{
+    text-align: center;
+}
+
+.heading {
+  font-size: 30px;
+  margin-top: 20px;
+  font-family: Georgia, serif;
+  color: #757575;
+  font-weight: 800;
+}
+
+
+
+.btn {
+  color: #303c6c ;
+  background-color: #d2fdff !important;
+  padding: 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  border: 2px solid white;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+    color: #d2fdff ;
+    text-decoration: none;
+    background-color: #303c6c !important;
+  }

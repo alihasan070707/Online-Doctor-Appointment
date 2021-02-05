@@ -19,7 +19,7 @@ public class Address {
 	private Integer Id;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "doctor_id")
-	@JsonBackReference
+	@JsonBackReference(value="doctor")
 	private Doctor doctorId;
 	@Column(length = 15)
 	private String state;

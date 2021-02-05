@@ -36,7 +36,9 @@ public interface DoctorRepsitory extends JpaRepository<Doctor, Integer>{
 		List<Doctor> searchDoctorByStateAndCity(@Param("state") String state, @Param("city") String city);
 		
 		@Query(value="select d from Doctor d where Id in (select doctorId from Address where state=:state AND city=:city) AND specialization=:spec")
-		List<Doctor> searchDoctorByAll(@Param("state") String state, @Param("city") String city, @Param("spec") String spec);	
+		List<Doctor> searchDoctorByAll(@Param("state") String state, @Param("city") String city, @Param("spec") String spec);
+		
+		Optional<Doctor> findById(Integer id);
 		
 		
 }

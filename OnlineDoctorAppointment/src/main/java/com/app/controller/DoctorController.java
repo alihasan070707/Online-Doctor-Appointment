@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.dto.AppointmentDto;
 import com.app.dto.DoctorCard;
 import com.app.dto.DoctorSearchParam;
 import com.app.dto.DoctorTimeSlots;
@@ -44,7 +45,7 @@ public class DoctorController {
 	}
 
 	@PostMapping("/upload")
-	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam Integer patientId) {
+	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam("patientId") Integer patientId) {
 		System.out.println("in upload prescription");
 		service.uploadPrescription(pdfFile, patientId);
 		return "Success";
@@ -133,7 +134,8 @@ public class DoctorController {
 	}
 	
 	@GetMapping("/appointments")
-	public List<Appointment> getAllAppointment(@RequestParam Doctor doctorId) {
+	public List<AppointmentDto> getAllAppointment(@RequestParam Doctor doctorId) {
+		
 		return appService.findAllByDoctorId(doctorId);
 	}
 	
@@ -169,6 +171,12 @@ public class DoctorController {
 	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId) {
 		appService.updateAppointmentStatus(appId, 4);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@GetMapping("/displaySchedule")
+	public boolean isNewDoctor(Integer id) {
+		
+		return service.isNewDoctor(id);
 	}
 	
 	
