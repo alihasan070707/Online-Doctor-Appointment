@@ -35,4 +35,10 @@ export class DocAppointmentComponent implements OnInit {
   patientPrescriptions(patientId) {
     this.router.navigate(['doctor-profile/previous-prescription',{patientId :patientId}]);
   }
+  uploadPrescription(patientId){
+      const formdata = new FormData();
+      formdata.append("patientId",patientId);
+      formdata.append("","");
+      this.http.post("http://localhost:8080/doctor/upload",formdata).subscribe(data=> console.log(data));
+    }
 }

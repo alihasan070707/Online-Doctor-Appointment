@@ -40,14 +40,13 @@ public class DoctorController {
 	private IAppointmentService appService;
 
 	public DoctorController() {
-		System.out.println("in doc ctor");
+		System.out.println("in doctor");
 	}
 
 	@PostMapping("/upload")
-	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam Integer patient_id) {
+	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam Integer patientId) {
 		System.out.println("in upload prescription");
-		service.uploadPrescription(pdfFile, patient_id);
-
+		service.uploadPrescription(pdfFile, patientId);
 		return "Success";
 	}
 

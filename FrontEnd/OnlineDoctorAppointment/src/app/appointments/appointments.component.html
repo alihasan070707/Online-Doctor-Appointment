@@ -1,3 +1,28 @@
-<div *ngFor="let appointment of appointments">
-    {{ appointment.id}}
-</div>
+
+    <div class="appointment-container">
+        <div class="appointment-card row">
+            <div class="col-5 appointment-block">
+            <label> name Length </label>
+            <label>8:00:00</label>
+            <label>9:00:00</label>
+            <label>45/45/45</label>
+            </div>
+            <div class="col-3">
+            <button class="btn btn-warning">view</button>
+            <button class="btn btn-danger">cancel</button>
+        </div>
+        </div>
+        <div class="appointment-card row">
+            <div class="col-5">
+            <label>name </label>
+            <label>8:00:00</label>
+            <label>9:00:00</label>
+            <label>45/45/45</label>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-warning  ">view</button>
+            <button class="btn btn-danger">cancel</button>
+        </div>
+        </div>
+        
+    </div>

@@ -1,0 +1,16 @@
+.appointment-container{
+    width: 100%;
+}
+.appointment-card{
+margin-left: 6vw;
+}
+.appointment-card:hover{
+    box-shadow: 5px 5px 5px 4px rgba(0, 0,0, .3);
+}
+label{
+    padding:  20px 15px;
+}
+button{
+    margin-top: 15px;
+    margin-left: 10px;
+}

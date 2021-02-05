@@ -41,3 +41,9 @@ a{
     background-color:#3e5b70;
     
 }
+.name-col{
+    width: 100px;
+}
+.appointment-block{
+    display: inline-block;
+}
