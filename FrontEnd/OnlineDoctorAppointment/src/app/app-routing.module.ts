@@ -18,6 +18,7 @@ import { DoctorProfileComponent } from './doctor-profile/doctor-profile.componen
 import { DocAppointmentComponent } from './doc-appointment/doc-appointment.component';
 import { SetScheduleComponent } from './set-schedule/set-schedule.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'searchdoctor', component: SearchDoctorsComponent },
   { path: 'setSchedule', component: SetScheduleComponent},
   { path: 'footer', component: FooterComponent},
+  { path:'aboutUs', component: AboutUsComponent},
 
   {
     path: 'patient-profile',

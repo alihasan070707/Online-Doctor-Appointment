@@ -14,11 +14,11 @@
         <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">About Us</a>
+        <a class="nav-link text-white" (click)="routeToAboutUs()">About Us</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Contact</a>
+        <a class="nav-link text-white">Contact</a>
       </li>
       <div *ngIf="!patientId && !doctorId">
       <li class="nav-item">

@@ -23,6 +23,7 @@ import { PrescriptionComponent } from './prescription/prescription.component';
 import { DocAppointmentComponent } from './doc-appointment/doc-appointment.component';
 import { SetScheduleComponent } from './set-schedule/set-schedule.component';
 import { AuthGuard } from './auth.guard';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AuthGuard } from './auth.guard';
     PrescriptionComponent,
     DocAppointmentComponent,
     SetScheduleComponent,
+    AboutUsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
   providers: [AuthGuard],

@@ -24,7 +24,9 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('doctorToken');
     this.router.navigate(['/']);
   }
-
+  routeToAboutUs(){
+    this.router.navigate(['aboutUs']);
+  }
   setIsLoggedIn(value) {
     this.isLoggedin = value;
   }
