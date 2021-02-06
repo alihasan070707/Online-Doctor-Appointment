@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { PatientRegisterService } from '../patient-register.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-patient-register',
@@ -17,7 +18,8 @@ export class PatientRegisterComponent implements OnInit {
   constructor(
     private _registerService: PatientRegisterService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private spinner:NgxSpinnerService
   ) {}
 
   ngOnInit(): void {}
@@ -38,6 +40,7 @@ export class PatientRegisterComponent implements OnInit {
     this.photo = <File>event.target.files[0];
   }
   onSubmit(myForm: NgForm) {
+    this.spinner.show();
     console.log(myForm.value);
 
     const formData = new FormData();
@@ -45,7 +48,11 @@ export class PatientRegisterComponent implements OnInit {
     formData.append('photo', this.photo, this.photo.name);
     this.http
       .post('http://localhost:8080/patient/register', formData)
+<<<<<<< HEAD
+      .subscribe((data) =>{ console.log(data) ; this.router.navigate(['patientLogin']);this.spinner.hide()});
+=======
       .subscribe((data) =>{ console.log(data) ;});
       this.router.navigate(['patientLogin']);
+>>>>>>> 3571fbbebf222cd8787a3f721ba5edfbe9be92bb
   }
 }
