@@ -49,10 +49,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SetScheduleComponent,
     AboutUsComponent,
     AdminComponent,
-    AdminLoginComponent,
-    NgxSpinnerModule,
+    AdminLoginComponent
+    
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule,NgxSpinnerModule],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
