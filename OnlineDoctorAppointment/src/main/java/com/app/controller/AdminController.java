@@ -29,13 +29,14 @@ public class AdminController {
 	
 	@GetMapping("/doctorList")
 	public ResponseEntity<?> getDoctorList() {
-		List<Doctor> doctors = docRepo.findAllByStatus(false);
+		List<Doctor> doctors = docRepo.findAllByIsVerified(false);
 		return new ResponseEntity<>(doctors,HttpStatus.OK);
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> adminLogin(@RequestParam String email, @RequestParam String password) {
-		Admin admin = adminRepo.findByEmailAndPassword(email, password).get();
+	public ResponseEntity<?> adminLogin(@RequestParam String email, @RequestParam String password)
+	{
+		Admin admin = adminRepo.findByEmailAndPassword(email, password.toCharArray()).get();
 		return new ResponseEntity<>(admin.getId(),HttpStatus.OK);
 	}
 }

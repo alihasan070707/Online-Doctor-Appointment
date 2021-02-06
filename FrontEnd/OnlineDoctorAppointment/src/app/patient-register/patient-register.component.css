@@ -54,3 +54,23 @@ body {
   cursor: pointer;
 }
 
+input:invalid {
+  border-color: red;
+}
+
+input:required:valid {
+  border-color: green;
+}
+
+select:invalid{
+  border-color: red;
+}
+
+select:required:valid {
+  border-color: green;
+}
+
+input:focus:invalid {
+  background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg") no-repeat 95% 50%;
+  background-size: 25px;
+}

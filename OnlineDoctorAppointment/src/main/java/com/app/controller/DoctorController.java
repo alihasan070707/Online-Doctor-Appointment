@@ -47,7 +47,7 @@ public class DoctorController {
 	}
 
 	@PostMapping("/upload")
-	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam("patientId") Integer patientId,@RequestParam Integer doctorId) {
+	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam("patientId") Integer patientId,@RequestParam("doctorId") Integer doctorId) {
 		System.out.println("in upload prescription");
 		service.uploadPrescription(pdfFile, patientId,doctorId);
 		return "Success";

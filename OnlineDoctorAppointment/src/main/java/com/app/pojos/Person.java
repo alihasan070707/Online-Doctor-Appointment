@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 
+import org.hibernate.annotations.ColumnTransformer;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
@@ -19,6 +20,7 @@ public class Person {
 	private Integer Id;
 	@Column(length = 20)
 	@NonNull
+	
 	private char[] password;
 	@Column(length = 20)
 	@NonNull
@@ -35,7 +37,7 @@ public class Person {
 	@Column(length = 15)
 	@NonNull
 	private String gender;
-	@NonNull
+	
 	private String picture;
 
 	public Person() {

@@ -76,7 +76,7 @@ export class BookAppointmentComponent implements OnInit {
       .subscribe((data) => {
         this.timeFrames = data;
       });
-      this.router.navigate(['patient-profile/appointments'])
+      this.router.navigate(['patient-profile/appointments']);
   }
 
   createSession(data) {

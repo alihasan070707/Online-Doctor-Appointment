@@ -45,6 +45,7 @@ export class PatientRegisterComponent implements OnInit {
     formData.append('photo', this.photo, this.photo.name);
     this.http
       .post('http://localhost:8080/patient/register', formData)
-      .subscribe((data) =>{ console.log(data) ; this.router.navigate(['patientLogin'])});
+      .subscribe((data) =>{ console.log(data) ;});
+      this.router.navigate(['patientLogin']);
   }
 }
