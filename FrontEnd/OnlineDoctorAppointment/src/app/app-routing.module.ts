@@ -19,6 +19,8 @@ import { DocAppointmentComponent } from './doc-appointment/doc-appointment.compo
 import { SetScheduleComponent } from './set-schedule/set-schedule.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent},
   { path:'aboutUs', component: AboutUsComponent},
 
+  {path: 'adminPage', component: AdminComponent},
+  {path: 'adminLogin', component: AdminLoginComponent},
   {
     path: 'patient-profile',
     component: PatientProfileComponent,

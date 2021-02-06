@@ -10,6 +10,7 @@ import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.NonNull;
 
 @MappedSuperclass
 public class Person {
@@ -17,18 +18,24 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
 	@Column(length = 20)
+	@NonNull
 	private char[] password;
 	@Column(length = 20)
+	@NonNull
 	private String name;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NonNull
 	private Date dob;
-	@Column(length = 30)
+	@Column(length = 30, unique = true)
+	@NonNull
 	private String email;
 	@Column(length = 10)
+	@NonNull
 	private String phoneNo;
 	@Column(length = 15)
+	@NonNull
 	private String gender;
-	
+	@NonNull
 	private String picture;
 
 	public Person() {
