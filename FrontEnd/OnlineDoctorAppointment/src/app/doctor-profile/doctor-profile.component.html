@@ -1,39 +1,62 @@
-
 <link href="/assets/fonts/fontawesome-5.0/css/fontawesome.css" rel="stylesheet">
 <link href="/assets/fonts/fontawesome-5.0/css/brands.css" rel="stylesheet">
 <link href="/assets/fonts/fontawesome-5.0/css/solid.css" rel="stylesheet">
 <app-header></app-header>
 <div class="side-bar-whole">
-  <div class="row">
-      <div class="col-3 side-bar">
-          <!-- <h3>Smaller div</h3> -->
-          <ul>
-          <div class="list-item">
-             <i class="fas fa-user-circle icon-style"></i> <li ><a routerLink="my-profile">My profile</a></li>
-          </div>
-          <div class="line"></div>
-          
-             <div class="list-item">
-             <i class="fas fa-calendar-check icon-style"></i> <li><a routerLink="doc-appointments">My appointments</a></li>
-             </div>
-             <div class="line"></div>
-             <div class="list-item">
-                <i class="fas fa-user-cog icon-style"></i><li><a routerLink="previous-priscription">Settings</a></li>
-             </div>
+    <div class="row">
+        <div class="col-3 side-bar">
+            <!-- <h3>Smaller div</h3> -->
+            <ul>
+                <div class="list-item">
+                    <i class="fas fa-user-circle icon-style"></i>
+                    <li><a routerLink="my-profile">My profile</a></li>
+                </div>
                 <div class="line"></div>
-             <div class="list-item">
-              <i class="fas fa-sign-out-alt icon-style"></i><li><a routerLink="logout" (click)="logout()">Logout</a></li>
-             </div>
-              <div class="line"></div>
-              
-      
-          </ul>
-      </div>
-      <div class="col-9">
-          <!-- <h3>Bigger div</h3> -->
-          <router-outlet>
 
-          </router-outlet>
-      </div>
-  </div>
+                <div class="list-item">
+                    <i class="fas fa-calendar-check icon-style"></i>
+                    <li><a routerLink="doc-appointments">My appointments</a></li>
+                </div>
+                <div class="line"></div>
+                <div class="list-item">
+                    <i class="fas fa-user-cog icon-style"></i>
+                    <li><a routerLink="previous-priscription">Settings</a></li>
+                </div>
+                <div class="line"></div>
+                <div class="list-item">
+                    <i class="fas fa-sign-out-alt icon-style"></i>
+                    <li><a  data-toggle="modal"
+                            data-target="#logMeOutModal">Logout</a></li>
+                </div>
+                <div class="line"></div>
+
+
+            </ul>
+        </div>
+        <div class="col-9">
+            <!-- <h3>Bigger div</h3> -->
+            <router-outlet>
+
+            </router-outlet>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="logMeOutModal" tabindex="-1" aria-labelledby="logMeOutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logMeOutModalLabel">Confirm Logout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" routerLink="logout" (click)="logout()">Logout</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
