@@ -92,7 +92,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				.sort((Appointment obj, Appointment obj2) -> obj.getId().getDate().compareTo(obj2.getId().getDate()));
 		appointments.forEach((Appointment obj) -> {
 			appointment.add(
-					new AppointmentDto(obj.getId().getId(), obj.getPatientId().getId(), 0, obj.getPatientId().getName(),
+					new AppointmentDto(obj.getAppId(), obj.getPatientId().getId(), 0, obj.getPatientId().getName(),
 							"abcd", obj.getId().getStartTime(), obj.getId().getEndTime(), obj.getId().getDate()));
 		});
 
