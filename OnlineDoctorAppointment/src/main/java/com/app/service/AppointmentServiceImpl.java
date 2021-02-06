@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.AppointmentRepository;
-import com.app.dao.DoctorRepsitory;
+import com.app.dao.DoctorRepository;
 import com.app.dao.PatientRepository;
 import com.app.dao.TimeFrameRepo;
 import com.app.dto.AppointmentDto;
@@ -28,7 +28,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	@Autowired
 	public AppointmentRepository appointmentDao;
 	@Autowired
-	public DoctorRepsitory doctorDao;
+	public DoctorRepository doctorDao;
 	@Autowired
 	public PatientRepository patientDao;
 	@Autowired
@@ -70,6 +70,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		System.out.println(appointment);
 
 		appointmentDao.save(appointment);
+		String patientEmail = patientDao.findById(patientId).get().getEmail();
+		notificationService.sendEmail(patientEmail,notificationService.bookSubject(),notificationService.bookBody());
 		/*
 		 * Optional<Patient> patient=patientdao.findById(patientId.getId());
 		 * if(patient.isPresent()) { Patient patientobj=patient.get();

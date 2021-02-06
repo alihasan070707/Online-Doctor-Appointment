@@ -71,3 +71,22 @@ body{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.input-style{
+	width: 90%;
+    height: 45px;
+    border-radius: 1px;
+    border: none;
+    margin-right: 0px;
+    padding-left: 5px;
+	margin-bottom: 30px;
+  border:1px solid black;
+}
+.input-cover{
+    width: 55%;
+    
+    height: 47px;
+    margin: auto;
+    border: 1px solid rgb(158, 156, 156);
+    border-radius: 5px;
+}

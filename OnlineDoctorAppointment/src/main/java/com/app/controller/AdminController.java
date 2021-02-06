@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dao.AdminRepository;
-import com.app.dao.DoctorRepsitory;
+import com.app.dao.DoctorRepository;
 import com.app.pojos.Admin;
 import com.app.pojos.Doctor;
 
@@ -22,7 +22,7 @@ import com.app.pojos.Doctor;
 @RequestMapping("/admin")
 public class AdminController {
 	@Autowired
-	private DoctorRepsitory docRepo;
+	private DoctorRepository docRepo;
 	@Autowired
 	private AdminRepository adminRepo;
 	
