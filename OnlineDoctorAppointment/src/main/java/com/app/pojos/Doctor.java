@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -19,18 +20,24 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class Doctor extends Person {
 	@Column(length = 20)
+	@NonNull
 	private String registrationNo;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NonNull
 	private Date registrationDate;
 	@Column(length = 30)
+	@NonNull
 	private String stateMedicalCouncil;
 	@Column(length = 30)
+	@NonNull
 	private String specialization;
 	@Column(length = 30)
+	@NonNull
 	private String qualification;
 	@OneToOne(mappedBy = "doctorId" , cascade = CascadeType.ALL)
 	@JsonManagedReference(value="doctor")
 	private Address address;
+	@NonNull
 	private Integer fees;
 	private boolean isNew=true;
 	
