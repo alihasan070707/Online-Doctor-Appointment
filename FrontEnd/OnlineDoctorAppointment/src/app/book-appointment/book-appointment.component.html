@@ -25,14 +25,14 @@
     </div>
 </div>
 
-<button *ngIf="canBook" class="btn btn-primary date-style book-btn-style" (click)="OnBookAppointment()"data-toggle="modal"
+<button *ngIf="canBook" class="btn btn-primary date-style book-btn-style" data-toggle="modal"
 data-target="#logMeInModal" >
     Book Appointment
 </button>
 <app-footer class="footer"></app-footer>
 <div class="modal" id="logMeInModal" tabindex="-1" aria-labelledby="logMeInModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content" *ngIf="!isLoggedIn">
             <div class="modal-header">
                 <h3 class="modal-title" id="logMeInModalLabel">Login</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="close">
@@ -40,12 +40,41 @@ data-target="#logMeInModal" >
                 </button>
             </div>
             <div class="modal-body">
-                <input type="text">
-                <input type="password">
+                <input
+              type="text"
+              [(ngModel)]="email"
+              name="email"
+              class="input-style"
+              placeholder="enter your email"
+              value=""
+            />
+                <input
+              type="password"
+              [(ngModel)]="password"
+              name="password"
+              class="input-style"
+              placeholder="enter your password"
+              value=""
+            />
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success">Login</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="loginButton()">Login</button>
                 <button type="button" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+        <div class="modal-content" *ngIf="isLoggedIn">
+            <div class="modal-header">
+                <h3 class="modal-title" id="logMeInModalLabel">Confirm Booking?</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                This will confirm your booking. Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="OnBookAppointment()" >Confirm</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
