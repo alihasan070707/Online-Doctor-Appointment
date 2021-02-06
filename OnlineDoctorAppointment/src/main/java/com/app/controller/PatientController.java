@@ -58,8 +58,8 @@ public class PatientController {
 	
 	
 	@GetMapping("/login")
-	public String showPatientLoginPage() {
-		return "/login";
+	public ResponseEntity<?> showPatientLoginPage() {
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@PostMapping("/login")
@@ -75,12 +75,12 @@ public class PatientController {
 	}
 
 	@GetMapping("/register")
-	public String showPatientRegisterPage() {
-		return "/register";
+	public ResponseEntity<?> showPatientRegisterPage() {
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@PostMapping("/register")
-	public String registerPatient(@RequestParam("data") String patientJson,
+	public ResponseEntity<?> registerPatient(@RequestParam("data") String patientJson,
 			@RequestParam("photo") MultipartFile photo) {
 		System.out.println(patientJson);
 		Patient patient = null;
@@ -88,18 +88,16 @@ public class PatientController {
 			patient = new ObjectMapper().readValue(patientJson, Patient.class);
 			System.out.println(patient);
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		patient.setPicture(photo.getOriginalFilename());
 		if (service.addPatient(patient)) {
 			service.addProfileImage(photo, patient.getId());
-			return "/somePage"; // need to be created
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
-		return "\"Success\"";
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@GetMapping("/prescriptions")
@@ -113,7 +111,7 @@ public class PatientController {
 	}
 
 	@PostMapping("/appointment")
-	public String addAppointment(@RequestParam Integer drId, @RequestParam Integer patientId,
+	public ResponseEntity<?> addAppointment(@RequestParam Integer drId, @RequestParam Integer patientId,
 			@RequestParam Integer timeFrame, @RequestParam Integer status) {
 		/*
 		 * System.out.println(appointment.getDrId());
@@ -121,7 +119,7 @@ public class PatientController {
 		 */
 		Patient patient=service.getPatient(patientId);
 		boolean getApp = appService.addAppointment(drId, patientId, timeFrame, status);
-		return "/somePage";
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@PostMapping("/time")
@@ -145,53 +143,6 @@ public class PatientController {
 		return new ResponseEntity<>(appointment, HttpStatus.OK);
 	}
 
-	@GetMapping("/downloadPrescription")
-	public ResponseEntity<InputStreamResource> getPrescription(@RequestParam String fileName) throws IOException {
-
-		System.out.println("in " + getClass().getName()+" getPrescription");
-		/*File fileObject = new File("D:/prescription/1/" + fileName);
-		Resource pdfFile = new FileSystemResource(fileObject);*/
-
-		/*HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.parseMediaType("application/pdf"));*/
-		/*
-		 * headers.add("Access-Control-Allow-Origin", "*");
-		 * headers.add("Access-Control-Allow-Methods", "GET, POST, PUT");
-		 * headers.add("Access-Control-Allow-Headers", "Content-Type");
-		 */
-		/*headers.add("Content-Disposition", "filename=" + fileName);*/
-		/*
-		 * headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
-		 * headers.add("Pragma", "no-cache"); headers.add("Expires", "0");
-		 */
-
-		/*headers.setContentLength(pdfFile.contentLength());
-		ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(
-				new InputStreamResource(pdfFile.getInputStream()), headers, HttpStatus.OK);
-		return response;*/
-
-//		File fileObject = new File("D:/prescription/1/" + fileName);
-//		Resource resource = new FileSystemResource(fileObject);
-//		return ResponseEntity.ok().contentType(MediaType.MULTIPART_FORM_DATA).body(resource);
-
-		/*Path pdfPath = Paths.get("D:/prescription/1/" + fileName);
-		byte[] pdf = Files.readAllBytes(pdfPath);
-		ByteArrayInputStream bis = new ByteArrayInputStream(pdf);
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Disposition", "inline; filename=citiesreport.pdf");
-
-		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
-				.body(new InputStreamResource(bis));*/
-	
-
-	/*
-	 * return ResponseEntity.ok()
-	 * .contentType(MediaType.parseMediaType(contentType))
-	 * .header(HttpHeaders.CONTENT_DISPOSITION,
-	 * "attachment; filename="" + resource.getFilename() + """) .body(resource);
-	 */
-		return null;
-	}
 	@GetMapping("/download")
 	public ResponseEntity<Object> downloadFile(@RequestParam String files) throws IOException
 	{

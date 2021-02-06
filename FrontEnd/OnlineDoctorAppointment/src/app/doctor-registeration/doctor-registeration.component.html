@@ -7,19 +7,20 @@
 <div class="header">
     <div class="signup-form">
 
-
-
         <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" method="POST">
             <h2>Register</h2>
+            
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" ngModel name="name" id="name" placeholder="Enter name">
+                    <input type="text" class="form-control" ngModel name="name" id="name" placeholder="Enter name"
+                        required minlength="4" #name="ngModel">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">Email address</label>
                     <input type="email" class="form-control" ngModel name="email" id="email"
-                        aria-describedby="emailHelp" placeholder="Enter email">
+                        aria-describedby="emailHelp" placeholder="Enter email" required email>
 
                 </div>
             </div>
@@ -27,19 +28,19 @@
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" ngModel name="password" id="password"
-                        placeholder=" EnterPassword" aria-describedby="passwordHelpBlock">
+                        placeholder=" EnterPassword" aria-describedby="passwordHelpBlock" required minlength="5">
 
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="dob">Date of Birth</label>
-                    <input type="date" class="form-control" ngModel name="dob" id="dob">
+                    <input type="date" class="form-control" ngModel name="dob" id="dob" ngModel required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="gender">Gender</label>
-                    <select name="gender" id="gender" class="form-control" ngModel>
+                    <select name="gender" id="gender" class="form-control" ngModel required>
                         <option value="" selected>Select a gender</option>
                         <option *ngFor="let gender of genders">{{ gender }}</option>
 
@@ -49,71 +50,74 @@
                 <div class="form-group col-md-6">
                     <label for="phoneNo">Phone No</label>
                     <input type="text" class="form-control" ngModel name="phoneNo" id="phoneNo"
-                        placeholder="Enter Phone No">
+                        placeholder="Enter Phone No" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="location">Address</label>
-                <input type="text" class="form-control" ngModel name="location" id="location"
-                    placeholder="1234 Main St">
+                <input type="text" class="form-control" ngModel name="location" id="location" placeholder="1234 Main St"
+                    required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="city">City</label>
-                    <input type="text" class="form-control" ngModel name="city" id="city" placeholder="Enter city">
+                    <input type="text" class="form-control" ngModel name="city" id="city" placeholder="Enter city"
+                        required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="state">State</label>
-                    <input type="text" class="form-control" ngModel name="state" id="state" placeholder="Enter state">
+                    <input type="text" class="form-control" ngModel name="state" id="state" placeholder="Enter state"
+                        required>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputZip">Pincode</label>
                     <input type="text" class="form-control" ngModel name="pincode" id="inputZip"
-                        placeholder="Enter pincode">
+                        placeholder="Enter pincode" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="registrationNo">Registration Number</label>
                     <input type="text" class="form-control" ngModel name="registrationNo" id="registrationNo"
-                        placeholder="Enter Registration Number">
+                        placeholder="Enter Registration Number" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="registrationDate">Registration Date</label>
-                    <input type="date" class="form-control" ngModel name="registrationDate" id="registrationDate">
+                    <input type="date" class="form-control" ngModel name="registrationDate" id="registrationDate"
+                        required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="stateMedicalCouncil">State Medical Council</label>
                 <input type="text" class="form-control" ngModel name="stateMedicalCouncil" id="stateMedicalCouncil"
-                    placeholder="Enter State Medical Council">
+                    placeholder="Enter State Medical Council" required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="qualification">Qualification</label>
                     <input type="text" class="form-control" ngModel name="qualification" id="qualification"
-                        placeholder="Enter qualification">
+                        placeholder="Enter qualification" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="specialization">Specialization</label>
                     <input type="text" class="form-control" ngModel name="specialization" id="specialization"
-                        placeholder="Enter specialization">
+                        placeholder="Enter specialization" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="fees">Visiting Charges</label>
                     <input type="number" class="form-control" ngModel name="fees" id="fees"
-                        placeholder="Enter Visiting charges">
+                        placeholder="Enter Visiting charges" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="photo">Photo</label>
                     <input type="file" class="form-control-file" name="photo" id="photo"
-                        (change)="onFileSelect($event)">
+                        (change)="onFileSelect($event)" required>
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-success btn-lg btn-block" />
+                <button type="submit" value="Register" class="btn btn-success btn-lg btn-block"[disabled]="myForm.invalid" >Register</button>
             </div>
         </form>
     </div>

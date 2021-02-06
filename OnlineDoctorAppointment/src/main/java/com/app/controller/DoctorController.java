@@ -47,25 +47,25 @@ public class DoctorController {
 	}
 
 	@PostMapping("/upload")
-	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam("patientId") Integer patientId,@RequestParam Integer doctorId) {
+	public ResponseEntity<?> uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam("patientId") Integer patientId,@RequestParam("doctorId") Integer doctorId) {
 		System.out.println("in upload prescription");
 		service.uploadPrescription(pdfFile, patientId,doctorId);
-		return "Success";
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@GetMapping("/register")
-	public String showSignUp() {
-		return "/register";
+	public ResponseEntity<?> showSignUp() {
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PostMapping("/register")
-	public String processSignUp(@RequestParam("data") String doctorJson, @RequestParam("file") MultipartFile photo) {
+	public ResponseEntity<?> processSignUp(@RequestParam("data") String doctorJson, @RequestParam("file") MultipartFile photo) {
 		Doctor doctor = null;
 
 		try {
 			doctor = new ObjectMapper().readValue(doctorJson, Doctor.class);
 			
-		} catch (JsonMappingException e) { // TODO Auto-generated catch block
+		} catch (JsonMappingException e) { 
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
@@ -73,17 +73,17 @@ public class DoctorController {
 		doctor.setPicture(photo.getOriginalFilename());
 		if (service.registerDoc(doctor)) {
 			service.addProfileImage(photo, doctor.getId());
-			return "/somePage"; // need to be created
+			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		
 		System.out.println(doctor.getAddress());
 		
-		return "\"Success\"";
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@GetMapping("/login")
-	public String showSignIn() {
-		return "/login";
+	public ResponseEntity<?> showSignIn() {
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PostMapping("/login")
@@ -96,22 +96,22 @@ public class DoctorController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-	public String updateAppointment(@RequestParam Integer appointmentId, @RequestParam int status) {
+	public ResponseEntity<?> updateAppointment(@RequestParam Integer appointmentId, @RequestParam int status) {
 
 		appService.updateAppointmentStatus(appointmentId, status);
 
-		return "Success";
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PostMapping("/timeFrames")
-	public String setTimeFrames(@RequestParam Integer doctor_id,@RequestParam List<String> times) {
+	public ResponseEntity<?> setTimeFrames(@RequestParam Integer doctor_id,@RequestParam List<String> times) {
 		System.out.println(doctor_id);
 		System.out.println(times);
 		
 		
 		 service.setTimeFrames(times, doctor_id); 
 
-		return "/someting";
+		return new ResponseEntity<>(HttpStatus.OK);
 
 	}
 	@GetMapping("/searchCity")
@@ -148,7 +148,7 @@ public class DoctorController {
 		try {
 			doctorcards = new ObjectMapper().readValue(search, DoctorSearchParam.class);
 
-		} catch (JsonMappingException e) { // TODO Auto-generated catch block
+		} catch (JsonMappingException e) { 
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
