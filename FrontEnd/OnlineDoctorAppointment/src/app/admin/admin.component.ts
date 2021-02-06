@@ -13,20 +13,14 @@ doctors:any = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.pageLoad();
+    this.http.get("http://localhost:8080/admin/doctorList").subscribe(data => this.doctors = data);
   }
 
   acceptDoctor(doctorId) {
-    this.http.get("http://localhost:8080/admin/acceptDoctor/?doctorId="+doctorId).subscribe(data => console.log(data));
-    this.pageLoad();
+    this.http.get("http://localhost:8080/admin/acceptDoctor/?doctorId="+doctorId).subscribe(data => {console.log(data); this.ngOnInit();});
   }
 
   rejectDoctor(doctorId) {
-    this.http.get("http://localhost:8080/admin/rejectDoctor/?doctorId="+doctorId).subscribe(data => console.log(data));
-    this.pageLoad();
-  }
-
-  pageLoad() {
-    this.http.get("http://localhost:8080/admin/doctorList").subscribe(data => this.doctors = data);
+    this.http.get("http://localhost:8080/admin/rejectDoctor/?doctorId="+doctorId).subscribe(data => {console.log(data); this.ngOnInit();});
   }
 }
