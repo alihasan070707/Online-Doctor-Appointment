@@ -16,6 +16,10 @@ export class BookAppointmentComponent implements OnInit {
   timeFrame: number;
   status = '5';
   // var elem = JSON.parse(this.routeParams.get("elem"));
+  isLoggedIn:boolean =false;
+  email:string;
+  password:string;
+  message:string;
 
   constructor(private http: HttpClient, private routeParams: ActivatedRoute) {}
 
@@ -25,6 +29,11 @@ export class BookAppointmentComponent implements OnInit {
     );
     console.log(this.doctor);
     this.patient = localStorage.getItem('patientToken');
+
+    if (localStorage.getItem('patientToken')!=null){
+      this.isLoggedIn = true;
+    }
+
   }
   datePicked(event) {
     console.log(event.target.value);
@@ -54,4 +63,29 @@ export class BookAppointmentComponent implements OnInit {
       .post('http://localhost:8080/patient/appointment', formData)
       .subscribe((data) => (this.timeFrames = data));
   }
+
+  createSession(data) {
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('patientToken', data);
+  }
+
+  loginButton(){
+    const formData = new FormData();
+    formData.append('email', this.email);
+    formData.append('password', this.password);
+    console.log(this.email);
+    console.log(this.password);
+    this.http
+      .post('http://localhost:8080/patient/login', formData)
+      .subscribe((data) => {
+        if (data != null) {
+          this.createSession(data);
+          this.isLoggedIn = true;
+        }
+        else {
+          this.message = '*Please check your userid and password';
+        }
+      });
+  }
+  
 }
