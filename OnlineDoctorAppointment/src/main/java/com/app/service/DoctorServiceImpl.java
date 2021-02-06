@@ -67,17 +67,18 @@ public class DoctorServiceImpl implements IDoctorService {
 	 * Optional<Appointment> appointment = appointmentDao.findById(appointmentId);
 	 * if(appointment.isPresent()) appointment.get().setStatus(status); }
 	 */
-	public void uploadPrescription(MultipartFile pdfFile, Integer patient_id) {
+	public void uploadPrescription(MultipartFile pdfFile, Integer patientId,Integer doctorId) {
 
-		File dir = new File("D:/prescription/" + patient_id);
+		File dir = new File("D:/prescription/" + patientId);
 		if (!dir.exists()) {
 			dir.mkdir();
 		}
+		Doctor doctor = doctorDao.findById(doctorId).get();
 
 		try {
 
-			FileOutputStream file = new FileOutputStream(new File("D:/prescription/" + patient_id + "/"
-					+ LocalDateTime.now().hashCode() + "" + pdfFile.getOriginalFilename()));
+			FileOutputStream file = new FileOutputStream(new File("D:/prescription/" + patientId + "/"
+					+ doctor.getName() + "" +LocalDate.now().toString() + pdfFile.getOriginalFilename()));
 			byte[] pres = pdfFile.getBytes();
 			file.write(pres);
 			file.close();

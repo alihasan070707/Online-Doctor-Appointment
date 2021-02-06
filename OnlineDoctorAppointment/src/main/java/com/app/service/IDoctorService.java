@@ -13,7 +13,7 @@ import com.app.pojos.Doctor;
 public interface IDoctorService {
 	public boolean registerDoc (Doctor newDoctor);
 	public Doctor authenticateLogin (String email, char[] password);
-	public void uploadPrescription(MultipartFile Pdffile,Integer patient_id);
+	public void uploadPrescription(MultipartFile Pdffile,Integer patient_id, Integer doctorId);
 
 	/* public void updateAppointmentStatus(Integer appointmentId,int status); */
 	public void setTimeFrames(List<String> times,Integer doctor_id);

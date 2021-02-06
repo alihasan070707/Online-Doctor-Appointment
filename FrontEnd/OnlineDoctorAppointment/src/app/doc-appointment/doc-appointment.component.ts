@@ -39,11 +39,12 @@ export class DocAppointmentComponent implements OnInit {
       { patientId: patientId },
     ]);
   }
-  uploadPrescription(patientId, event) {
+  uploadPrescription(patientId,doctorId,event) {
     let pdf = event.target.files[0];
     console.log(patientId);
     const formdata = new FormData();
     formdata.append('patientId', patientId);
+    formdata.append('doctorId',doctorId);
     formdata.append('pdfFile', pdf);
     this.http
       .post('http://localhost:8080/doctor/upload', formdata)

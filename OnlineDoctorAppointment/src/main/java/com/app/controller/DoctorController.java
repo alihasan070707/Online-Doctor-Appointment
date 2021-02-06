@@ -40,17 +40,16 @@ public class DoctorController {
 	private IDoctorService service;
 	@Autowired
 	private IAppointmentService appService;
-	@Autowired
-	private EmailService notificationService;
+	
 
 	public DoctorController() {
 		System.out.println("in doctor");
 	}
 
 	@PostMapping("/upload")
-	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam("patientId") Integer patientId) {
+	public String uploadPrescription(@RequestParam("pdfFile") MultipartFile pdfFile, @RequestParam("patientId") Integer patientId,@RequestParam Integer doctorId) {
 		System.out.println("in upload prescription");
-		service.uploadPrescription(pdfFile, patientId);
+		service.uploadPrescription(pdfFile, patientId,doctorId);
 		return "Success";
 	}
 
