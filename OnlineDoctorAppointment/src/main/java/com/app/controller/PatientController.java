@@ -68,7 +68,7 @@ public class PatientController {
 	public ResponseEntity<?> loginPatient(@RequestParam String email, @RequestParam String password) {
 		Patient patient = service.getPatientDetails(email, password.toCharArray());
 		if (patient != null) {
-			notificationService.sendEmail();
+			/* notificationService.sendEmail(); */
 			return new ResponseEntity<>(patient.getId(),HttpStatus.OK);
 			
 		}
@@ -89,6 +89,7 @@ public class PatientController {
 		try {
 			patient = new ObjectMapper().readValue(patientJson, Patient.class);
 			System.out.println(patient);
+			notificationService.sendEmail(patient.getEmail(),notificationService.registerSubject(),notificationService.registerBody());
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,6 +122,8 @@ public class PatientController {
 		 * System.out.println(appointment.getDrId());
 		 * System.out.println(appointment.getPatientId());
 		 */
+		Patient patient=service.getPatient(patientId);
+		notificationService.sendEmail(patient.getEmail(),notificationService.bookSubject(),notificationService.bookBody());
 		boolean getApp = appService.addAppointment(drId, patientId, timeFrame, status);
 		return "/somePage";
 	}
@@ -215,7 +218,9 @@ public class PatientController {
 	}
 	
 	@GetMapping("/cancelAppointment")
-	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId) {
+	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId,@RequestParam Integer patientId) {
+		Patient patient=service.getPatient(patientId);
+		notificationService.sendEmail(patient.getEmail(),notificationService.cancelSubject(),notificationService.cancelBody());
 		appService.updateAppointmentStatus(appId, 3);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

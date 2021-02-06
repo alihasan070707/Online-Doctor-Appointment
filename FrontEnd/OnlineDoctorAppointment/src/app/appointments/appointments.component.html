@@ -1,5 +1,4 @@
-
-<div *ngFor="let appointment of appointments">
+<div *ngFor="let appointment of appointments;index as i;">
     <div class="appointment-container">
         <div class="appointment-card row">
             <div class="col-7 appointment-block">
@@ -9,12 +8,15 @@
                 <label>{{ appointment.date }}</label>
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#appointmentModal">View</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelAppointmentModal">Cancel</button>
+                <button type="button" class="btn btn-warning" data-toggle="modal"
+                    [attr.data-target]="'#view'+i">View</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal"
+                    [attr.data-target]="'#cancel'+i">Cancel</button>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+    <div class="modal fade" [attr.id]="'view'+i" tabindex="-1" aria-labelledby="appointmentModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -37,7 +39,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="cancelAppointmentModal" tabindex="-1" aria-labelledby="cancelAppointmentModalLabel" aria-hidden="true">
+    <div class="modal fade" [attr.id]="'cancel'+i" tabindex="-1" aria-labelledby="cancelAppointmentModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -50,11 +53,11 @@
                     <p>Are you sure want to cancel the appointment with Dr. {{ appointment.doctorName }}?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" (click)="cancelAppointment()" data-dismiss="modal">Cancel appointment</button>
-                    <button type="button" class="btn btn-light" data-dismiss="modal" >Close</button>
+                    <button type="button" class="btn btn-danger" (click)="cancelAppointment(appointment.id)"
+                        data-dismiss="modal">Cancel appointment</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

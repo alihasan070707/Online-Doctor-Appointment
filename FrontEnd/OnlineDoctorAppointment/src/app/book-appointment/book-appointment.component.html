@@ -8,12 +8,12 @@
     <input class="form-control" type="date" id="example-date-input" (change)="datePicked($event)" name="date"/>
 </div>
  <!-- <input class="date-style" type="date" (change)="datePicked($event)" name="date" /> -->
- <div class="d-flex justify-content-center">
- <div class="alert alert-warning text-center " role="alert">
-    Select A Time Slot
-</div>
- </div>
-<div class="Time-frame-div">
+ <div *ngIf="selectedDate" class="d-flex justify-content-center">
+    <div class="alert alert-warning text-center " role="alert">
+       Select A Time Slot
+   </div>
+    </div>
+<div class="Time-frame-div ">
     <div class="time-frames" *ngFor="let timeframe of timeFrames">
         <button *ngIf="!timeframe.booked" class="time-frame-btn" value="{{ timeframe.startTime }}"
             (click)="OnTimeSelect($event)" name="{{timeframe.id}}">
@@ -24,11 +24,16 @@
         </button>
     </div>
 </div>
-
-<button *ngIf="canBook" class="btn btn-primary date-style book-btn-style" data-toggle="modal"
+<div class="row">
+<div class="col-3"></div>
+<div class="col-6 d-flex justify-content-center">
+<button *ngIf="canBook" class="btn btn-primary date-style book-btn-style " data-toggle="modal"
 data-target="#logMeInModal" >
     Book Appointment
 </button>
+</div>
+<div class="col-3"></div>
+</div>
 <app-footer class="footer"></app-footer>
 <div class="modal" id="logMeInModal" tabindex="-1" aria-labelledby="logMeInModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

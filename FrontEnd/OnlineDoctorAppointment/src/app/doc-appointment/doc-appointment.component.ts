@@ -20,7 +20,7 @@ export class DocAppointmentComponent implements OnInit {
   }
   cancelAppointment(appId) {
     this.http
-      .get('http://localhost:8080/doctor/cancelAppointment/?appId=' + appId)
+      .get('http://localhost:8080/doctor/cancelAppointment/?appId=' + appId+'&id='+this.id)
       .subscribe((data) => console.log(data));
     this.pageLoad();
   }
