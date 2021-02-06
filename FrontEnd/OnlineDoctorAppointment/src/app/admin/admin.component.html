@@ -8,8 +8,8 @@
                 <label>State Medical Council:</label><label>{{ doctor.stateMedicalCouncil }}</label>
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-warning">Accept</button>
-                <button type="button" class="btn btn-danger">Reject</button>
+                <button type="button" class="btn btn-warning" (click)=acceptDoctor(doctor.id)>Accept</button>
+                <button type="button" class="btn btn-danger" (click)=rejectDoctor(doctor.id)>Reject</button>
             </div>
         </div>
     </div>
