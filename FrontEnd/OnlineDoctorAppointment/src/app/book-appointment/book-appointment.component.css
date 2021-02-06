@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 80vw;
-  margin:auto;
+  margin: auto;
   margin-top: 30px;
 }
 
@@ -40,7 +40,11 @@ div.alert {
   align-items: center;
 }
 
-.date{
-    width:300px;
-    margin:auto auto;
+.date {
+  width: 300px;
+  margin: auto auto;
+}
+
+body{
+  min-height: 100%;
 }
