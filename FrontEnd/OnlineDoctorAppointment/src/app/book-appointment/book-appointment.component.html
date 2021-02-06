@@ -25,6 +25,28 @@
     </div>
 </div>
 
-<button *ngIf="canBook" class="btn btn-primary date-style book-btn-style" (click)="OnBookAppointment()">
+<button *ngIf="canBook" class="btn btn-primary date-style book-btn-style" (click)="OnBookAppointment()"data-toggle="modal"
+data-target="#logMeInModal" >
     Book Appointment
 </button>
+
+<div class="modal" id="logMeInModal" tabindex="-1" aria-labelledby="logMeInModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="logMeInModalLabel">Login</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text">
+                <input type="password">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Login</button>
+                <button type="button" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
+</div>
