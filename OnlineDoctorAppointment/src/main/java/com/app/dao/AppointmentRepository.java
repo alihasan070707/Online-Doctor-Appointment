@@ -11,10 +11,10 @@ import com.app.pojos.Patient;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
 	
-	List<Appointment> findAllByPatientId(Patient patient_id);
+	List<Appointment> findAllByPatientIdAndStatus(Patient patient_id,Integer status);
 	
 	
-	List<Appointment> findAllByDrId(Doctor doctor_id);
+	List<Appointment> findAllByDrIdAndStatus(Doctor doctor_id,Integer status);
 	
 	void deleteById(Integer appointmentId);
 	

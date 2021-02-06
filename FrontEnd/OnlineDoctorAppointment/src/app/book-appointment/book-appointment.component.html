@@ -9,9 +9,15 @@
 </div>
  <!-- <input class="date-style" type="date" (change)="datePicked($event)" name="date" /> -->
  <div *ngIf="selectedDate" class="d-flex justify-content-center">
-    <div class="alert alert-warning text-center " role="alert">
+    <div *ngIf ="timeFrames.length == 0">
+        <div class="alert alert-danger text-center" role = "alert">if your seeing this the date or timeslots are not available
+            try selecting another date
+        </div>
+    </div>
+    <div *ngIf ="timeFrames.length != 0" class="alert alert-warning text-center " role="alert">
        Select A Time Slot
    </div>
+    
     </div>
 <div class="Time-frame-div ">
     <div class="time-frames" *ngFor="let timeframe of timeFrames">

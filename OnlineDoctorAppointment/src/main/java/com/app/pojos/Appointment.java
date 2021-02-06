@@ -46,6 +46,9 @@ public class Appointment {
 	public Doctor getDrId() {
 		return drId;
 	}
+	public Integer getAppId() {
+			return this.Id;
+	}
 	public void setDrId(Doctor drId) {
 		this.drId = drId;
 	}

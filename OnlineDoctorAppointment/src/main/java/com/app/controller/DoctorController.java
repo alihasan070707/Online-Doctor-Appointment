@@ -171,9 +171,7 @@ public class DoctorController {
 	}
 	
 	@GetMapping("/cancelAppointment")
-	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId,@RequestParam Integer id) {
-		Doctor doctor=new Doctor(id);
-		notificationService.sendEmail(doctor.getEmail(),notificationService.cancelSubject(),notificationService.cancelBody());
+	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId) {
 		appService.updateAppointmentStatus(appId, 4);
 		
 		return new ResponseEntity<>(HttpStatus.OK);

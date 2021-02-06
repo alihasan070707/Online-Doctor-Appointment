@@ -2,6 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PatientRegisterService } from '../patient-register.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-register',
@@ -14,7 +15,8 @@ export class PatientRegisterComponent implements OnInit {
   patientObj: any;
   constructor(
     private _registerService: PatientRegisterService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -42,6 +44,6 @@ export class PatientRegisterComponent implements OnInit {
     formData.append('photo', this.photo, this.photo.name);
     this.http
       .post('http://localhost:8080/patient/register', formData)
-      .subscribe((data) => console.log(data));
+      .subscribe((data) =>{ console.log(data) ; this.router.navigate(['patientLogin'])});
   }
 }

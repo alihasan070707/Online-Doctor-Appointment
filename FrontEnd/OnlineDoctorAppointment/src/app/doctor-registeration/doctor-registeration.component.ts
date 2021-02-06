@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Doctor } from '../doctorModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-registeration',
@@ -14,7 +15,7 @@ export class DoctorRegisterationComponent implements OnInit {
   doctor:Doctor;
   genders = ['Male', 'Female', 'Other'];
   photo:File=null;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -36,6 +37,7 @@ export class DoctorRegisterationComponent implements OnInit {
     const formData = new FormData();
     formData.append('data', JSON.stringify(doctor));
     formData.append('file', this.photo, this.photo.name);
-    this.http.post("http://localhost:8080/doctor/register", formData).subscribe(data => console.log(data));
+    this.http.post("http://localhost:8080/doctor/register", formData).subscribe(data => {console.log(data);
+    this.router.navigate(['patientLogin'])});
   }
 }

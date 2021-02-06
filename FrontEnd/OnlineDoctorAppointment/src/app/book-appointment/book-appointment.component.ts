@@ -17,6 +17,7 @@ export class BookAppointmentComponent implements OnInit {
   timeFrame: number;
   status = '5';
   selectedDate;
+  errorMsg:string;
   // var elem = JSON.parse(this.routeParams.get("elem"));
   isLoggedIn:boolean =false;
   email:string;
@@ -25,7 +26,7 @@ export class BookAppointmentComponent implements OnInit {
   
   @ViewChild(HeaderComponent) header:HeaderComponent;
 
-  constructor(private http: HttpClient, private routeParams: ActivatedRoute) {}
+  constructor(private http: HttpClient, private routeParams: ActivatedRoute,private router:Router) {}
 
   ngOnInit(): void {
     this.doctor = JSON.parse(
@@ -48,7 +49,9 @@ export class BookAppointmentComponent implements OnInit {
     formData.append('date', event.target.value);
     this.http
       .post('http://localhost:8080/patient/time', formData)
-      .subscribe((data) => (this.timeFrames = data));
+      .subscribe((data) => {this.timeFrames = data
+        
+      });
   }
   OnTimeSelect(event) {
     this.selectedTime = event.target.value;
@@ -70,8 +73,10 @@ export class BookAppointmentComponent implements OnInit {
     console.log(this.status);
     this.http
       .post('http://localhost:8080/patient/appointment', formData)
-      .subscribe((data) => (this.timeFrames = data));
-
+      .subscribe((data) => {
+        this.timeFrames = data;
+      });
+      this.router.navigate(['patient-profile/appointments'])
   }
 
   createSession(data) {
@@ -93,11 +98,13 @@ export class BookAppointmentComponent implements OnInit {
           this.createSession(data);
           this.isLoggedIn = true;
           this.header.ngOnInit();
+          
         }
         else {
           this.message = '*Please check your userid and password';
         }
       });
   }
+  
   
 }

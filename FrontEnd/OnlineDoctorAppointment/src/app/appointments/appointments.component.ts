@@ -21,12 +21,11 @@ export class AppointmentsComponent implements OnInit {
     this.http
       .get(
         'http://localhost:8080/patient/cancelAppointment/?appId=' +
-          appId +
-          '&id=' +
-          this.patientId
+          appId
       )
-      .subscribe((data) => console.log(data));
-    this.pageLoad();
+      .subscribe((data) => {
+        console.log(data); this.pageLoad(); });
+   
   }
   pageLoad() {
     this.http
