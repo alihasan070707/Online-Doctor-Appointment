@@ -13,6 +13,7 @@ export class PatientRegisterComponent implements OnInit {
   genders = ['Male', 'Female', 'Other'];
   photo: File = null;
   patientObj: any;
+  
   constructor(
     private _registerService: PatientRegisterService,
     private http: HttpClient,
