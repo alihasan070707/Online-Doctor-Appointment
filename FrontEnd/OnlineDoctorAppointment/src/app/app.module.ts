@@ -26,6 +26,7 @@ import { AuthGuard } from './auth.guard';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AboutUsComponent,
     AdminComponent,
     AdminLoginComponent,
+    NgxSpinnerModule,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,NgSelectModule],
   providers: [AuthGuard],
