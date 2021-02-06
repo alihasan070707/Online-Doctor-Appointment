@@ -1,5 +1,7 @@
 <div *ngFor="let appointment of appointments; index as i;">
-
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box">
+        <div class="loader"></div>  
+      </ngx-spinner>
     <div class="appointment-container">
         <div class="appointment-card row">
             <div class="col-6 appointment-block">

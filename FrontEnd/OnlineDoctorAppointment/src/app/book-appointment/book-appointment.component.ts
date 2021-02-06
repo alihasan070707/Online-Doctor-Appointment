@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
@@ -26,7 +27,8 @@ export class BookAppointmentComponent implements OnInit {
   
   @ViewChild(HeaderComponent) header:HeaderComponent;
 
-  constructor(private http: HttpClient, private routeParams: ActivatedRoute,private router:Router) {}
+  constructor(private http: HttpClient, private routeParams: ActivatedRoute,private router:Router,
+    private spinner : NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.doctor = JSON.parse(
@@ -61,6 +63,7 @@ export class BookAppointmentComponent implements OnInit {
     this.timeFrame = event.target.attributes.name.nodeValue;
   }
   OnBookAppointment() {
+    this.spinner.show();
     console.log("booked");
     const formData = new FormData();
     formData.append('drId', this.doctor);
@@ -75,8 +78,10 @@ export class BookAppointmentComponent implements OnInit {
       .post('http://localhost:8080/patient/appointment', formData)
       .subscribe((data) => {
         this.timeFrames = data;
+        this.spinner.hide();
+        this.router.navigate(['patient-profile/appointments']);
       });
-      this.router.navigate(['patient-profile/appointments']);
+      
   }
 
   createSession(data) {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-appointments',
@@ -10,7 +11,8 @@ export class AppointmentsComponent implements OnInit {
   appointments: any = [];
   patientId;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private spinner:NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.patientId = localStorage.getItem('patientToken');
@@ -18,13 +20,17 @@ export class AppointmentsComponent implements OnInit {
   }
 
   cancelAppointment(appId) {
+    this.spinner.show();
     this.http
       .get(
         'http://localhost:8080/patient/cancelAppointment/?appId=' +
           appId
       )
       .subscribe((data) => {
-        console.log(data); this.pageLoad(); });
+        console.log(data); 
+        this.pageLoad();
+        this.spinner.hide();
+       });
    
   }
   pageLoad() {

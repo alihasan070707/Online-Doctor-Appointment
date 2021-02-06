@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Doctor } from '../doctorModel';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-doctor-registeration',
@@ -15,7 +16,7 @@ export class DoctorRegisterationComponent implements OnInit {
   doctor:Doctor;
   genders = ['Male', 'Female', 'Other'];
   photo:File=null;
-  constructor(private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient,private router:Router,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,7 @@ export class DoctorRegisterationComponent implements OnInit {
     this.photo = <File>event.target.files[0];
   }
   onSubmit(myForm:NgForm) {
+    this.spinner.show();
     const doctor = myForm.value;
     //console.log(myForm.value);
     const {location, city, state, pincode} = myForm.value;
@@ -38,6 +40,7 @@ export class DoctorRegisterationComponent implements OnInit {
     formData.append('data', JSON.stringify(doctor));
     formData.append('file', this.photo, this.photo.name);
     this.http.post("http://localhost:8080/doctor/register", formData).subscribe(data => {console.log(data);
-    this.router.navigate(['patientLogin'])});
+    this.router.navigate(['patientLogin']);
+    this.spinner.hide();});
   }
 }
