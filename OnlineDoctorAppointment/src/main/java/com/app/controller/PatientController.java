@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.app.dao.DoctorRepsitory;
+import com.app.dao.DoctorRepository;
 import com.app.dao.TimeFrameRepo;
 import com.app.dto.AppointmentDto;
 import com.app.emailService.EmailService;
@@ -54,7 +54,7 @@ public class PatientController {
 	@Autowired
 	private TimeFrameRepo timeFrameDao;
 	@Autowired
-	private DoctorRepsitory docRepo;
+	private DoctorRepository docRepo;
 	
 	
 	@GetMapping("/login")

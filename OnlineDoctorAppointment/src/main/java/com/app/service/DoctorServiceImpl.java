@@ -18,7 +18,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dao.AppointmentRepository;
-import com.app.dao.DoctorRepsitory;
+import com.app.dao.DoctorRepository;
 import com.app.dto.DoctorCard;
 import com.app.emailService.EmailService;
 import com.app.pojos.Appointment;
@@ -31,7 +31,7 @@ public class DoctorServiceImpl implements IDoctorService {
 	@Autowired
 	AppointmentRepository appointmentDao;
 	@Autowired
-	DoctorRepsitory doctorDao;
+	DoctorRepository doctorDao;
 
 	@Autowired
 	private EmailService notificationService;

@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import com.app.pojos.Address;
 import com.app.pojos.Doctor;
 
-public interface DoctorRepsitory extends JpaRepository<Doctor, Integer>{
+public interface DoctorRepository extends JpaRepository<Doctor, Integer>{
 		
 		List<Doctor> findAllByAddressAndSpecializationAndIsVerifiedTrue(Address address,String specialization);
 		
@@ -32,10 +32,10 @@ public interface DoctorRepsitory extends JpaRepository<Doctor, Integer>{
 		@Query(value="select distinct specialization from Doctor where Id in (select doctorId from Address where state=:state AND city=:city)")
 		List<String> findBySpecialization(@Param("state") String state, @Param("city") String city);
 		
-		@Query(value="select d from Doctor d where Id in (select doctorId from Address where state=:state AND city=:city)")
+		@Query(value="select d from Doctor d where Id in (select doctorId from Address where state=:state AND city=:city ) AND isVerified=true")
 		List<Doctor> searchDoctorByStateAndCity(@Param("state") String state, @Param("city") String city);
 		
-		@Query(value="select d from Doctor d where Id in (select doctorId from Address where state=:state AND city=:city) AND specialization=:spec")
+		@Query(value="select d from Doctor d where Id in (select doctorId from Address where state=:state AND city=:city) AND specialization=:spec AND isVerified=true")
 		List<Doctor> searchDoctorByAll(@Param("state") String state, @Param("city") String city, @Param("spec") String spec);
 		
 		Optional<Doctor> findById(Integer id);
