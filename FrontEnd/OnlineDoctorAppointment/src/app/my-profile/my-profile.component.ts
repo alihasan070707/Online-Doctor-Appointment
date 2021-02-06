@@ -17,11 +17,16 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
      if(localStorage.getItem('doctorToken')!=null){
       this.doctorId = localStorage.getItem('doctorToken');
-       this.http.get("http://localhost:8080/doctor/getDetails/?id="+this.doctorId).subscribe(data => this.doctor = data);
+       this.http.get("http://localhost:8080/doctor/getDetails/?id="+this.doctorId).subscribe(
+         data => {this.doctor = data;
+                  console.log(data)});
      }
      else if(localStorage.getItem('patientToken')!=null) {
        this.patientId = localStorage.getItem('patientToken'); 
-       this.http.get("http://localhost:8080/patient/getDetails/?id="+this.patientId).subscribe(data => this.patient = data);
+       this.http.get("http://localhost:8080/patient/getDetails/?id="+this.patientId).subscribe(data => 
+       {this.patient = data;
+       console.log(data);}
+       );
      }
      else {
        this.router.navigate(['/']);

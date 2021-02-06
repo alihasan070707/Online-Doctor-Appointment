@@ -152,15 +152,26 @@ public class DoctorServiceImpl implements IDoctorService {
 	
 	@Override
 	public boolean addProfileImage(MultipartFile profile, Integer doctorId) {
-		File dir = new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId);
+		
+		File dir = new File("C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId);
+		
+	//	File dir = new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId);
+		
 		if (!dir.exists()) {
 			dir.mkdir();
 		}
 
 		try {
-
+			
 			FileOutputStream file = new FileOutputStream(
-					new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId + "/" + profile.getOriginalFilename()));
+					new File("C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId + "/" + profile.getOriginalFilename()));
+			
+			
+			/*
+			 * FileOutputStream file = new FileOutputStream( new File(
+			 * "D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
+			 * + doctorId + "/" + profile.getOriginalFilename()));
+			 */
 			byte[] profilepic = profile.getBytes();
 			file.write(profilepic);
 			file.close();

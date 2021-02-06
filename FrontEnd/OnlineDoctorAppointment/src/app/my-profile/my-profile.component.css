@@ -15,24 +15,55 @@
 
 .avatar {
     margin-top: 16px;
-    height: 50%;
-    width: 100%;
-    border-radius: 50%;
-    border: 2px solid tomato;
+    height: 350px;
+    width: 400px;
+
 }
 
 .details{
     margin-top: 30px;
-    font-size: 25px;
+    font-size: 30px;
     
 }
-
-label{
-    font-family: Raleway-SemiBold;
-    color: gray;
+.name-style{
+  display: block;
+  font-size: 50px !important;
+  font-family: Raleway-Bold;
+  margin-bottom: 0px  !important;
 }
+.email-style{
+  margin-top: -10px;
+  font-size: 25px;
+  color : darkblue; 
+}
+.specialization-style{
+  margin-top: 20px;
+  font-size: 25px;
+  
+}
+.personal-detials-style{
+  margin-top: 15px;
+  font-size: 20px;
+}
+.border-style{
+  margin-top: 30px;
+  margin-left: 40px;
+  border-right: 6px groove rgba(0,0,0,0.4);
+}
+.icon-style{
+  font-size: 30px;
 
-span{
-    font-family: sans-serif;
-    padding-left: 10px;
+  margin: 5px;
+}
+.icon-div{
+  margin-top: 35px;
+}
+.facebook{
+  color: blue;;
+}
+.twitter{
+  color: lightblue;
+}
+.google{
+  color: orange;
 }

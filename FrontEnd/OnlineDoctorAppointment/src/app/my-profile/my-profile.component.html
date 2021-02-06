@@ -1,42 +1,63 @@
+<link href="/assets/fonts/fontawesome-5.0/css/fontawesome.css" rel="stylesheet">
+<link href="/assets/fonts/fontawesome-5.0/css/brands.css" rel="stylesheet">
+<link href="/assets/fonts/fontawesome-5.0/css/solid.css" rel="stylesheet">
+
 <div *ngIf='patientId'>
-    <div class="row">
-        <div class="col-3">
+    <div class="row border-style align">
+        <div class="col-4">
             <div>
                 <img class="avatar" src="/assets/images/PatientProfilePic/{{patientId}}/{{patient.picture}}"
                     alt="Profile Picture">
             </div>
         </div>
-        <div class="col-6 details">
+        <div class="col-6 details border-style">
             <div class="name">
-                <label>Name : </label> <span>{{patient.name}}</span>
+                
+                <span class="name-style">{{patient.name}}</span>
+                
             </div>
-            <div class="name">
-                <label>Email : </label> <span>{{patient.email}}</span>
+            <div class="email-style">
+                <span>{{patient.email}}</span>
             </div>
-            <div class="name">
-                <label>Date Of Birth : </label> <span>{{patient.dob}}</span>
-            </div>
+            <div class="specialization-style">
+                <span> Born in year : {{ patient.dob }} </span><br>
+                <span> Phone No : {{ patient.phoneNo }} </span><br>
+                <span>Gender : {{ patient.gender }}</span>
+           </div>
+           <div class="icon-div">
+            <i class="fab fa-facebook icon-style facebook"></i>
+            <i class="fab fa-twitter icon-style twitter"></i>
+            <i class="fab fa-google-plus icon-style google"></i>
+           </div>
         </div>
     </div>
 </div>
 <div *ngIf='doctor'>
-    <div class="row">
-        <div class="col-3">
+    <div class="row border-style align">
+        <div class="col-4">
             <div>
                 <img class="avatar" src="/assets/images/DoctorProfilePic/{{doctorId}}/{{doctor.picture}}"
                     alt="Profile Picture">
             </div>
         </div>
-        <div class="col-6 details">
-            <div class="name">
-                <label>Name : </label> <span>{{doctor.name}}</span>
+        <div class="col-6 details border-style">
+            <div >
+               <span class="name-style">{{doctor.name}}</span>
             </div>
-            <div class="name">
-                <label>Email : </label> <span>{{doctor.email}}</span>
+            <div class="email-style">
+                <span >{{doctor.email}}</span>
             </div>
-            <div class="name">
-                <label>Date Of Birth : </label> <span>{{doctor.dob}}</span>
+            <div class="specialization-style">
+                 <span>{{ doctor.specialization}} from {{ doctor.stateMedicalCouncil}}</span>
+                 <span> Graduated in year : {{ doctor.registrationDate}} </span><br>
+                 <span> Born in year : {{ doctor.dob}} </span>
             </div>
+
+            <div class="personal-detials-style">
+                <span> phone no : {{ doctor.phoneNo }}</span><br>
+                <span> {{ doctor.address.location}} , {{ doctor.address.city}} , {{ doctor.address.state}} , {{ doctor.address.pincode}} </span>
+            </div>
+
         </div>
     </div>
 </div>
