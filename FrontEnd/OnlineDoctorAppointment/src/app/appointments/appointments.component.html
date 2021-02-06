@@ -9,10 +9,52 @@
                 <label>{{ appointment.date }}</label>
             </div>
             <div class="col-3">
-                <button class="btn btn-warning">view</button>
-                <button class="btn btn-danger">cancel</button>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#appointmentModal">View</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelAppointmentModal">Cancel</button>
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="appointmentModalLabel">Appointment Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-labelledby="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>You have an appointment</h4>
+                    <p>With: Dr. {{ appointment.doctorName }}</p>
+                    <p>On: {{ appointment.date }}</p>
+                    <p>At: {{ appointment.startTime }}</p>
+                    <p>Location: {{ appointment.location }}</p>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-danger">*Note: You may want to leave a little early to avoid rush</p>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="cancelAppointmentModal" tabindex="-1" aria-labelledby="cancelAppointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cancelAppointmentModalLabel">Cancel appointment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidder="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure want to cancel the appointment with Dr. {{ appointment.doctorName }}?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="cancelAppointment()" data-dismiss="modal">Cancel appointment</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+

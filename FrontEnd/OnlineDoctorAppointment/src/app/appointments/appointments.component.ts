@@ -19,4 +19,8 @@ export class AppointmentsComponent implements OnInit {
     console.log(data);});
   }
 
+  cancelAppointment() {
+    console.log("cancelled!");
+  }
+
 }
