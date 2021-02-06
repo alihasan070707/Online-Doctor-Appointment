@@ -8,5 +8,5 @@ import com.app.pojos.Admin;
 
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
-	Optional<Admin> findByEmailAndPassword(String email, String password);
+	Optional<Admin> findByEmailAndPassword(String email, char[] password);
 }

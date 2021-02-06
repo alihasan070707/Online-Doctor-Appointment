@@ -21,8 +21,10 @@ export class DocAppointmentComponent implements OnInit {
   cancelAppointment(appId) {
     this.http
       .get('http://localhost:8080/doctor/cancelAppointment/?appId=' + appId)
-      .subscribe((data) => {console.log(data);this.pageLoad();});
-    
+      .subscribe((data) => {
+        console.log(data);
+        this.pageLoad();
+      });
   }
   pageLoad() {
     this.http
@@ -39,12 +41,12 @@ export class DocAppointmentComponent implements OnInit {
       { patientId: patientId },
     ]);
   }
-  uploadPrescription(patientId,doctorId,event) {
+  uploadPrescription(patientId, doctorId, event) {
     let pdf = event.target.files[0];
     console.log(patientId);
     const formdata = new FormData();
     formdata.append('patientId', patientId);
-    formdata.append('doctorId',doctorId);
+    formdata.append('doctorId', this.id);
     formdata.append('pdfFile', pdf);
     this.http
       .post('http://localhost:8080/doctor/upload', formdata)

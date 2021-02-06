@@ -6,20 +6,20 @@
 
     <form action="" #patientForm="ngForm" (ngSubmit)="onSubmit(patientForm)">
       <h2>Register</h2>
-      <p *ngIf="!patientForm.valid && (name.dirty || name.touched)" class="text text-danger">INVALID CREDENTIALS!!!!</p>
+
       <div class="form-group">
         <label for="name">Name</label>
-        
+
         <input type="text" name="name" placeholder="Enter name" class="form-control" #name="ngModel" ngModel required
           minlength="4" />
 
       </div>
 
       <div class="form-group">
-        
+
         <label for="number">Phone Number</label>
         <input type="text" name="phoneNo" placeholder="Phone number" class="form-control" #phoneNo="ngModel" ngModel
-          required pattern="[0-9]{10}"/>
+          required pattern="[0-9]{10}" />
       </div>
 
       <div class="form-group">
@@ -41,21 +41,24 @@
       <div class="form-group">
 
         <label for="email">Email Id</label>
-        <input type="email" name="email" placeholder="Enter your email id" class="form-control" ngModel required email />
+        <input type="email" name="email" placeholder="Enter your email id" class="form-control" ngModel required
+          email />
       </div>
 
       <div class="form-group">
 
         <label for="password">Password</label>
-        <input type="password" name="password" placeholder="create password" class="form-control" ngModel required minlength="5"/>
+        <input type="password" name="password" placeholder="create password" class="form-control" ngModel required
+          minlength="5" />
       </div>
       <div class="form-group">
         <label for="photo">Photo</label>
-        <input type="file" class="form-control-file" name="photo" id="photo" (change)="onFileSelect($event)"
-          [(ngModel)]="photo" />
+        <input type="file" class="form-control-file" name="photo" id="photo" (change)="onFileSelect($event)" />
       </div>
       <div class="form-group">
-        <button *ngIf="patientForm.valid "type="submit" value="Register" class="btn btn-success btn-lg btn-block">Register</button>
+        <button type="submit" value="Register" class="btn btn-success btn-lg btn-block"
+          [disabled]="patientForm.invalid">Register</button>
+
 
       </div>
 

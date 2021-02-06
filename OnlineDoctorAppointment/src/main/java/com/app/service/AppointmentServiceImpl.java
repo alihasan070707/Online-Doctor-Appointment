@@ -107,14 +107,15 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		
 		String patientEmail = patientDao.findById(appointment.get().getPatientId().getId()).get().getEmail();
 		String doctorEmail = doctorDao.findById(appointment.get().getDrId().getId()).get().getEmail();
-		notificationService.sendEmail(patientEmail,notificationService.cancelSubject(),notificationService.cancelBody());
-		notificationService.sendEmail(doctorEmail,notificationService.cancelSubject(),notificationService.cancelBody());
 		
 		//System.out.println(appointment.get());
 		if (appointment.isPresent()) {
 			System.out.println("comes here");
 			appointment.get().setStatus(status);
 			appointmentDao.save(appointment.get());
+			notificationService.sendEmail(patientEmail,notificationService.cancelSubject(),notificationService.cancelBody());
+			notificationService.sendEmail(doctorEmail,notificationService.cancelSubject(),notificationService.cancelBody());
+			
 		}
 	}
 }

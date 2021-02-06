@@ -85,16 +85,13 @@ public class PatientService implements IPatientService {
 		 */
 		
 		
-		  File dir = new File(
-		  "D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/"
-		  + patient_id);
+		  File dir = new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/"+ patient_id);
 		 
 		if (!dir.exists()) {
 			dir.mkdir();
 		}
 
 		try {
-			
 			
 			/*
 			 * FileOutputStream file = new FileOutputStream( new File(
