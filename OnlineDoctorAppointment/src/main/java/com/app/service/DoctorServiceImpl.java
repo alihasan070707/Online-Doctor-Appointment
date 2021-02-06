@@ -32,10 +32,10 @@ public class DoctorServiceImpl implements IDoctorService {
 	AppointmentRepository appointmentDao;
 	@Autowired
 	DoctorRepsitory doctorDao;
-	
+
 	@Autowired
 	private EmailService notificationService;
-	
+
 	@Override
 	public boolean registerDoc(Doctor newDoctor) {
 		try {
@@ -44,19 +44,20 @@ public class DoctorServiceImpl implements IDoctorService {
 
 			return false;
 		}
-		notificationService.sendEmail(newDoctor.getEmail(),notificationService.cancelSubject(),notificationService.cancelBody());
+		notificationService.sendEmail(newDoctor.getEmail(), notificationService.cancelSubject(),
+				notificationService.cancelBody());
 
 		return true;
-			
+
 	}
 
 	@Override
 	public Doctor authenticateLogin(String email, char[] password) {
-		
+
 		Optional<Doctor> doctorOpt = doctorDao.findByEmailAndPassword(email, password);
-		
-		return (doctorOpt.isPresent())?doctorOpt.get():null;
-	
+
+		return (doctorOpt.isPresent()) ? doctorOpt.get() : null;
+
 	}
 
 	/*
@@ -66,44 +67,40 @@ public class DoctorServiceImpl implements IDoctorService {
 	 * Optional<Appointment> appointment = appointmentDao.findById(appointmentId);
 	 * if(appointment.isPresent()) appointment.get().setStatus(status); }
 	 */
-	public void uploadPrescription(MultipartFile pdfFile,Integer patient_id) {
-		
-		File dir=new File("D:/prescription/"+patient_id);
-		if(!dir.exists())
-		{
+	public void uploadPrescription(MultipartFile pdfFile, Integer patient_id) {
+
+		File dir = new File("D:/prescription/" + patient_id);
+		if (!dir.exists()) {
 			dir.mkdir();
 		}
-		
+
 		try {
-			
-			FileOutputStream file = new FileOutputStream(new File("D:/prescription/"+patient_id+"/"+LocalDateTime.now().hashCode()+""+pdfFile.getOriginalFilename()));
-			byte[] pres=pdfFile.getBytes();
+
+			FileOutputStream file = new FileOutputStream(new File("D:/prescription/" + patient_id + "/"
+					+ LocalDateTime.now().hashCode() + "" + pdfFile.getOriginalFilename()));
+			byte[] pres = pdfFile.getBytes();
 			file.write(pres);
 			file.close();
-			
-			
-			
+
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
-		
-		
+
 	}
-	
-	public void setTimeFrames(List<String> times,Integer doctor_id) {
+
+	public void setTimeFrames(List<String> times, Integer doctor_id) {
 		LocalDate date = LocalDate.now();
 		List<TimeFrame> timeframes = new ArrayList<>();
 		Optional<Doctor> doctorOpt = doctorDao.findById(doctor_id);
 		Doctor doctor = doctorOpt.get();
 		System.out.println(doctor);
-		for(int i=0;i<6;i++) {
-			
-			for(String time : times) {
-			
+		for (int i = 0; i < 6; i++) {
+
+			for (String time : times) {
+
 				LocalTime startTime = LocalTime.parse(time);
-				timeframes.add(new TimeFrame(doctor, startTime,
-				startTime.plusHours(1), false, date.plusDays(i)));
+				timeframes.add(new TimeFrame(doctor, startTime, startTime.plusHours(1), false, date.plusDays(i)));
 			}
 		}
 		doctor.setTimeSlots(timeframes);
@@ -113,39 +110,45 @@ public class DoctorServiceImpl implements IDoctorService {
 
 	@Override
 	public List<String> findCityByState(String state) {
-		
+
 		return doctorDao.findCityByState(state);
 	}
 
 	@Override
 	public List<String> findAllState() {
-		
+
 		return doctorDao.findAllState();
 	}
 
 	@Override
 	public List<String> findBySpecialization(String state, String city) {
-		
+
 		return doctorDao.findBySpecialization(state, city);
 	}
 
 	@Override
 	public List<DoctorCard> searchDoctorByStateAndCity(String state, String city) {
-		
-		List<Doctor> doc= doctorDao.searchDoctorByStateAndCity(state, city);
-		List<DoctorCard> docCard=new ArrayList<DoctorCard>();
-		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees(),action.getPicture()));});
+
+		List<Doctor> doc = doctorDao.searchDoctorByStateAndCity(state, city);
+		List<DoctorCard> docCard = new ArrayList<DoctorCard>();
+		doc.forEach(action -> {
+			docCard.add(new DoctorCard(action.getId(), action.getName(), action.getSpecialization(), action.getFees(),
+					action.getPicture()));
+		});
 		return docCard;
 	}
 
 	@Override
 	public List<DoctorCard> searchDoctorByAll(String state, String city, String spec) {
-		
-		List<Doctor> doc= doctorDao.searchDoctorByAll(state, city ,spec);
-		List<DoctorCard> docCard=new ArrayList<DoctorCard>();
-		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees(),action.getPicture()));});
+
+		List<Doctor> doc = doctorDao.searchDoctorByAll(state, city, spec);
+		List<DoctorCard> docCard = new ArrayList<DoctorCard>();
+		doc.forEach(action -> {
+			docCard.add(new DoctorCard(action.getId(), action.getName(), action.getSpecialization(), action.getFees(),
+					action.getPicture()));
+		});
 		return docCard;
-		
+
 	}
 
 	@Override
@@ -154,36 +157,35 @@ public class DoctorServiceImpl implements IDoctorService {
 		Doctor doctor = doctorOpt.get();
 		return doctor;
 	}
-	
-	
+
 	@Override
 	public boolean addProfileImage(MultipartFile profile, Integer doctorId) {
-		
-		
-		  File dir = new File(
-		  "C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
-		  + doctorId);
-		 
-	     //File dir = new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId);
-		
+
+		/*
+		 * File dir = new File(
+		 * "C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
+		 * + doctorId);
+		 */
+		File dir = new File(
+				"D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
+						+ doctorId);
+
 		if (!dir.exists()) {
 			dir.mkdir();
 		}
 
 		try {
-			
+
+			/*
+			 * FileOutputStream file = new FileOutputStream(new File(
+			 * "C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
+			 * + doctorId + "/" + profile.getOriginalFilename()));
+			 */
 			
 			  FileOutputStream file = new FileOutputStream( new File(
-			  "C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
+			  "D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
 			  + doctorId + "/" + profile.getOriginalFilename()));
 			 
-			
-			
-			/*
-			 * FileOutputStream file = new FileOutputStream( new File(
-			 * "D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
-			 * + doctorId + "/" + profile.getOriginalFilename()));
-			 */	 
 			byte[] profilepic = profile.getBytes();
 			file.write(profilepic);
 			file.close();
@@ -200,8 +202,8 @@ public class DoctorServiceImpl implements IDoctorService {
 
 	@Override
 	public boolean isNewDoctor(Integer id) {
-		
+
 		return doctorDao.findById(id).get().isNew();
 	}
-	
+
 }
