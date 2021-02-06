@@ -40,5 +40,5 @@ public interface DoctorRepsitory extends JpaRepository<Doctor, Integer>{
 		
 		Optional<Doctor> findById(Integer id);
 		
-		
+		List<Doctor> findAllByStatus(boolean status);
 }

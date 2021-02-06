@@ -1,0 +1,16 @@
+<div *ngFor='let doctor of doctors'>
+    <div class="appointment-container">
+        <div class="appointment-card row">
+            <div class="col-7 appointment-block">
+                <label>Doctor Name:</label><label> {{doctor.name}} </label>
+                <label>Registration Number:</label><label>{{ doctor.registrationNo }}</label>
+                <label>Date of Registration:</label><label>{{ doctor.registrationDate }}</label>
+                <label>State Medical Council:</label><label>{{ doctor.stateMedicalCouncil }}</label>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-warning">Accept</button>
+                <button type="button" class="btn btn-danger">Reject</button>
+            </div>
+        </div>
+    </div>
+</div>

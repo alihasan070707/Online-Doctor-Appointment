@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.springframework.lang.NonNull;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
@@ -22,8 +24,10 @@ public class Address {
 	@JsonBackReference(value="doctor")
 	private Doctor doctorId;
 	@Column(length = 15)
+	@NonNull
 	private String state;
 	@Column(length = 20)
+	@NonNull
 	private String city;
 	public Integer getId() {
 		return Id;
@@ -38,8 +42,10 @@ public class Address {
 		this.doctorId = doctorId;
 	}
 	@Column(length = 6)
+	@NonNull
 	private String pincode;
 	@Column(length = 65535, columnDefinition = "TEXT")
+	@NonNull
 	private String location;
 	public Address() {
 		super();
