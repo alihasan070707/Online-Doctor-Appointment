@@ -73,25 +73,27 @@ public class PatientService implements IPatientService {
 	@Override
 	public boolean addProfileImage(MultipartFile profile, Integer patient_id) {
 		
-		File dir = new File("C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/" + patient_id);
+		//File dir = new File("C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/" + patient_id);
 		
-		/*
-		 * File dir = new File(
-		 * "D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/"
-		 * + patient_id);
-		 */
+		
+		  File dir = new File(
+		  "D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/"
+		  + patient_id);
+		 
 		if (!dir.exists()) {
 			dir.mkdir();
 		}
 
 		try {
 			
+			/*
+			 * FileOutputStream file = new FileOutputStream( new File(
+			 * "C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/"
+			 * + patient_id + "/" + profile.getOriginalFilename()));
+			 */
 			FileOutputStream file = new FileOutputStream(
-					new File("C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/" + patient_id + "/" + profile.getOriginalFilename()));
-			
-			/*FileOutputStream file = new FileOutputStream(
 					new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/PatientProfilePic/" + patient_id + "/" + profile.getOriginalFilename()));
-			*/
+			
 			byte[] profilepic = profile.getBytes();
 			file.write(profilepic);
 			file.close();

@@ -1,0 +1,43 @@
+.copyright {
+  background-color: #21292f;
+  padding: 10px;
+  color:white;
+  text-align: center;
+}
+
+.support {
+  background-color: #6dcd9a;
+  padding: 10px;
+
+  text-align: center;
+}
+
+.face {
+  background-color: #3d5b94;
+  padding: 10px;
+  text-align: center;
+}
+
+.tweet {
+  background-color: #1e83ae;
+  padding: 10px;
+  text-align: center;
+}
+
+.linked {
+  background-color: #3dacdd;
+  padding: 10px;
+  text-align: center;
+}
+
+i {
+  color: white;
+  font-size: 25px;
+  
+}
+.footercontainer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

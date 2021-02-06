@@ -128,7 +128,7 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 		List<Doctor> doc= doctorDao.searchDoctorByStateAndCity(state, city);
 		List<DoctorCard> docCard=new ArrayList<DoctorCard>();
-		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees()));});
+		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees(),action.getPicture()));});
 		return docCard;
 	}
 
@@ -137,7 +137,7 @@ public class DoctorServiceImpl implements IDoctorService {
 		
 		List<Doctor> doc= doctorDao.searchDoctorByAll(state, city ,spec);
 		List<DoctorCard> docCard=new ArrayList<DoctorCard>();
-		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees()));});
+		doc.forEach(action->{docCard.add(new DoctorCard(action.getId(),action.getName(),action.getSpecialization(),action.getFees(),action.getPicture()));});
 		return docCard;
 		
 	}
@@ -153,9 +153,12 @@ public class DoctorServiceImpl implements IDoctorService {
 	@Override
 	public boolean addProfileImage(MultipartFile profile, Integer doctorId) {
 		
-		File dir = new File("C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId);
-		
-	//	File dir = new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId);
+		/*
+		 * File dir = new File(
+		 * "C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
+		 * + doctorId);
+		 */
+	     File dir = new File("D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId);
 		
 		if (!dir.exists()) {
 			dir.mkdir();
@@ -163,15 +166,17 @@ public class DoctorServiceImpl implements IDoctorService {
 
 		try {
 			
-			FileOutputStream file = new FileOutputStream(
-					new File("C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/" + doctorId + "/" + profile.getOriginalFilename()));
-			
-			
 			/*
 			 * FileOutputStream file = new FileOutputStream( new File(
-			 * "D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
+			 * "C:/Users/hp/git/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
 			 * + doctorId + "/" + profile.getOriginalFilename()));
 			 */
+			
+			
+			  FileOutputStream file = new FileOutputStream( new File(
+			  "D:/CDAC/Project/Online-Doctor-Appointment/FrontEnd/OnlineDoctorAppointment/src/assets/images/DoctorProfilePic/"
+			  + doctorId + "/" + profile.getOriginalFilename()));
+			 
 			byte[] profilepic = profile.getBytes();
 			file.write(profilepic);
 			file.close();
