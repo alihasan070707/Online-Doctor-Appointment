@@ -21,6 +21,7 @@ import com.app.dto.AppointmentDto;
 import com.app.dto.DoctorCard;
 import com.app.dto.DoctorSearchParam;
 import com.app.dto.DoctorTimeSlots;
+import com.app.emailService.EmailService;
 import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
 import com.app.pojos.Patient;
@@ -39,6 +40,8 @@ public class DoctorController {
 	private IDoctorService service;
 	@Autowired
 	private IAppointmentService appService;
+	@Autowired
+	private EmailService notificationService;
 
 	public DoctorController() {
 		System.out.println("in doctor");
@@ -62,7 +65,7 @@ public class DoctorController {
 
 		try {
 			doctor = new ObjectMapper().readValue(doctorJson, Doctor.class);
-
+			
 		} catch (JsonMappingException e) { // TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
@@ -168,8 +171,11 @@ public class DoctorController {
 	}
 	
 	@GetMapping("/cancelAppointment")
-	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId) {
+	public ResponseEntity<?> cancelAppointment(@RequestParam Integer appId,@RequestParam Integer id) {
+		Doctor doctor=new Doctor(id);
+		notificationService.sendEmail(doctor.getEmail(),notificationService.cancelSubject(),notificationService.cancelBody());
 		appService.updateAppointmentStatus(appId, 4);
+		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

@@ -14,33 +14,38 @@ public class EmailService {
 	
 	private JavaMailSender javaMailSender;
 
-	/**
-	 * 
-	 * @param javaMailSender
-	 */
+
 	@Autowired
 	public EmailService(JavaMailSender javaMailSender) {
 		this.javaMailSender = javaMailSender;
 	}
 	
-	public  void sendEmail() throws MailException {
+	public  void sendEmail(String email,String subject,String content) throws MailException {
 
-		/*
-		 * This JavaMailSender Interface is used to send Mail in Spring Boot. This
-		 * JavaMailSender extends the MailSender Interface which contains send()
-		 * function. SimpleMailMessage Object is required because send() function uses
-		 * object of SimpleMailMessage as a Parameter
-		 */
-		 
 		SimpleMailMessage mail = new SimpleMailMessage();
-		mail.setTo("goyalyash08@gmail.com");
-		mail.setSubject("Testing Mail API");
-		mail.setText("Hurray ! You have done that dude...");
+		mail.setTo(email);
+		mail.setSubject(subject);
+		mail.setText(content);
 
-		/*
-		 * This send() contains an Object of SimpleMailMessage as an Parameter
-		 */
 		javaMailSender.send(mail);
+	}
+	public String registerBody() {
+		return "Hello User,\n You have successfully registered with us.";
+	}
+	public String registerSubject() {
+		return "Account Registered";
+	}
+	public String bookBody() {
+		return "Hello User,\n You have successfully Booked an Appointment.\n Check your profile for appointment details.";
+	}
+	public String bookSubject() {
+		return "Appointment Booked";
+	}
+	public String cancelBody() {
+		return "Hello User,\n Your appointment has been cancelled.\n Check your profile for more details.";
+	}
+	public String cancelSubject() {
+		return "Appointment Cancelled";
 	}
 	}
 

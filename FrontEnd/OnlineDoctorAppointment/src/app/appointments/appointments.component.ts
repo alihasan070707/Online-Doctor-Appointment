@@ -4,23 +4,39 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
-  styleUrls: ['./appointments.component.css']
+  styleUrls: ['./appointments.component.css'],
 })
 export class AppointmentsComponent implements OnInit {
-
-  appointments:any = [];
+  appointments: any = [];
   patientId;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.patientId = localStorage.getItem('patientToken');
-    this.http.get("http://localhost:8080/patient/appointments/?patientId="+this.patientId).subscribe(data => {this.appointments = data;
-    console.log(data);});
+    this.pageLoad();
   }
 
-  cancelAppointment() {
-    console.log("cancelled!");
+  cancelAppointment(appId) {
+    this.http
+      .get(
+        'http://localhost:8080/patient/cancelAppointment/?appId=' +
+          appId +
+          '&id=' +
+          this.patientId
+      )
+      .subscribe((data) => console.log(data));
+    this.pageLoad();
   }
-
+  pageLoad() {
+    this.http
+      .get(
+        'http://localhost:8080/patient/appointments/?patientId=' +
+          this.patientId
+      )
+      .subscribe((data) => {
+        this.appointments = data;
+        console.log(data);
+      });
+  }
 }
