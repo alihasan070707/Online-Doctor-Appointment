@@ -9,22 +9,24 @@
 
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" name="name" placeholder="Enter name" class="form-control" ngModel required />
+        <input type="text" name="name" placeholder="Enter name" class="form-control" [(ngModel)]="name" required
+          required />
       </div>
 
       <div class="form-group">
         <label for="number">Phone Number</label>
-        <input type="text" name="phoneNo" placeholder="Phone number" class="form-control" ngModel />
+        <input type="text" name="phoneNo" placeholder="Phone number" class="form-control" [(ngModel)]="phoneNo"
+          required />
       </div>
 
       <div class="form-group">
         <label for="dob">Date of birth</label>
-        <input type="date" name="dob" class="form-control" ngModel />
+        <input type="date" name="dob" class="form-control" [(ngModel)]="dob" required />
       </div>
 
       <div class="form-group">
         <label for="gender">Gender</label>
-        <select name="gender" id="gender" class="form-control" ngModel>
+        <select name="gender" id="gender" class="form-control" [(ngModel)]="gender" required>
           <option value="" selected>Select a gender</option>
           <option *ngFor="let gender of genders">{{ gender }}</option>
 
@@ -33,16 +35,19 @@
 
       <div class="form-group">
         <label for="email">Email Id</label>
-        <input type="email" name="email" placeholder="Enter your email id" class="form-control" ngModel />
+        <input type="email" name="email" placeholder="Enter your email id" class="form-control" [(ngModel)]="email"
+          required />
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" name="password" placeholder="create password" class="form-control" ngModel />
+        <input type="password" name="password" placeholder="create password" class="form-control" [(ngModel)]="password"
+          required />
       </div>
       <div class="form-group">
         <label for="photo">Photo</label>
-        <input type="file" class="form-control-file" name="photo" id="photo" (change)="onFileSelect($event)" />
+        <input type="file" class="form-control-file" name="photo" id="photo" (change)="onFileSelect($event)"
+          [(ngModel)]="photo" required />
       </div>
       <div class="form-group">
         <input type="submit" value="Register" class="btn btn-success btn-lg btn-block" />
